@@ -1,0 +1,8 @@
+<?php
+	$data['url'] = base_url();
+	$data['session'] = $this->session->userdata('user');
+	$data['message'] = getMessages();
+	$this->parser->parse('layout/header', $data);
+	$this->parser->parse($template, $data);
+	$this->parser->parse('layout/footer', $data);
+ ?>

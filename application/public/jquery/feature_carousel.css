@@ -1,0 +1,132 @@
+body {
+  margin:0; 
+  padding:0;
+}
+
+/** Feature Carousel **/
+.carousel_container {
+  position:relative;
+  width:960px;
+}
+#jq_carousel {
+  position:relative;
+  margin:0 auto;
+  height:32em;
+  width:100%;
+  margin-bottom:0.5em;
+  font-size:12px;
+  font-family: Arial;
+  background: url("../assets/img/bgtop.jpg");
+  background-repeat: no-repeat;
+}
+
+.carousel_img {
+  display:block;
+  
+}
+
+
+.carousel_elm {
+  position:absolute;
+  top:-1000px;
+  left:-1000px;
+  cursor:pointer;
+  position:absolute;
+  bottom:0;
+  margin:0;
+  width:100%;
+  background-color:#000;
+  font-size:12px;
+  color:white;
+
+}
+
+/* Border first */
+.carousel_elm.active {
+  border: 3px solid var(--white-color);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* #carousel_elm {
+  border: 5px solid var(--white-color);
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.9);
+} */
+
+.tracker_summation_container {
+  position:absolute;
+  color:white;
+  right:3em;
+  bottom:2.5em;
+  padding:3px;
+  margin:3px;
+  background-color:#000;
+  display: none;
+}
+.tracker_individual_container {
+  position:absolute;
+  color:white;
+  right:1em;
+  bottom:.3em;
+  padding:0;
+  margin:0;
+}
+.tracker_individual_container li {
+  list-style:none;
+  display: none;
+}
+.tracker_individual_container .tracker_individual_blip {
+  margin:0 3px;
+  padding:0 3px;
+  color:white;
+  text-align:center;
+  background-color:#0000da;
+  font-weight:bold;
+}
+.tracker_individual_container .tracker_individual_blip-selected {
+  color:white;
+  font-weight:bold;
+  background-color:#000;
+  border:1px solid #fe0000;
+}
+/** LightBox **/
+#lightbox {
+  position:fixed;
+  display: none;
+  top:0; 
+  left:0; 
+  width:100%; 
+  height:100%; 
+  background:#a7a8a9; 
+  text-align:center;
+  z-index:9999;
+}
+#lightbox #lghtbox_cls {
+  position:absolute;
+  top:-.2em;
+  right:0;
+  width:4em;
+  border:1px solid #0001da;
+  padding: 1px;
+  color:#f01; 
+  font-size:12px;
+  cursor:pointer;
+}
+#lightbox_cnt {
+ margin:.3em auto;
+}
+#lightbox_cnt #lghtboximg {
+  box-shadow:0 0 .5em #111;
+  -webkit-box-shadow:0 0 .5em #111;
+  -moz-box-shadow:0 0 .5em #111;
+  max-width:100%;
+}
+#lightbox #lightbox_cntx {
+  position:relative;
+  margin:.3em;
+  border:1px solid #000;
+  background:#fbfbfb;
+  padding: .14em;
+  color:#0101be; 
+  font-size:1.15em;
+}
