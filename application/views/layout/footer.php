@@ -16,11 +16,14 @@
     <script>
       $.widget.bridge('uibutton', $.ui.button)
     </script>
+    <!-- Select2 -->
+    <script src="{$url}plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="{$url}plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->
     <script src="{$url}plugins/chart.js/Chart.min.js"></script>
     <!-- Sparkline -->
+    <script src="{$url}plugins/select2/js/select2.full.min.js"></script>
     <script src="{$url}plugins/sparklines/sparkline.js"></script>
     <!-- JQVMap -->
     <script src="{$url}plugins/jqvmap/jquery.vmap.min.js"></script>
@@ -72,7 +75,12 @@
 
 <!-- page script -->
 <script>
+    $('.select2').select2({
+      theme: 'bootstrap4'
+    })
   $(function () {
+      //Initialize Select2 Elements
+ 
     $("#example1").DataTable();
     $('#example2').DataTable({
       "paging": true,

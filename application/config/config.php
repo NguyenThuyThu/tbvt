@@ -379,10 +379,10 @@ $config['encryption_key'] = 'nckh';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'thietbivienthong';
-$config['sess_expiration'] = 3000;
+$config['sess_expiration'] = 7200;
 $config['sess_save_path'] = __DIR__ . '\..\cache\sessions';
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 3000;
+$config['sess_time_to_update'] = 7200;
 $config['sess_regenerate_destroy'] = FALSE;
 
 

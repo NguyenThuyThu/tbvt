@@ -14,7 +14,7 @@
 	        
 	    }
 	    public function index(){
-	    	$this->session->unset_userdata('user');	
+	    	// $this->session->unset_userdata('user');	
 	    	$temp = array(
 	    		'template' => 'Giaodien/Vtrangchu',
 	    		'data'	=> array(

@@ -23,7 +23,6 @@ $(document).ready(function(){
 	$(document).on('click', '.add', function(){
 		var tr = $("#row_product").html();
 		$("#row_product").parent().append("<tr>" + tr + "</tr>");
-
 	});
 
 	$(document).on('click', '.remove', function(){

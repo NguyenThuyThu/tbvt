@@ -18,6 +18,10 @@ class Csanpham extends MY_Controller {
 		if($this->input->post('capnhatDVT')){
 			$this->capnhatDVT();
 		}
+
+		if($this->input->post('capnhatsanpham')){
+			$this->capnhatsanpham();
+		}
 		if($this->input->post('xoaDVT')){
 			$this->xoaDVT();
 		}
@@ -102,5 +106,15 @@ class Csanpham extends MY_Controller {
         $redirect = base_url().'sanpham'; 
     	$this->delete("tbl_donvitinh_sanpham","ma_donvitinh",$ma, $success, $error, $redirect);
 	}
+
+	public function capnhatsanpham() {
+		$ma 	  = $this->input->post('capnhatsanpham');
+		$data 	  = $this->input->post('data');
+		$success  = 'Cập nhật thành công';
+        $error    = 'Cập nhật';
+        $redirect = base_url().'sanpham'; 
+        $this->update("tbl_sanpham", "ma_sanpham", $ma, $data, $success, $error, $redirect);
+	}
+
 
 }

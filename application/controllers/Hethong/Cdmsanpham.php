@@ -17,7 +17,7 @@ class Cdmsanpham extends MY_Controller
 		if($this->input->post('themdmSP')){
 			$this->themdmSP();
 		}
-		if($this->input->post('capnhatloaisp')){
+		if($this->input->post('themloaisp')){
 			$this->ThemLoaiSanPham();
 		}
 		if($this->input->post('capnhatsanpham')){
@@ -26,9 +26,9 @@ class Cdmsanpham extends MY_Controller
 		if($this->input->post('xoa_dmsp')){
 			$this->xoa_dmsp();
 		}
-		// if($this->input->post('xoa_dmsp')){
-		// 	// $this->xoa_loaisp();
-		// }
+		if($this->input->post('xoa_loaisp')){
+			$this->xoa_loaisp();
+		}
 		$dmsp = $this->Mdmsanpham->get('tbl_danhmuc_sanpham');
 		foreach ($dmsp as $key => $value) {
 			$tendm[$value['ma_dmsanpham']] = $value['ten_dmsanpham'];
@@ -74,11 +74,11 @@ class Cdmsanpham extends MY_Controller
 
 	/*Lấy dữ liệu*/
 	public function xoa_loaisp() {
-		// $ma 	  = $this->input->post('xoa_loaisp');
-		// $success  = 'Xóa thành công';
-  //       $error    = 'Xóa thất bại!';
-  //       $redirect = base_url().'dmsanpham'; 
-  //   	$this->delete("tbl_loaisanpham","ma_loaisanpham",$ma, $success, $error, $redirect);
+		$ma 	  = $this->input->post('xoa_loaisp');
+		$success  = 'Xóa thành công';
+        $error    = 'Xóa thất bại!';
+        $redirect = base_url().'dmsanpham'; 
+    	$this->delete("tbl_loaisanpham","ma_loaisanpham",$ma, $success, $error, $redirect);
 	}
 	public function xoa_dmsp() {
 		$ma 	  = $this->input->post('xoa_dmsp');
