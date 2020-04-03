@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label>Ảnh sản phẩm</label>
                                 <img src="{$url}public/images/image_upload.png" id="anh" alt="Ảnh đại diện" name="anh" width="100%" height="260px"/>
-                                 <input type="file" class="form-control" required="" value="1" name="anhsanpham" id="anhsanpham" onchange="readURL(this);" data-toggle="tooltip" data-ariginal-title="Chọn file ảnh" accept=".jpg,.png, .jpeg" >
+                                 <input type="file" class="form-control" value="1" name="anhsanpham" id="anhsanpham" onchange="readURL(this);" data-toggle="tooltip" data-ariginal-title="Chọn file ảnh" accept=".jpg,.png, .jpeg" >
                             </div>
                         </div>
                         <div class="col-12">
@@ -121,7 +121,7 @@
                     <div class="col-12 text-center">
                         <hr>
                         <button type="submit" name="themloaisp" value="Thêm" class="btn btn-info btn-flat themloaisp">Thêm sản phẩm</button>
-                        <button type="reset" class="btn btn-default "><i class="fa fa-window-close" aria-hidden="true"></i>&nbsp; Hủy</button>
+                        <button type="reset" class="btn btn-default huysp"><i class="fa fa-window-close" aria-hidden="true"></i>&nbsp; Hủy</button>
                     </div>
                 </form>
             </div>
@@ -152,7 +152,7 @@
                             {if $ds.trangthai_dang_sanpham==1}
                             <tr>
                                 <td class="text-center"><b>{$key+1}</b></td>
-                                <td class="font-w600"><button class="button-update" id="ma_sanpham" name="ma_sanpham" value="{$ds.ma_sanpham}" style="text-align: left;">{$ds.ten_sanpham}</button></td>
+                                <td class="font-w600"><b>{$ds.ten_sanpham}</b></td>
                                 <td class="hidden-xs">{$ds.soluong_sanpham}</td>
                                 <td class="hidden-xs">{$ds.dongia_sanpham}</td>
                                 <td class="hidden-xs">{$ds.xuatxu_sanpham}</td>
@@ -163,6 +163,22 @@
                                 <td class="hidden-xs text-center">{$ds.ten_taikhoan}</td>
                                 <td class="text-center">
                                     <div class="btn-group">
+                                        <button 
+                                        type="button" 
+                                        class="btn btn-info suasanpham"
+                                        soluong_sanpham          = "{$ds.soluong_sanpham}"
+                                        dongia_sanpham           = "{$ds.dongia_sanpham}"
+                                        ten_sanpham           = "{$ds.ten_sanpham}"
+                                        ma_sanpham               = "{$ds.ma_sanpham}"
+                                        xuatxu_sanpham           = "{$ds.xuatxu_sanpham}"
+                                        thoigianbaohanh_sanpham  = "{$ds.thoigianbaohanh_sanpham}"
+                                        ma_donvitinh            = "{$ds.ma_donvitinh}"
+                                        ma_loaisanpham          = "{$ds.ma_loaisanpham}"
+                                        ma_nhacungcap          = "{$ds.ma_nhacungcap}"
+                                        ghichu_sanpham          = "{$ds.ghichu_sanpham}"
+                                        thongsokythuat_sanpham          = "{$ds.thongsokythuat_sanpham}"
+                                        ><i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                    </button>
                                         <button class="btn btn-danger button" type="submit"  name="xoasanpham" value="{$ds.ma_sanpham}" onclick="return confirm('Bạn muốn xóa sản phẩm {$ds.ten_sanpham} ?')" id="xoasanpham" data-toggle="tooltip" title="Xóa sản phẩm"><span class="fa fa-trash"></span></button>
                                     </div>
                                 </td>

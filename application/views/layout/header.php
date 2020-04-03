@@ -40,6 +40,8 @@
     
     <link rel="stylesheet" href="{$url}plugins/datatables-bs4/css/dataTables.bootstrap4.css">
     <script type="text/javascript" src="{$url}public/js/tonghop.js"></script>
+      <link rel="stylesheet" href="{$url}plugins/select2/css/select2.min.css">
+      <link rel="stylesheet" href="{$url}plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 </head>
 

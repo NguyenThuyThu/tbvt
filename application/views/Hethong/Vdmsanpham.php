@@ -109,7 +109,7 @@
            </div>
        </section>
    </div>
-   <div class="modal fade show" id="modal-default" style="padding-right: 16px;" aria-modal="true">
+    <div class="modal fade show" id="modal-default" style="padding-right: 16px;" aria-modal="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">

@@ -106,7 +106,6 @@
                             <ul class="header__navbar-list">
                                 <li>
                                     <a class="header__navbar-item header__navbar-item--strong header__navbar-item--separate" >{$session['hoten_thanhvien']}</a>
-                                    
                                 </li>
                                 <li>
                                     <a class="header__navbar-item header__navbar-item--strong" href="{$url}dangxuat">Đăng xuất</a>

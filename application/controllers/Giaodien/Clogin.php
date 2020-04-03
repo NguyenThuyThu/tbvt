@@ -107,7 +107,7 @@ class Clogin extends CI_Controller
 			
         }else{
 	        	setMessages("error", " Tài khoản hoặc mật khẩu không chính xác!", " Thông báo");
-	        	return redirect(base_url());
+	        	return redirect(base_url("dangnhap"));
 	    }
     }
 
