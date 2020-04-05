@@ -10,6 +10,9 @@ $route['tranglienhe'] = 'Giaodien/Ctranglienhe';
 $route['tranghoidap'] = 'Giaodien/Ctranghoidap';
 $route['trangchitiet'] ='Giaodien/Ctrangchitiet';
 $route['giohang'] = 'Giaodien/Cgiohang';
+$route['thanhtoan'] = 'Giaodien/Cthanhtoan';
+$route['donmua'] = 'Giaodien/Cdonmua';
+$route['hoadon'] = 'Giaodien/Choadonthanhtoan';
 
 
 // HỆ THỐNG
@@ -19,6 +22,8 @@ $route['thongtincanhan'] = 'Hethong/Cthongtincanhan';
 $route['thongtinchitiet'] = 'Hethong/Cthongtinchitiet';
 $route['phanquyen'] = 'Hethong/Cphanquyen';
 $route['nhanvien'] = 'Hethong/Ccanbo';
+$route['donhang'] = 'Hethong/Cdonhang';
+$route['nhapdonhang'] = 'Hethong/Cnhapdonhang';
 
 // $route['doimatkhau'] = 'Hethong/Cdoimatkhau ';
 

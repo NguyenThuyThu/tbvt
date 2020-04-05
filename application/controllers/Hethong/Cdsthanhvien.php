@@ -24,14 +24,7 @@ class Cdsthanhvien extends MY_Controller
 
 		// $thanhvien = $this->StaffListtable();
 		// $data['info']          = $thanhvien['info'];
-		// // pr($data['info']  );
-		// $data['phantrang']     = $thanhvien['pagination'];
-		// $data['tukhoa']        = $thanhvien['tukhoa'];	// lưu từ khóa khi search
-		// $data['tab'] = $this->_tab;
-		// $data['url'] = base_url();
-		// $temp['data']       = $data;
-		// $temp['template']   = '';
-		// $this->load->view('layout/content',$temp);
+
 		
 		$temp = array(
 			'template' => 'Hethong/Vdsthanhvien',

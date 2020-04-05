@@ -75,7 +75,7 @@
                             </div>
                         </div>
 
-                        <div class="header__search-selection">
+                        <!-- <div class="header__search-selection">
                             <span class="header__search-selection-label">Tất cả</span>
                             <i class="header__search-selection-icon fas fa-angle-down"></i>
 
@@ -89,7 +89,7 @@
                                     <i class="fas fa-check"></i>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                         <button class="header__search-btn">
                             <i class="header__search-btn-icon fas fa-search"></i>
                         </button>
@@ -104,11 +104,22 @@
                             
                             {if !empty($session['ma_quyen'] == '3')}
                             <ul class="header__navbar-list">
-                                <li>
-                                    <a class="header__navbar-item header__navbar-item--strong header__navbar-item--separate" >{$session['hoten_thanhvien']}</a>
-                                </li>
-                                <li>
-                                    <a class="header__navbar-item header__navbar-item--strong" href="{$url}dangxuat">Đăng xuất</a>
+                                <li class="header__navbar-user">
+                                    <span class="header__navbar-user-name">{$session['hoten_thanhvien']}</span>
+
+                                    <ul class="header__navbar-user-menu">
+                                        <li class="header__navbar-user-item">
+                                            <a href="">Tài khoản của tôi</a>
+                                        </li>
+
+                                        <li class="header__navbar-user-item">
+                                            <a href="{$url}donmua">Đơn mua</a>
+                                        </li>
+                                        
+                                        <li class="header__navbar-user-item">
+                                            <a href="{$url}dangxuat">Đăng xuất</a>
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                             {else}

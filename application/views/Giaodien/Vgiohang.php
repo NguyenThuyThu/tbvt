@@ -24,7 +24,7 @@
 										<td style="vertical-align: middle;"><a class="remove" data-info="{$val.ma_sanpham}">x</a></td>
 										<td class="text-center" style="vertical-align: middle;"><b>{$key+1}</b></td>
 										<td class="text-center" style="vertical-align: middle;">
-											<a href="">
+											<a href>
 												<img src="{$url}public/images/anhsanpham/{$val.linkanh_sanpham}" width="100%">
 											</a>
 										</td>
@@ -48,35 +48,39 @@
 					<div class="checkout"  style="background: #fff;">
 						<table class="table table-bordered table-responsive table-striped">
 							<thead>
-									<tr>
-										<th width="75%">
-										Tổng số lượng  <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i>
-										</th>
-										<th  width="25%">
-											{$thongke['tongSL']}
-										</th>
-									</tr>
-								</thead>
-								<tbody id="tbody1">
-									{foreach $details_prduct as $key => $val}
-									<tr>
-										<td>
-											<a class="tensp">{$val.ten_sanpham}</a>
-										</td>
-										<td>
-											<small class="gia">{$val.soluong} x {$val.dongia_sanpham} VNĐ</small>
-										</td>
-									</tr>
-									{/foreach}
-									<tr>
-										<td colspan ="2" class="text-right" style="color: #fff; background-image: linear-gradient(90deg,#d2dee596,#355c6e);">
-											<p>Tổng tiền: <span class="price"><b>{$thongke['tongDG']} VNĐ</b></span></p>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+								<tr>
+									<th width="75%">
+									Tổng số lượng  <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i>
+									</th>
+									<th  width="25%">
+										{$thongke['tongSL']}
+									</th>
+								</tr>
+							</thead>
+							<tbody id="tbody1">
+								{foreach $details_prduct as $key => $val}
+								<tr>
+									<td>
+										<a class="tensp">{$val.ten_sanpham}</a>
+									</td>
+									<td>
+										<small class="gia">{$val.soluong} x {$val.dongia_sanpham} VNĐ</small>
+									</td>
+								</tr>
+								{/foreach}
+								<tr>
+									<td colspan ="2" class="text-right" style="color: #fff; background-image: linear-gradient(90deg,#d2dee596,#355c6e);">
+										<p>Tổng tiền: <span class="price"><b>{$thongke['tongDG']} VNĐ</b></span></p>
+									</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
+					
+					<a href="{$url}thanhtoan" class="checkout-button">
+						<div class="wc-proceed-to-checkout">Tiến hành thanh toán</div>
+					</a>
+					
 				</div>
 			</div>
 		</div>

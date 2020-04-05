@@ -11,7 +11,7 @@
             </div>
             <div class="col-sm-5 text-right hidden-xs">
                 <ol class="breadcrumb push-10-t">
-                    <li>Quản LÝ DANH MỤC</li>
+                    <li>Quản lý hệ thống</li>
                     <li><a class="link-effect" href="javascript:void(0)">Thông tin cá nhân</a></li>
                 </ol>
             </div>

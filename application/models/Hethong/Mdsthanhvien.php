@@ -39,7 +39,7 @@ class Mdsthanhvien extends CI_Model{
     	}
     	$this->db->select('tv.*,quyen.ten_quyen, tk.*');
     	$this->db->from('tbl_taikhoan as tk');
-        $this->db->join('tbl_thanhvien as tv','tv.ma_thanhvien=tk.ma_thanhvien');
+		$this->db->join('tbl_thanhvien as tv','tv.ma_thanhvien=tk.ma_thanhvien');
     	$this->db->join('tbl_quyen as quyen','quyen.ma_quyen=tk.ma_quyen');
     	if ($limit) {
 			$this->db->limit($limit, $offset);

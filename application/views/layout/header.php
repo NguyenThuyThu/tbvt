@@ -165,6 +165,31 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon far fa-plus-square"></i>
                         <p>
+                            Quản lý đơn hàng
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="donhang" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách Đơn hàng</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="nhapdonhang" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p> Thêm Đơn hàng</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon far fa-plus-square"></i>
+                        <p>
                            Quản lý phiếu bảo hành
                             <i class="fas fa-angle-left right"></i>
                         </p>

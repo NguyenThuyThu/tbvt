@@ -5,12 +5,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 * MODEL cán bộ
 * Cdoimatkhau lấy phần retrieveStaff() 
 */
-class Mcanbo extends CI_Model{
+class Mcanbo extends MY_Model{
     public function __construct() {
         parent::__construct();
         $this->_table       = "tbl_thanhvien";
         $this->_primary_key = "ma_thanhvien";
-    }
+	}
+	
+	function get_diachi($matv){
+		$this->db->from("tbl_diachi");
+		$this->db->where("tbl_diachi.ma_thanhvien", $matv);
+		$this->db->select("tbl_diachi.*, tbl_thanhvien.*");
+		$this->db->join("tbl_thanhvien", "tbl_thanhvien.ma_thanhvien = tbl_diachi.ma_thanhvien","INNER");
+		return $this->db->get()->result_array();
+	}
 // insert account
 	public function insertSaff($data_Staff=array()){
 		$this->db->insert($this->_table,$data_Staff);

@@ -206,7 +206,7 @@
              <form method="post">
                 <div class="col-12">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Tên đơn vị tính</label>
+                        <label>Tên đơn vị tính</label>
                         <input type="text" class="form-control" name="data[ten_donvitinh]" >
                         <hr>
                         <button type="submit" class="btn btn-primary themDVT" name="themDVT" value="1">Cập nhật</button>

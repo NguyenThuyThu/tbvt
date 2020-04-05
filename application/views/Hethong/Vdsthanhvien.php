@@ -54,7 +54,7 @@
                         <td class="text-center">{$ds.gioitinh_thanhvien}</td>
                         <td>{$ds.sodienthoai_thanhvien}</td>
                         <td>{$ds.email_thanhvien}</td>
-                        <td>{$ds.diachi_thanhvien}</td>
+                        <td></td>
                         <td class="text-center">{$ds.ten_taikhoan}</td>
                         <td class="text-center">{$ds.ten_quyen}</td>
                         <td class="text-center">

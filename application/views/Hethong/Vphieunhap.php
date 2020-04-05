@@ -22,9 +22,9 @@
                 <div class="card">
                     <div class="card-header p-2">
                        <ul class="nav nav-tabs" id="myTab">
-                            <li class="nav-item" tieude="Lý lịch"><a class="nav-link active" data-toggle="tab" href="#activity"><b>Danh sách
+                            <li class="nav-item" tieude=""><a class="nav-link active" data-toggle="tab" href="#activity"><b>Danh sách
                                     phiếu nhập</b></a><li>
-                            <li class="nav-item" tieude="Quá trình đào tạo"><a class="nav-link" data-toggle="tab" href="#timeline"><b>Thêm - Sửa phiếu nhập</b></a></li>
+                            <li class="nav-item" tieude=""><a class="nav-link" data-toggle="tab" href="#timeline"><b>Thêm - Sửa phiếu nhập</b></a></li>
                         </ul>
                     </div><!-- /.card-header -->
                     <div class="card-body">

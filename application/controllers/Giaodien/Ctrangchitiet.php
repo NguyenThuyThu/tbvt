@@ -17,6 +17,10 @@ class Ctrangchitiet extends CI_Controller
 	{
 		$session = $this->session->userdata('user');
 
+		// if($this->input->post('dathang')){
+		// 	$this->dathang();
+		// }
+
 		$product =  $this->Mtrangchu->get_sanpham();
 		$ID =  explode("_", $this->input->get('product'))[1]; // Lấy mã loại tin
 		$des = [];
@@ -51,6 +55,7 @@ class Ctrangchitiet extends CI_Controller
 				'dess'  	=> $des,
 				'content'	=> $content,
 				'splq'      => $splq,
+				'thanhvien' => $this->Mtrangchu->get("tbl_thanhvien"),
 
 			),
 		);
@@ -90,6 +95,15 @@ class Ctrangchitiet extends CI_Controller
 		}
 		exit();
 	}
+
+	// public function dathang(){
+	// 	$data 	  = $this->input->post('data');
+	// 	$ma 	  = $this->input->post('dathang');
+	// 	$success  = 'Cập nhật thành công';
+ //        $error    = 'Cập nhật';
+ //        $redirect = base_url().'trangchitiet'; 
+ //        $this->update("tbl_thanhvien", "ma_thanhvien", $ma, $data, $success, $error, $redirect);
+	// }
 
 }
 

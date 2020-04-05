@@ -76,6 +76,7 @@
                                                         ></div>
                                             </div>
                                         </div>
+
                                         <div class="col-12">
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-3">Địa chỉ</label>
@@ -83,6 +84,29 @@
                                                         ></div>
                                             </div>
                                         </div>
+                                        <!-- <div class="col-12">
+                                            <div class="form-group" style="display: flex;">
+                                                <label class="control-label col-3">Địa chỉ</label>
+                                                <div class="col-8">
+                                                    <div class="row">
+														<div class="col-md-10">
+															<div class="form-group">
+																<select class="form-control" name="data[ma_diachi]" required>
+																	{foreach $diachi as $key => $val}
+																		<option value="{$val.ma_diachi}">{$val.ten_diachi}</option>
+																	{/foreach}
+																</select>
+															</div>
+														</div>
+														<div class="col-md-2">
+															<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#modal-default">
+																<i class="fa fa-plus-square" aria-hidden="true"></i>
+															</button>
+														</div>
+													</div>
+                                                </div>
+                                            </div>
+                                        </div> -->
 
                                         <div class="col-12">
                                             <div class="form-group" style="display: flex;">
@@ -115,3 +139,59 @@
         </div>
     </section>
 </div>
+
+<div class="modal fade show" id="modal-default" style="padding-right: 16px;" aria-modal="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Địa chỉ</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Địa chỉ nhận hàng</label>
+                                <input type="text" class="form-control" name="data[ten_dmsanpham]">
+                                <hr>
+                                <button type="submit" class="btn btn-primary themdiachi" name="themdiachi" value="1">Cập
+                                    nhật</button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <table id="example3" class="table table-bordered table-hover dataTable" role="grid"
+                                aria-describedby="example1_info">
+                                <thead>
+                                    <tr class="active">
+                                        <th class="text-center" width="5%">STT</th>
+                                        <th class="text-left" width="20%">Địa chỉ</th>
+                                        <th class="text-center" width="9%">Tác vụ</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {foreach $diachi as $key => $val}
+                                <tr>
+                                    <td class="text-center"><b>{$key+1}</b></td>
+                                    <td>{$val.ten_diachi}</td>
+                                    <td class="text-center">
+                                        <button type="submit" class="btn btn-info btn-sm" name="suadonvitinh" value="1" title="Sửa"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
+                                        <button type="submit" name="xoadiachi" class="btn btn-danger btn-sm" value="{$val.ma_diachi}" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục sản phẩm này không?');"><i class="far fa-trash-alt" aria-hidden="true"></i></button>
+                                    </td>
+                                </tr>
+                                {/foreach}
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>

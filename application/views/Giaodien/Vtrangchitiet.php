@@ -25,13 +25,14 @@
                                  <button  name="add-to-cart" class="single_add_to_cart_button button alt btn-giohang" disabled style="background: #d8162469;cursor: not-allowed;">Thêm vào giỏ hàng</button>
                             {/if}
                         </form>
-                        <a href="javascript:void(0);" class="devvn_buy_now devvn_buy_now_style" data-id="">
-                            <strong>Mua ngay</strong>
+                        
+                        <a href="{$baseURL}thanhtoan">
+                            <button type="button" class="devvn_buy_now devvn_buy_now_style">Mua ngay</button>
                         </a>
                     </div>
                 </div>
 
-        <hr>
+                <hr>
                 <div class="wrap_info1">
                     <div class="app__main-heading">
                         <a href="#">Mô tả</a>
@@ -41,9 +42,6 @@
                         <p>{$content.thongsokythuat_sanpham}</p>
                     </div>
                 </div>
-
-
-
             </div>
      
             <div class="col-md-4">

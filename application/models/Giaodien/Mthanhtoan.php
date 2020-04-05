@@ -2,7 +2,7 @@
 	/**
 	 * 
 	 */
-	class Mgiohang extends CI_Model
+	class Mthanhtoan extends MY_Model
 	{
 		
 		function get_detail_product($matv){
@@ -14,14 +14,5 @@
 			// $this->db->order_by("tbl_cart.thoigian", "DESC");
 			return $this->db->get()->result_array();
 		}	
-
-		public function update_giohang($masp, $matv, $soluong){
-			$this->db->where("ma_thanhvien", $matv);
-			$this->db->where("ma_sanpham", $masp);
-			$this->db->set("soluong", $soluong);
-			$this->db->set("thoigian", time());
-			$this->db->update("tbl_cart");
-			return $this->db->affected_rows();
-		}
 	}
  ?>
