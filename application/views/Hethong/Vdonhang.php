@@ -30,7 +30,6 @@
                                     <table id="example1" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example1_info">
                                         <thead>
                                             <tr class="active">
-                                                <th class="text-center" width="5%">STT</th>
                                                 <th class="text-left" width="10%">Mã đơn hàng</th>
                                                 <th class="text-left" width="20%">Khách hàng</th>
                                                 <th class="text-left" width="20%">Ngày mua</th>
@@ -39,7 +38,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            
+                                        {foreach $danhsachdonhang as $ds}
+                                        <tr role="row" >
+                                            <td class="text-left">{$ds.ma_hoadonmua}</td>
+                                            <td class="text-left">{$ds.hoten_thanhvien}</td>
+                                            <td class="text-left">{$ds.ngaylap_hoadonmua}</td>
+                                            <td class="text-left">{number_format($ds.tongtien, 0, ",", ",")}</td>
+                                            <td class="text-center">
+                                                <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-arrow-right" aria-hidden="true" style="color: #fff"></i></button>
+                                            <a class="btn-color" href="{$url}xemdonhang?chitiet={$ds.ma_hoadonmua}"><button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Xem chi tiết"><i class="fa fa-eye"></i></button></a>
+                                            <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
+                                            <button type="submit" name="xoadh" class="btn btn-danger btn-sm" value="" onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?');"><i class="far fa-trash-alt" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-success btn-sm"><i class="fa fa-print" aria-hidden="true"></i></button>
+                                            </td>
+                                        </tr>
+                                        
+                                        {/foreach}
                                        </tbody>
                                    </table>
                                </form>
@@ -50,50 +64,6 @@
            </div>
        </section>
    </div>
-    <div class="modal fade show" id="modal-default" style="padding-right: 16px;" aria-modal="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Danh sách đơn hàng</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-             <form method="post">
-                <div class="col-12">
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Tên Danh sách đơn hàng</label>
-                        <input type="text" class="form-control" name="data[ten_dmsanpham]" >
-                        <hr>
-                        <button type="submit" class="btn btn-primary themdmSP" name="themdmSP" value="1">Cập nhật</button>
-                    </div>
-                </div>
-                <div class="col-12">
-                    <table id="example3" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example1_info">
-                        <thead>
-                            <tr class="active">
-                                <th class="text-center" width="5%">STT</th>
-                                <th class="text-left" width="20%">Tên DM sản phẩm</th>
-                                <th class="text-center" width="9%">Tác vụ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-        </div>
-        <div class="modal-footer justify-content-between">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-        </div>
-    </div>
-    <!-- /.modal-content -->
-</div>
-<!-- /.modal-dialog -->
-</div>
 <style>
     thead tr th {
         font-size: 14px !important;

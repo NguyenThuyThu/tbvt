@@ -25,7 +25,7 @@ class Mtrangchu extends MY_Model {
 
 		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
 
-		$this->db->order_by('ngaydang_sanpham desc');
+		$this->db->order_by('ngaydang desc');
 
 		$this->db->limit($limit,$offset);
 

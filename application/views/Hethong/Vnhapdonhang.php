@@ -40,9 +40,9 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Trạng thái đơn hàng:</label>
-                                        <select class="form-control" name="data[ma_nhacungcap]" required>
-                                            {foreach $nhacc as $key => $val}
-                                            <option value="{$val.ma_nhacungcap}">{$val.ten_nhacungcap}</option>
+                                        <select class="form-control" name="data[ma_trangthai_giaohang]" required>
+                                            {foreach $trangthaigh as $key => $val}
+                                            <option value="{$val.ma_trangthai_giaohang}">{$val.ten_trangthai_giaohang}</option>
                                             {/foreach}
                                         </select>
                                     </div>
@@ -82,7 +82,7 @@
                                                         class="form-control soluong" required />
                                                 </td>
                                                 <td>
-                                                    <input type="number" name="data[dongia_nhap][]"
+                                                    <input type="number" name="data[dongia_sanpham][]"
                                                         class="form-control item_quantity dongia" required />
                                                 </td>
                                                 <td>
@@ -101,10 +101,8 @@
                             </div>
                             <div class="col-12 text-center">
                                 <hr>
-                                <button type="submit" name="themphieunhap" value="Thêm"
-                                    class="btn btn-success btn-flat themphieunhap">Thêm đơn hàng</button>
-                                <button type="reset" class="btn btn-default huyphieunhap"><i class="fa fa-window-close"
-                                        aria-hidden="true"></i>&nbsp; Hủy</button>
+                                <button type="submit" name="themdonhang" value="Thêm"
+                                    class="btn btn-success btn-flat themdonhang">Thêm đơn hàng</button>
                             </div>
                             <br>
                             <br>
@@ -114,52 +112,7 @@
             </div>
     </section>
 </div>
-<div class="modal fade show" id="modal-default" style="padding-right: 16px;" aria-modal="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Thêm đơn hàng</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form method="post">
-                    <div class="col-12">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Tên Thêm đơn hàng</label>
-                            <input type="text" class="form-control" name="data[ten_dmsanpham]">
-                            <hr>
-                            <button type="submit" class="btn btn-primary themdmSP" name="themdmSP" value="1">Cập
-                                nhật</button>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <table id="example3" class="table table-bordered table-hover dataTable" role="grid"
-                            aria-describedby="example1_info">
-                            <thead>
-                                <tr class="active">
-                                    <th class="text-center" width="5%">STT</th>
-                                    <th class="text-left" width="20%">Tên DM sản phẩm</th>
-                                    <th class="text-center" width="9%">Tác vụ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
 
-                            </tbody>
-                        </table>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
 <style>
     thead tr th {
         font-size: 14px !important;

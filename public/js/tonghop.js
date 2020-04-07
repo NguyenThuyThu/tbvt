@@ -1,4 +1,17 @@
 $(document).ready(function(){
+	// Thông tin cá nhân
+	$(".capnhatcb").click(function(event) {
+    	$('input[name="data[hoten_thanhvien]"]').val($(this).attr("hoten_thanhvien"));
+    	$('select[name="data[ma_dmsanpham]"]').val($(this).attr("ma_dmsanpham")).trigger('change');
+		$(".huyloaisp").show();
+		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Cập nhật loại sản phẩm');
+		$(".themloaisp").val($(this).attr("ma_loaisanpham"));
+		$(".themloaisp").attr("name","capnhatsanpham");
+
+		$('html').animate({scrollTop: $(".breadcrumb-item").offset().top}, 0, "easeInCubic");
+	});
+	
+	// Danh mục sản phẩm
 	$(".huyloaisp").hide();
 	$(".huyloaisp").click(function(event) {
 		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Thêm loại sản phẩm');
@@ -79,20 +92,20 @@ $(document).ready(function(){
     });
 	$(".them").click(function(event) {
 		$('input[name="data[ten_nhacungcap]"]:last').val("");
-    	$('input[name="data[diachi_nhacungcap]"]:last').val("");
-    	$('input[name="data[sodienthoai_nhacungcap]"]:last').val("");
-    	$('input[name="data[email_nhacungcap]"]:last').val("");
-    	$('input[name="data[ghichu_nhacungcap]"]:last').val("");
-    	$('input[name="data[website_nhacungcap]:last"]').val("");
+    	$('input[name="data[diachi]"]:last').val("");
+    	$('input[name="data[sodienthoai]"]:last').val("");
+    	$('input[name="data[email]"]:last').val("");
+    	$('input[name="data[ghichu]"]:last').val("");
+    	$('input[name="data[website]:last"]').val("");
     	$('button[name="capnhat"]').val("Them");
 	});	
 	$(".suanhacc").click(function(event) {
     	$('input[name="data[ten_nhacungcap]"]').val($(this).attr("ten_nhacungcap"));
-    	$('input[name="data[diachi_nhacungcap]"]').val($(this).attr("diachi_nhacungcap"));
-    	$('input[name="data[sodienthoai_nhacungcap]"]').val($(this).attr("sodienthoai_nhacungcap"));
-    	$('input[name="data[email_nhacungcap]"]').val($(this).attr("email_nhacungcap"));
-    	$('input[name="data[ghichu_nhacungcap]"]').val($(this).attr("ghichu_nhacungcap"));
-    	$('input[name="data[website_nhacungcap]"]').val($(this).attr("website_nhacungcap"));
+    	$('input[name="data[diachi]"]').val($(this).attr("diachi"));
+    	$('input[name="data[sodienthoai]"]').val($(this).attr("sodienthoai"));
+    	$('input[name="data[email]"]').val($(this).attr("email"));
+    	$('input[name="data[ghichu]"]').val($(this).attr("ghichu"));
+    	$('input[name="data[website]"]').val($(this).attr("website"));
     	$('button[name="capnhat"]').val($(this).attr("ma_nhacungcap"));
     });
 	/// change sản phẩm
@@ -105,7 +118,7 @@ $(document).ready(function(){
 		$("button[name='capnhatsanpham']").attr("name","themloaisp");
 	});
 	$(".suasanpham").click(function(event) {
-    	$('input[name="data[soluong_sanpham]"]').val($(this).attr("soluong_sanpham"));
+    	$('input[name="data[soluong]"]').val($(this).attr("soluong"));
     	$('input[name="data[ten_sanpham]"]').val($(this).attr("ten_sanpham"));
     	$('input[name="data[dongia_sanpham]"]').val($(this).attr("dongia_sanpham"));
     	$('input[name="data[thoigianbaohanh_sanpham]"]').val($(this).attr("thoigianbaohanh_sanpham"));
@@ -114,7 +127,7 @@ $(document).ready(function(){
     	$('select[name="data[ma_loaisanpham]"]').val($(this).attr("ma_loaisanpham")).trigger('change');
     	$('select[name="data[ma_nhacungcap]"]').val($(this).attr("ma_nhacungcap")).trigger('change');
     	$('textarea[name="data[thongsokythuat_sanpham]"]').val($(this).attr("thongsokythuat_sanpham"));
-    	$('textarea[name="data[ghichu_sanpham]"]').val($(this).attr("ghichu_sanpham"));
+    	$('textarea[name="data[ghichu]"]').val($(this).attr("ghichu"));
 		$(".huysp").show();
 		$(".themloaisp").val($(this).attr("ma_sanpham"));
 		$(".themloaisp").attr("name","capnhatsanpham");

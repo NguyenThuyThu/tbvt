@@ -8,8 +8,8 @@ class Mtrangchu extends MY_Model {
 		parent::__construct();
 		$this->proTable = 'tbl_sanpham';
 		$this->cusTable = 'tbl_thanhvien';
-		$this->ordTable = 'tbl_hoadon_muahang';
-		$this->ordItemTable = 'tbl_chitiet_hoadonmua';
+		$this->ordTable = 'tbl_hoadonmua';
+		$this->ordItemTable = 'tbl_ct_hoadon';
 
 	}
 
@@ -29,7 +29,7 @@ class Mtrangchu extends MY_Model {
 
 		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
 
-		$this->db->order_by('ngaydang_sanpham desc');
+		$this->db->order_by('ngaydang desc');
 
 		$this->db->limit($limit,$offset);
 

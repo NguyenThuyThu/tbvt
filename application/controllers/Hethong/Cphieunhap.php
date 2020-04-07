@@ -39,7 +39,7 @@ class Cphieunhap extends MY_Controller
 			'nguoilap_phieunhap' 	=> $session['ma_taikhoan'],
 			'ma_nhacungcap' 		=> $data['ma_nhacungcap'],
 		);
-		$id = $this->Mphieunhap->add_tbl_phieunhaphang($phieunhaphang);
+		$id = $this->Mphieunhap->add_tbl_phieunhap($phieunhaphang);
 		for($i=0; $i< count($data['ma_sanpham']); $i++){
 			$chitiet_phieunhaphang = array(
 				'ma_sanpham' 	=> $data['ma_sanpham'][$i],
@@ -47,7 +47,7 @@ class Cphieunhap extends MY_Controller
 				'dongia_nhap' 	=> $data['dongia_nhap'][$i],
 				'ma_phieunhap' 	=> $id,
 			);
-			$this->Mphieunhap->insert("tbl_chitiet_phieunhaphang", $chitiet_phieunhaphang);
+			$this->Mphieunhap->insert("tbl_ct_phieunhap", $chitiet_phieunhaphang);
 		}
 		setMessages("success", "Thêm thành công", "Thông báo");
 		return redirect("phieunhap");

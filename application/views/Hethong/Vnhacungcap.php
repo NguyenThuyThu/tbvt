@@ -82,22 +82,22 @@
                                                             <tr>
                                                                 <td class="text-center"><b>{$key+1}</b></td>
                                                                 <td class="text-center">{$val.ten_nhacungcap}</td>
-                                                                <td class="text-center">{$val.diachi_nhacungcap}</td>
-                                                                <td class="text-center">{$val.sodienthoai_nhacungcap}</td>
-                                                                <td class="text-center">{$val.email_nhacungcap}</td>
-                                                                <td class="text-center">{$val.website_nhacungcap}</td>
-                                                                <td class="text-center">{$val.ghichu_nhacungcap}</td>
+                                                                <td class="text-center">{$val.diachi}</td>
+                                                                <td class="text-center">{$val.sodienthoai}</td>
+                                                                <td class="text-center">{$val.email}</td>
+                                                                <td class="text-center">{$val.website}</td>
+                                                                <td class="text-center">{$val.ghichu}</td>
                                                                 <td class="text-center">
                                                                     <button 
                                                                        type="button" 
                                                                        class="btn btn-info suanhacc"
                                                                        ten_nhacungcap = "{$val.ten_nhacungcap}"
-                                                                       diachi_nhacungcap = "{$val.diachi_nhacungcap}"
-                                                                       sodienthoai_nhacungcap =" {$val.sodienthoai_nhacungcap}"
-                                                                       email_nhacungcap = "{$val.email_nhacungcap}"
-                                                                       ghichu_nhacungcap = "{$val.ghichu_nhacungcap}"
+                                                                       diachi = "{$val.diachi}"
+                                                                       sodienthoai =" {$val.sodienthoai}"
+                                                                       email = "{$val.email}"
+                                                                       ghichu = "{$val.ghichu}"
                                                                        ma_nhacungcap = "{$val.ma_nhacungcap}"
-                                                                       website_nhacungcap = "{$val.website_nhacungcap}"
+                                                                       website = "{$val.website}"
                                                                         data-toggle="modal" data-target="#modal-default"
                                                                        >
                                                                        <i class="fas fa-pencil-alt" aria-hidden="true"></i>
@@ -139,35 +139,35 @@
                                                     <div class="col-12">
                                                         <div class="form-group" style="display: flex;">
                                                             <label class="control-label col-4">Số điện thoại</label>
-                                                            <div class="col-7"><input type="text" class="form-control" name="data[sodienthoai_nhacungcap]"></div>
+                                                            <div class="col-7"><input type="text" class="form-control" name="data[sodienthoai]"></div>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-12">
                                                         <div class="form-group" style="display: flex;">
                                                             <label class="control-label col-4">Website</label>
-                                                            <div class="col-7"><input type="text" class="form-control" name="data[website_nhacungcap]"></div>
+                                                            <div class="col-7"><input type="text" class="form-control" name="data[website]"></div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group" style="display: flex;">
                                                         <label class="control-label col-4">Địa chỉ</label>
-                                                        <div class="col-7"><input type="text" class="form-control" name="data[diachi_nhacungcap]"></div>
+                                                        <div class="col-7"><input type="text" class="form-control" name="data[diachi]"></div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12">
                                                     <div class="form-group" style="display: flex;">
                                                         <label class="control-label col-4">Email</label>
-                                                        <div class="col-7"><input type="text" class="form-control" name="data[email_nhacungcap]"></div>
+                                                        <div class="col-7"><input type="text" class="form-control" name="data[email]"></div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="form-group" style="display: flex;">
                                                         <label class="control-label col-4">Ghi chú</label>
                                                        <textarea class="form-control col-7" rows="4" cols="100"
-                                                            name="data[ghichu_nhacungcap]" placeholder="" ></textarea>
+                                                            name="data[ghichu]" placeholder="" ></textarea>
                                                     </div>
                                                 </div>
                                                <div class="col-12 text-center">
@@ -200,14 +200,14 @@
                                             <div class="col-12">
                                                 <div class="form-group" style="display: flex;">
                                                     <label class="control-label col-4">Số điện thoại</label>
-                                                    <div class="col-7"><input type="text" class="form-control" name="data[sodienthoai_nhacungcap]"></div>
+                                                    <div class="col-7"><input type="text" class="form-control" name="data[sodienthoai]"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-12">
                                                 <div class="form-group" style="display: flex;">
                                                     <label class="control-label col-4">Website</label>
-                                                    <div class="col-7"><input type="text" class="form-control" name="data[website_nhacungcap]"></div>
+                                                    <div class="col-7"><input type="text" class="form-control" name="data[website]"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -218,14 +218,14 @@
                                             <div class="col-12">
                                                 <div class="form-group" style="display: flex;">
                                                     <label class="control-label col-4">Địa chỉ</label>
-                                                    <div class="col-7"><input type="text" class="form-control" name="data[diachi_nhacungcap]"></div>
+                                                    <div class="col-7"><input type="text" class="form-control" name="data[diachi]"></div>
                                                 </div>
                                             </div>
 
                                             <div class="col-12">
                                                 <div class="form-group" style="display: flex;">
                                                     <label class="control-label col-4">Email</label>
-                                                    <div class="col-7"><input type="text" class="form-control" name="data[email_nhacungcap]"></div>
+                                                    <div class="col-7"><input type="text" class="form-control" name="data[email]"></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -237,7 +237,7 @@
                                         <div class="form-group" style="display: flex;">
                                             <label class="control-label col-2">Ghi chú</label>
                                             <div class="col-9"><textarea class="form-control" rows="4" cols="100"
-                                                    name="data[ghichu_nhacungcap]" placeholder="" ></textarea></div>
+                                                    name="data[ghichu]" placeholder="" ></textarea></div>
                                         </div>
                                     </div>
 

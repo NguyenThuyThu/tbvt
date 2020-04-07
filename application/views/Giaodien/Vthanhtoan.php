@@ -23,7 +23,7 @@
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-md-3">Số điện thoại</label>
                                                 <div class="col-md-9"><input type="text" class="form-control" disabled
-                                                        value="{$khachhang[0]['sodienthoai_thanhvien']}">
+                                                        value="{$khachhang[0]['sodienthoai']}">
                                                 </div>
                                             </div>
                                         </div>
@@ -32,7 +32,7 @@
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-md-3">Email</label>
                                                 <div class="col-md-9"><input type="text" class="form-control" disabled
-                                                        value="{$khachhang[0]['email_thanhvien']}">
+                                                        value="{$khachhang[0]['email']}">
                                                 </div>
                                             </div>
                                         </div>
@@ -54,11 +54,13 @@
 														<div class="col-md-2">
 															<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#modal-default">
 																<i class="fa fa-plus-square" aria-hidden="true"></i>
-															</button>
+                                                            </button>
+                                                            
+                                                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 														</div>
 													</div>
 												</div>
-                                                    <!-- <input type="text" class="form-control" disabled value="{$khachhang[0]['diachi_thanhvien']}"> -->
+                                                    <!-- <input type="text" class="form-control" disabled value="{$khachhang[0]['diachi']}"> -->
                                             </div>
                                         </div>
                                     </div>
@@ -159,6 +161,27 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+
+    <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
     <style>
         .tensp,
         #tbody tr td {

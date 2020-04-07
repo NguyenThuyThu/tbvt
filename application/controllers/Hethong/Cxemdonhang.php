@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 *	Controller
 *
 **/
-class Cdonhang extends MY_Controller
+class Cxemdonhang extends MY_Controller
 {
 	public function __construct()
 	{
@@ -19,7 +19,7 @@ class Cdonhang extends MY_Controller
 		// pr($danhsachdonhang);
 		
 		$temp = array(
-			'template' => 'Hethong/Vdonhang',
+			'template' => 'Hethong/Vxemdonhang',
 			'data' => array(
 				'danhsachdonhang' => $danhsachdonhang,
 			)

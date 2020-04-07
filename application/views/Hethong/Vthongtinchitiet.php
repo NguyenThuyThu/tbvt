@@ -34,26 +34,26 @@
 									</div>
 									<div class="row">
 										<p class="col-sm-4"><b>Ngày sinh :</b></p>
-										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['ngaysinh_thanhvien']}{else}....................................{/if}</b></p>
+										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['ngaysinh']}{else}....................................{/if}</b></p>
 									</div>
 
 									<div class="row">
 										<p class="col-sm-4"><b>Giới tính :</b></p>
-										<p class="col-sm-8 " style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['gioitinh_thanhvien']}{else}....................................{/if}</b></p>
+										<p class="col-sm-8 " style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['gioitinh']}{else}....................................{/if}</b></p>
 									</div>
 
 									<div class="row">
 										<p class="col-sm-4"><b>Số điện thoại :</b></p>
-										<p class="col-sm-8 " style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['sodienthoai_thanhvien']}{else}....................................{/if}</b></p>
+										<p class="col-sm-8 " style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['sodienthoai']}{else}....................................{/if}</b></p>
 									</div>
 
 									<div class="row">
 										<p class="col-sm-4"><b>Email :</b></p>
-										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['email_thanhvien']}{else}....................................{/if}</b></p>
+										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['email']}{else}....................................{/if}</b></p>
 									</div>
 									<div class="row">
 										<p class="col-sm-4"><b>Địa chỉ :</b></p>
-										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['diachi_thanhvien']}{else}....................................{/if}</b></p>
+										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['diachi']}{else}....................................{/if}</b></p>
 									</div>
 
 								</div> <!-- end col-sm-6 thứ nhất-->

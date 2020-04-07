@@ -5,7 +5,7 @@ $(document).ready(function(){
             largeFeatureWidth: 600,     // width of image in center
             largeFeatureHeight: 350,    // height of image in center
             smallFeatureWidth: .70,     // width of the other images (42% of original width)
-            smallFeatureHeight: .95,     // height of the other images (35% of original height)
+            smallFeatureHeight: .40,     // height of the other images (35% of original height)
             trackerIndividual: false,
             trackerSummation: false
         });

@@ -36,8 +36,7 @@
                         <th class="text-center" style="width: 10%;">Ngày sinh</th>
                         <th class="text-center" style="width: 5%;">Giới tính</th>
                         <th class="text-center" style="width: 10%;">Số điện thoại</th>
-                        <th class="text-center" style="width: 19%;">E-mail</th>
-                        <th class="text-center" style="width: 10%;">Địa chỉ</th>
+                        <th class="text-center" style="width: 25%;">E-mail</th>
                         <th class="text-center" style="width: 10%;">Tên ĐN</th>
                         <th class="text-center" style="width: 10%;">Tên quyền</th>
                         <th class="text-center" style="width: 7%;">Tác vụ</th>
@@ -50,11 +49,10 @@
                       <tr role="row" class="odd">
                         <td class="sorting_1">{$i++}</td>
                         <td><a class="btn-color" target="_blank" href="{$url}thongtincanhan?ma_thanhvien={$ds.ma_thanhvien}">{$ds.hoten_thanhvien}</a></td>
-                        <td class="text-center">{$ds.ngaysinh_thanhvien}</td>
-                        <td class="text-center">{$ds.gioitinh_thanhvien}</td>
-                        <td>{$ds.sodienthoai_thanhvien}</td>
-                        <td>{$ds.email_thanhvien}</td>
-                        <td></td>
+                        <td class="text-center">{date("d/m/Y", strtotime($ds.ngaysinh))}</td>
+                        <td class="text-center">{$ds.gioitinh}</td>
+                        <td>{$ds.sodienthoai}</td>
+                        <td>{$ds.email}</td>
                         <td class="text-center">{$ds.ten_taikhoan}</td>
                         <td class="text-center">{$ds.ten_quyen}</td>
                         <td class="text-center">

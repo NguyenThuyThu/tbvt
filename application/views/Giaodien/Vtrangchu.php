@@ -20,7 +20,7 @@
                     <div class="grid__column-9-6 carousel slide" id="grid__carousel" data-ride="carousel">
                         <div id="jq_carousel" style="background-image: url('public/images/anhsanpham/bgtop.jpg')">
                             <div class="carousel_elm active" id="carousel_elm">
-                                <a href="#"><img class="carousel_img" title="Cáp thông tin" alt="Image 1" src="public/images/anhsanpham/56.jpg" /></a>
+                                <a href="#"><img class="carousel_img" title="Cáp thông tin" alt="Image 1" src="public/images/anhsanpham/SP001.jpg" /></a>
                                 <div class="carousel_caption">
                                     <h4 class="carousel_caption-title">Cáp thông tin</h4>
                                     <p class="carousel_caption-detail">Cáp điều khiển Altek Kabel không lưới CT-500 30G 0.75 QMM/17530
@@ -29,7 +29,7 @@
                                 <!-- <p class="carousel_caption">This area is typically used to display captions associated with the images. They are set to hide and fade in on rotation.</p> -->
                             </div>
                             <div class="carousel_elm">
-                               <a href="#"><img class="carousel_img" title="Cáp mạng" alt="Image Caption" src="public/images/anhsanpham/56.jpg" /></a>
+                               <a href="#"><img class="carousel_img" title="Cáp mạng" alt="Image Caption" src="public/images/anhsanpham/SP002.jpg" /></a>
                                <div class="carousel_caption">
                                 <h4 class="carousel_caption-title">Cáp mạng</h4>
                                 <p class="carousel_caption-detail">Cáp mạng Cat6 UTP 4 pair Legrand chính hãng
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="carousel_elm">
-                            <a href="#"><img class="carousel_img" title="Thiết bị mạng" src="public/images/anhsanpham/56.jpg" alt="image 1" /></a>
+                            <a href="#"><img class="carousel_img" title="Thiết bị mạng" src="public/images/anhsanpham/SP003.jpg" alt="image 1" /></a>
                             <div class="carousel_caption">
                                 <h4 class="carousel_caption-title">Thiết bị mạng</h4>
                                 <p class="carousel_caption-detail">Switch Upcom Công Nghiệp 22Port Ethernet+2Port Fiber |PN: IES2024-2F
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="carousel_elm">
-                            <a href="#"><img class="carousel_img" title="Thiết bị quang" alt="Image Caption 2" src="public/images/anhsanpham/57.jpg" /></a>
+                            <a href="#"><img class="carousel_img" title="Thiết bị quang" alt="Image Caption 2" src="public/images/anhsanpham/SP004.jpg" /></a>
                             <div class="carousel_caption">
                                 <h4 class="carousel_caption-title">Thiết bị quang</h4>
                                 <p class="carousel_caption-detail">Bộ chuyển đổi quang điện Optone OPT1100S25
