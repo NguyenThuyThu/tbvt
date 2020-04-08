@@ -52,8 +52,8 @@
                         <td><a class="btn-color" target="_blank" href="{$url}thongtincanhan?ma_thanhvien={$ds.ma_thanhvien}">{$ds.hoten_thanhvien}</a></td>
                         <td class="text-center">{$ds.ngaysinh_thanhvien}</td>
                         <td class="text-center">{$ds.gioitinh_thanhvien}</td>
-                        <td>{$ds.sodienthoai_thanhvien}</td>
-                        <td>{$ds.email_thanhvien}</td>
+                        <td>{$ds.sodienthoai}</td>
+                        <td>{$ds.email}</td>
                         <td></td>
                         <td class="text-center">{$ds.ten_taikhoan}</td>
                         <td class="text-center">{$ds.ten_quyen}</td>

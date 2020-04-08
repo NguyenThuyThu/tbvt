@@ -6,7 +6,7 @@ class Mlogin extends MY_Model
 {
     public function dangnhap($taikhoan,$matkhau){
         $this->db->where('ten_taikhoan',$taikhoan);
-        $this->db->where('makhau_taikhoan',$matkhau);
+        $this->db->where('makhau',$matkhau);
         $this->db->select('*');
         $this->db->from('tbl_taikhoan');
         $this->db->join('tbl_thanhvien','tbl_thanhvien.ma_thanhvien = tbl_taikhoan.ma_thanhvien ','left');

@@ -41,8 +41,8 @@ class Cthongtincanhan extends MY_Controller {
 				'ngaysinh_thanhvien' => $this->input->post('ngaysinh'),
 				'gioitinh_thanhvien' => $this->input->post('gioitinh'),
 				'diachi_thanhvien' => $this->input->post('diachi'),
-				'email_thanhvien' => $this->input->post('email'),
-				'sodienthoai_thanhvien' => $this->input->post('sdt')
+				'email' => $this->input->post('email'),
+				'sodienthoai' => $this->input->post('sdt')
 				);
 			return $this->_tinnhan = $this->Mcanbo->updateSaff($idStaff,$data_Staff);
 		}else{
@@ -53,8 +53,8 @@ class Cthongtincanhan extends MY_Controller {
 				'ngaysinh_thanhvien' => $this->input->post('ngaysinh'),
 				'gioitinh_thanhvien' => $this->input->post('gioitinh'),
 				'diachi_thanhvien' => $this->input->post('diachi'),
-				'email_thanhvien' => $this->input->post('email'),
-				'sodienthoai_thanhvien' => $this->input->post('sdt')
+				'email' => $this->input->post('email'),
+				'sodienthoai' => $this->input->post('sdt')
 				);
 			return $this->_tinnhan = $this->Mcanbo->updateSaff($idStaff,$data_Staff);
 		}

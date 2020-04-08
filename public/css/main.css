@@ -145,7 +145,7 @@ a.devvn_buy_now_style:hover {
 
 
 a.remove, a.icon-remove {
-    display: block;
+ /*   display: block;
     width: 24px;
     height: 24px;
     font-size: 15px !important;
@@ -154,7 +154,7 @@ a.remove, a.icon-remove {
     color: #ccc;
     font-weight: bold;
     text-align: center;
-    border: 2px solid currentColor;
+    border: 2px solid currentColor;*/
 }
 
 .shop_table .quantity {

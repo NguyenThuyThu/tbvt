@@ -127,8 +127,8 @@ $(document).ready(function(){
     // 	$('input[name="data[hoten_thanhvien]"]').val($(this).attr("hoten_thanhvien"));
     // 	$('input[name="data[ngaysinh_thanhvien]"]').val($(this).attr("ngaysinh_thanhvien"));
     // 	$('input[name="data[gioitinh_thanhvien]"]').val($(this).attr("gioitinh_thanhvien"));
-    // 	$('input[name="data[sodienthoai_thanhvien]"]').val($(this).attr("sodienthoai_thanhvien"));
-    // 	$('input[name="data[email_thanhvien]"]').val($(this).attr("email_thanhvien"));
+    // 	$('input[name="data[sodienthoai]"]').val($(this).attr("sodienthoai"));
+    // 	$('input[name="data[email]"]').val($(this).attr("email"));
     // 	$('input[name="data[diachi_thanhvien]"]').val($(this).attr("diachi_thanhvien"));
     // 	$('button[name="dathang"]').val($(this).attr("ma_thanhvien"));
     // });

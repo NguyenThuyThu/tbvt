@@ -102,22 +102,6 @@
                         </form>
                     </div>
                 </div>
-
-
-                <script type="text/javascript">
-                    $(document).ready(function(){
-                        $('#myTable').DataTable();
-                    });
-                </script>
-
-                <script type="text/javascript">
-
-                    $(document).ready(function(){
-
-                        setTimeout(function(){ $('.alert').fadeOut(2000); },2000);
-                    });
-
-                </script>
             </div>
         </div>
     </div>

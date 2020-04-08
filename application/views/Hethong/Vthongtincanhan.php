@@ -59,7 +59,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-4 ">Số điện thoại <span class="text-danger">*</span></label>
                                         <div class="col-sm-8">
-                                          <input type="text" name="sdt" id="sdt" class="form-control" onkeypress="onlyNumbers(this)" value="{if !empty($canbo)}{$canbo[0]['sodienthoai_thanhvien']}{/if}" required="required" placeholder="Vui lòng nhập giá trị số">
+                                          <input type="text" name="sdt" id="sdt" class="form-control" onkeypress="onlyNumbers(this)" value="{if !empty($canbo)}{$canbo[0]['sodienthoai']}{/if}" required="required" placeholder="Vui lòng nhập giá trị số">
                                         </div>
                                     </div>
                                    
@@ -70,7 +70,7 @@
                                     <div class="form-group">
                                         <label class="col-sm-4 label-mail ">Email</label>
                                         <div class="col-sm-8">
-                                          <input type="email" name="email" class="form-control" value="{if !empty($canbo)}{$canbo[0]['email_thanhvien']}{/if}">
+                                          <input type="email" name="email" class="form-control" value="{if !empty($canbo)}{$canbo[0]['email']}{/if}">
                                         </div>
                                     </div>
                                     <!-- Địa chỉ -->
