@@ -29,7 +29,7 @@ class Mtrangchu extends MY_Model {
 
 		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
 
-		$this->db->order_by('ngaydang_sanpham desc');
+		$this->db->order_by('ngaydang desc');
 
 		$this->db->limit($limit,$offset);
 
@@ -42,35 +42,23 @@ class Mtrangchu extends MY_Model {
 
 	function get_sanpham(){
 
-		$this->db->select('*');
+		$this->db->select('tbl_anhsanpham.linkanh_sanpham, tbl_sanpham.*');
 
 		$this->db->from('tbl_sanpham');
-
-		$this->db->join('tbl_loaisanpham', 'tbl_loaisanpham.ma_loaisanpham = tbl_sanpham.ma_loaisanpham', 'inner');
-
-		$this->db->join('tbl_danhmuc_sanpham', 'tbl_danhmuc_sanpham.ma_dmsanpham = tbl_loaisanpham.ma_dmsanpham', 'inner');
-
-		$this->db->join('tbl_donvitinh_sanpham', 'tbl_donvitinh_sanpham.ma_donvitinh = tbl_sanpham.ma_donvitinh', 'inner');
-
 		$this->db->join('tbl_nhacungcap', 'tbl_nhacungcap.ma_nhacungcap = tbl_sanpham.ma_nhacungcap', 'inner');
-
 		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
-
-		$this->db->join('tbl_taikhoan', 'tbl_taikhoan.ma_taikhoan = tbl_sanpham.nguoidang_sp', 'inner');
-
 		$query = $this->db->get();
-		// echo $this->db->last_query();
 		return $query->result_array();	
-
 	}
 
 	/*Lấy dữ liêu đầy đủ của một sản phẩm*/
 	public function getdulieu($ma_sanpham){
 
 		$this->db->select('*');
-		$this->db->where('ma_sanpham',$ma_sanpham);
+		$this->db->where('tbl_sanpham.ma_sanpham',$ma_sanpham);
 		$this->db->where('trangthai_dang_sanpham', 1);
 		$this->db->where('trangthai_hot_sanpham', 1);
+		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
 		return $this->db->get('tbl_sanpham')->row_array();
 	}
 
@@ -97,6 +85,14 @@ class Mtrangchu extends MY_Model {
 		$this->db->limit(3);
 		$this->db->order_by('tbl_sanpham.ma_sanpham', 'RANDOM');
 		return $this->db->get("tbl_sanpham")->result_array();
+	}
+
+	public function search($timkiem){
+		$this->db->from("tbl_sanpham as sp");
+		$this->db->join("tbl_anhsanpham as anh", "anh.ma_sanpham = sp.ma_sanpham");
+		$this->db->like("sp.ten_sanpham", $timkiem);
+		$this->db->order_by("sp.ten_sanpham","ASC");
+		return $this->db->get()->result_array();
 	}
 	
 }

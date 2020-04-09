@@ -69,4 +69,4 @@
     }
 </style>
 <script type="text/javascript" src="{$url}public/js/simple.money.format.js"></script>
-<script type="text/javascript" src="{$url}public/js/danhmuc.js?time={time()}"></script>
+<script type="text/javascript" src="{$url}public/js/giohang.js?time={time()}"></script>

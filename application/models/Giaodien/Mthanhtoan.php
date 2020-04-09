@@ -28,7 +28,7 @@
 		}	
 
 		public function check_sp1($masp, $matv){
-			$this->db->select("tbl_cart.*,tbl_sanpham.dongia_sanpham");
+			$this->db->select("tbl_cart.*,tbl_sanpham.dongia_sanpham, tbl_sanpham.soluong as sl");
 			$this->db->where("tbl_sanpham.ma_sanpham", $masp);
 			$this->db->where("tbl_cart.ma_thanhvien", $matv);
 			$this->db->join("tbl_cart", "tbl_sanpham.ma_sanpham = tbl_cart.ma_sanpham");
@@ -53,7 +53,7 @@
 		}
 
 		public function getSanPham($matv){
-			$this->db->select("tbl_cart.soluong, tbl_cart.ma_sanpham, tbl_cart.ma_thanhvien, tbl_sanpham.dongia_sanpham");
+			$this->db->select("tbl_cart.soluong, tbl_cart.ma_sanpham, tbl_cart.ma_thanhvien, tbl_sanpham.dongia_sanpham ,tbl_sanpham.soluong as sl");
 			$this->db->where("tbl_cart.ma_thanhvien", $matv);
 			$this->db->join("tbl_sanpham", "tbl_sanpham.ma_sanpham = tbl_cart.ma_sanpham");
 			return $this->db->get('tbl_cart')->result_array();
@@ -72,6 +72,15 @@
 			}
 			$this->db->delete("tbl_cart");
 			return $this->db->affected_rows();
+		}
+
+		function getSP($masp){
+			$this->db->select("tbl_sanpham.ma_sanpham, tbl_sanpham.ten_sanpham, tbl_anhsanpham.linkanh_sanpham, tbl_cart.soluong, tbl_sanpham.dongia_sanpham");
+			$this->db->where("tbl_sanpham.ma_sanpham", $masp);
+			$this->db->join("tbl_anhsanpham", "tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham");
+			$this->db->join("tbl_cart", "tbl_sanpham.ma_sanpham = tbl_cart.ma_sanpham");
+			$row  = $this->db->get("tbl_sanpham")->result_array();
+			return $row;
 		}
 	}
  ?>

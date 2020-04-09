@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	$("#huy").hide();
 	$("#xacnhan").click(function(event) {
+		console.log(2);
 		diachi = $("input[name='tendiachi']").val();
 		if(diachi == ""){
 			alert("Địa chỉ không được để giỗng");
@@ -42,8 +43,8 @@ $(document).ready(function() {
 					html += '<td class="text-center"><b>'+[index+1]+'</b></td>';
 					html += '<td>'+el['ten_diachi']+'</td>';
 					html += '<td class="text-center">';
-					html += '<a id="sua" class="btn btn-primary" data-info="'+el['ma_diachi']+'" data-ten="'+el['ten_diachi']+'">Sửa</a>';
-					html += '<a id="xoa" class="btn btn-danger" data-info="'+el['ma_diachi']+'">Xóa</a>';
+					html += '<a class="btn btn-primary sua" data-info="'+el['ma_diachi']+'" data-ten="'+el['ten_diachi']+'">Sửa</a>';
+					html += '<a class="btn btn-danger xoa" data-info="'+el['ma_diachi']+'">Xóa</a>';
 					html += '</td>';
 					html += '</tr>';
 					option += '<option value="'+el['ma_diachi']+'">'+el['ten_diachi']+'</option>';
@@ -62,89 +63,84 @@ $(document).ready(function() {
 	// end load địa chỉ
 
 	/*Sửa địa chỉ*/ 
-	
-	sua();
+	$("#capnhat").hide();
 	function sua(){
-		$("a#sua").click(function(event) {
+		$("a.sua").click(function(event) {
+			console.log(1);
 			$("#huy").show();
 			diachi = $("input[name='tendiachi']").val();
 			madc = $(this).attr("data-info");
 			tendc = $(this).attr("data-ten");
 			$("input[name='tendiachi']").val(tendc);
-			if(trangthai == false){
-				$("#huy").parent().find("#capnhat").remove();	
-				$("#huy").parent().append('<a class="btn btn-info" id="xacnhan">Xác nhận</a>');
-				trangthai = false;
-			}
-		    $("#xacnhan").attr("id","capnhat");
-		    $("#capnhat").text("Cập nhật");
-		    capnhat(madc);
-		});
-	}
-
-	function capnhat(madc){
-		$("#capnhat").click(function(event) {
-			diachi = $("input[name='tendiachi']").val();
-			if(diachi == ""){
-				alert("Địa chỉ không được để giỗng");
-				return false;
-			}
-			$.ajax({
-				url: window.location.href,
-				type: 'post',
-				data: {
-					'action': "capnhat_address",
-					'diachi': diachi,
-					'madc'	: madc,
-				},
-				success: function(data) {
-					if(data != "thanhcong"){
-						error("Thất bại");
-					}
-					load_diachi();
-	            	huy();
-	            	success("Cập nhật thành công!");
-		        }
-		    });
+		    $("#xacnhan").hide();
+		    $("#capnhat").show();
+		    $("#capnhat").click(function(event) {
+				diachi = $("input[name='tendiachi']").val();
+				if(diachi == ""){
+					alert("Địa chỉ không được để giỗng");
+					return false;
+				}
+				$.ajax({
+					url: window.location.href,
+					type: 'post',
+					data: {
+						'action': "capnhat_address",
+						'diachi': diachi,
+						'madc'	: madc,
+					},
+					success: function(data) {
+						if(data != "thanhcong"){
+							
+						}else{
+							$("#xacnhan").show();
+		    				$("#capnhat").hide();
+							load_diachi();
+			            	huy();
+			            	
+						}
+			        }
+			    });
+			});
 		});
 	}
 
 	function huy(){
 		$("input[name='tendiachi']").val("");
-		$("#xacnhan").text("Xác nhận");
-		$("#capnhat").attr("id","xacnhan");
-		$("#xacnhan").text("Xác nhận");
 		$("#huy").hide();
+		$("#capnhat").hide();
+		if(data.length > 2){
+	    	trangthai = false;
+		}
 	}
 
 	$("#huy").click(function(event) {
 		huy();
 		if(trangthai == false){
-			$("#xacnhan").remove();
 			trangthai = false;
 		}
 	});
 	xoa();
 	function xoa(){
-		$("#xoa").click(function(event) {
-			madc = $(this).attr("data-info");
-			$.ajax({
-				url: window.location.href,
-				type: 'post',
-				data: {
-					'action': "delete_address",
-					'madc'	: madc,
-				},
-				success: function(data) {
-					if(data != "thanhcong"){
-						error("Thất bại");
-					}else{
-						load_diachi();
-						huy();
-						success("Cập nhật thành công!");
+		$(".xoa").click(function(event) {
+			if(confirm("Bạn có chắc chắn muốn xóa địa chỉ không?")){
+				madc = $(this).attr("data-info");
+				$.ajax({
+					url: window.location.href,
+					type: 'post',
+					data: {
+						'action': "delete_address",
+						'madc'	: madc,
+					},
+					success: function(data) {
+						if(data != "thanhcong"){
+							
+						}else{
+							load_diachi();
+							huy();
+						}
 					}
-				}
-			});
+				});
+			}
 		});
 	}
 

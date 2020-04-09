@@ -70,21 +70,21 @@
                     {foreach $dssp as $dulieu}
                     <div class="grid__column-2-4">
                         <a class="home-product-item" href="{$baseURL}trangchitiet?product={$dulieu.ten_sanpham}_{$dulieu.ma_sanpham}">
-                            <div class="home-product-item__img" style="background-image: url({$baseURL}public/images/anhsanpham/{$dulieu.ma_sanpham}.jpg);"></div>
+                            <div class="home-product-item__img" style="background-image: url({$baseURL}public/images/anhsanpham/{$dulieu.linkanh_sanpham});"></div>
                             <h4 class="home-product-item__name">{$dulieu.ten_sanpham}</h4>
                             <div class="home-product-item__price">
                                 <span class="home-product-item__price-old">1.200.000đ</span>
                                 <span class="home-product-item__price-current">{number_format($dulieu.dongia_sanpham, 0, ",", ",")}đ</span>
                             </div>
+                            {if $dulieu['soluong'] == 0}
+                            <p style="padding-left: 10px; color:#fff;" class="lable label-danger">Hết hàng</p>
+                            {/if}
                             <div class="home-product-item__origin">
                                 <span class="home-product-item__brand">{$dulieu.thoigianbaohanh_sanpham}</span>
                                 <span class="home-product-item__origin-name">{$dulieu.xuatxu_sanpham}</span>
                             </div>
-
-
-
                             <div class="home-product-item__favourite">
-                                <i class="fas fa-check"></i>
+                               <i class="fa fa-heart" aria-hidden="true"></i>
                                 <span>Yêu thích</span>
                             </div>
 

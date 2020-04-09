@@ -13,6 +13,7 @@ $route['giohang'] = 'Giaodien/Cgiohang';
 $route['thanhtoan'] = 'Giaodien/Cthanhtoan';
 $route['donmua'] = 'Giaodien/Cdonmua';
 $route['hoadon'] = 'Giaodien/Choadonthanhtoan';
+$route['timkiem'] = 'Giaodien/Ctimkiem';
 
 
 // HỆ THỐNG

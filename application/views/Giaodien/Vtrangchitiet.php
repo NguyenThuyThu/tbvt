@@ -3,14 +3,19 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="col-xs-12 col-md-5 imgproduct">
-                    <a href="{$baseURL}public/images/anhsanpham/{$content.ma_sanpham}.jpg" class="img_sp thumbnail"  rel="motnhom">
-                        <img src="{$baseURL}public/images/anhsanpham/{$content.ma_sanpham}.jpg" class="anhSP">
+                    <a href="{$baseURL}public/images/anhsanpham/{$content.linkanh_sanpham}" class="img_sp thumbnail"  rel="motnhom">
+                        <img src="{$baseURL}public/images/anhsanpham/{$content.linkanh_sanpham}" class="anhSP">
                         <div class="moanh"></div>
                      </a>
                 </div>
                 <div class="col-xs-12 col-md-7 imgproduct">
                     <div class="tensp"><p><span><i class="fa fa-hand-o-right" aria-hidden="true"></i></span><b>&nbsp;{$content.ten_sanpham}</b></p></div>
-                    <p><span class="color-mo"><i class="fa fa-map-marker" aria-hidden="true"></i> Xuất xứ:</span> <i><b class="color-tt">{$content.xuatxu_sanpham}</b></i> </span></p>
+                    <p>
+                      <span class="color-mo"><i class="fa fa-map-marker" aria-hidden="true"></i> Xuất xứ:</span> <i><b class="color-tt">{$content.xuatxu_sanpham}</b></i> </span>
+                      {if $content['soluong'] == 0}
+                            <span style="padding: 10px; color:#fff;" class="lable label-danger">Hết hàng</span>
+                       {/if}
+                    </p>
                     <p><span class="color-mo"><i class="fa fa-snowflake-o" aria-hidden="true"></i> Bảo hành:</span> <i><b class="color-tt">{$content.thoigianbaohanh_sanpham}</b></i> </span></p>
                      <p><span class="discountTag_11Tt">Giá sản phẩm:</span> <span class="product-price">{number_format($content.dongia_sanpham, 0, ",", ",")} vnđ</span></p>
                      <p>
@@ -32,10 +37,12 @@
                      <p>
                         
                      </p>
+                    {if $content['soluong'] > 0 && $session != ""}
                      <p>
                         <button class="btn btn-warning button alt btn-giohang" type="button" name="add-to-cart" value="{$content.ma_sanpham}">Thêm vào giỏ hàng</button>
                         <button class="btn btn-danger" id="muangay" value="{$content.ma_sanpham}">Mua ngay</button>
                      </p>
+                     {/if}
                 </div>
                 <div class="col-md-12">
                     <ul class="nav nav-pills">

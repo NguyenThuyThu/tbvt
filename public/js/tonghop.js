@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	// thêm sửa xóa sản phẩm
 	$(".huyloaisp").hide();
 	$(".huyloaisp").click(function(event) {
 		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Thêm loại sản phẩm');
@@ -52,7 +53,7 @@ $(document).ready(function(){
 
 		
 	}
-	
+
 
 	$(document).on('click', '.remove', function(){
 		if($("#tbody").find("tr").length > 1){
@@ -100,12 +101,13 @@ $(document).ready(function(){
 
 	$(".huysp").hide();
 	$(".huysp").click(function(event) {
-		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Thêm loại sản phẩm');
+		$(".capnhatsanpham").hide();
 		$(".huysp").hide();
-		$("button[name='capnhatsanpham']").attr("name","themloaisp");
+		$(".close").click();
 	});
 	$(".suasanpham").click(function(event) {
-    	$('input[name="data[soluong_sanpham]"]').val($(this).attr("soluong_sanpham"));
+		$(".capnhatsanpham").show();
+    	$('input[name="data[soluong]"]').val($(this).attr("soluong"));
     	$('input[name="data[ten_sanpham]"]').val($(this).attr("ten_sanpham"));
     	$('input[name="data[dongia_sanpham]"]').val($(this).attr("dongia_sanpham"));
     	$('input[name="data[thoigianbaohanh_sanpham]"]').val($(this).attr("thoigianbaohanh_sanpham"));
@@ -114,12 +116,35 @@ $(document).ready(function(){
     	$('select[name="data[ma_loaisanpham]"]').val($(this).attr("ma_loaisanpham")).trigger('change');
     	$('select[name="data[ma_nhacungcap]"]').val($(this).attr("ma_nhacungcap")).trigger('change');
     	$('textarea[name="data[thongsokythuat_sanpham]"]').val($(this).attr("thongsokythuat_sanpham"));
-    	$('textarea[name="data[ghichu_sanpham]"]').val($(this).attr("ghichu_sanpham"));
+    	$('textarea[name="data[ghichu]"]').val($(this).attr("ghichu"));
+		$("#anh").attr("src",$(this).attr("linkanh_sanpham"));
 		$(".huysp").show();
-		$(".themloaisp").val($(this).attr("ma_sanpham"));
-		$(".themloaisp").attr("name","capnhatsanpham");
-		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Cập nhật sản phẩm');
+		$(".capnhatsanpham").val($(this).attr("ma_sanpham"));
 		$('html').animate({scrollTop: $(".breadcrumb-item").offset().top}, 0, "easeInCubic");
+    });
+
+	/*Kết thúc tổng tie*/
+	$('.select2').select2({
+      theme: 'bootstrap4'
+    })
+      //Initialize Select2 Elements
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+	      "paging": true,
+	      "lengthChange": false,
+	      "searching": false,
+	      "ordering": true,
+	      "info": true,
+	      "autoWidth": false,
+    });
+    $('#example3').DataTable({
+	      "paging": true,
+	      "lengthChange": false,
+	      "searching": false,
+	      "ordering": true,
+	      "info": true,
+	      "autoWidth": false,
+	       "pageLength": 3
     });
 
     // Mua ngay sản phẩm

@@ -14,7 +14,8 @@
 	        
 	    }
 	    public function index(){
-	    	// $this->session->unset_userdata('user');	
+	    	// $this->session->unset_userdata('user');
+	    	// pr($this->Mtrangchu->get_sanpham());	
 	    	$temp = array(
 	    		'template' => 'Giaodien/Vtrangchu',
 	    		'data'	=> array(

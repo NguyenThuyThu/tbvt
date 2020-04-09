@@ -1,96 +1,111 @@
-<div class="container-fluid" style="background: #fff;">
-    <div class="container" style="margin-top: 20px;">
-        <div class="row">
-            <div class="panel panel-default">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Thông tin thanh toán</h3>
-                    </div>
+<div class="container-fluid pd-17" style="background: #f0f0f0;">
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <b>XÁC NHẬN - THANH TOÁN</b> 
                 </div>
-                <div class="panel-body">
-                    <div class="col-md-7 ">
-                        <form class="cart_form" method="post">
-                            <div class="cart-wrapper" style="background: #fff;">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="exampleInputName2">Họ và tên</label>
-                                        <input type="text" class="form-control" disabled value="{$khachhang[0]['hoten_thanhvien']}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputName2">Số điện thoại</label>
-                                        <input type="text" class="form-control"  value="{$khachhang[0]['sodienthoai']}">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="exampleInputName2">Email</label>
-                                       <input type="text" class="form-control" disabled
-                                                    value="{$khachhang[0]['email']}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputName2">Địa chỉ nhận hàng</label>
-                                            <select class="form-control" name="data[ma_diachi]" required>
-                                                {foreach $diachi as $key => $val}
-                                                <option value="{$val.ma_diachi}">{$val.ten_diachi}</option>
-                                                {/foreach}
-                                            </select>
-                                        <button type="button" class="btn btn-xs btn btn-info pull-right"  data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
-                                    </div>
-                                     <div class="form-group">
-                                        <label for="exampleInputName2">Ghi chú</label>
-                                        <textarea name="ghichu" class="form-control" rows="5"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-md-5 border">
-                        <div class="checkout" style="background: #fff;">
-                            <table class="table table-bordered table-responsive table-striped">
-                                <thead>
-                                    <tr>
-                                        <th width="75%">
-                                            Đơn hàng của bạn <span class="price" style="color:black"><i
-                                                    class="fa fa-shopping-cart"></i>
-                                        </th>
-                                        <th width="25%">
-                                            {$thongke['tongSL']}
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tbody1">
-                                    {foreach $details_prduct as $key => $val}
-                                    <tr>
-                                        <td>
-                                            <a class="tensp">{$val.ten_sanpham}</a>
-                                        </td>
-                                        <td>
-                                            <small class="gia">{$val.soluong} x {$val.dongia_sanpham} VNĐ</small>
-                                        </td>
-                                    </tr>
-                                    {/foreach}
-                                    <tr>
-                                        <td colspan="2" class="text-right"
-                                            style="color: #fff; background-image: linear-gradient(90deg,#d2dee596,#355c6e);">
-                                            <p>Tổng tiền: <span class="price"><b>{$thongke['tongDG']} VNĐ</b></span></p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                <div class="col-md-7">
+                    <br>
+                    <div class="panel-heading" id="tieude_ac_splq1"> 
+                        <h3 class="panel-title"> <b>Họ và tên</b></h3> 
+                    </div> 
+                    <div class="panel-body p-b"> 
+                        <div class="row" id="row">
+                            <h4><b>{$khachhang[0]['hoten_thanhvien']}</b></h4>
                         </div>
-                        <div class="payment">
-                            <p class="alert alert-success" role="alert">Trả tiền mặt khi nhận hàng</p>
-                            <button class="wc-proceed-to-checkout " id="dathang" value="{$masp}" style="width: 100%" >
+                    </div> 
+                   <br>
+                    <div class="panel-heading" id="tieude_ac_splq1"> 
+                        <h3 class="panel-title"> <b> Số điện thoại</b></h3> 
+                    </div> 
+                    <div class="panel-body p-b"> 
+                        <div class="row" id="row">
+                            <input type="text" class="form-control"  value="{$khachhang[0]['sodienthoai']}">
+                        </div>
+                    </div> 
+                    <br>
+                    <div class="panel-heading" id="tieude_ac_splq1"> 
+                        <h3 class="panel-title"> <b>Email</b></h3> 
+                    </div> 
+                    <div class="panel-body p-b"> 
+                        <div class="row" id="row">
+                            <h4>
+                                <b>{$khachhang[0]['email']}</b>
+                            </h4>
+                        </div>
+                    </div> 
+                    <br>
+                    <div class="panel-heading" id="tieude_ac_splq1"> 
+                            <h3 class="panel-title"> <b>Địa chỉ</b></h3> 
+                    </div> 
+                    <div class="panel-body p-b"> 
+                        <div class="row" id="row">
+                            <select class="form-control" name="data[ma_diachi]" required>
+                                {foreach $diachi as $key => $val}
+                                <option value="{$val.ma_diachi}">{$val.ten_diachi}</option>
+                                {/foreach}
+                            </select>
+                            <button type="button" class="btn btn-xs btn btn-info pull-right"  data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="col-md-5">
+                    <br>
+                   <div class="panel panel-primary"> 
+                        <div class="panel-heading" id="tieude_ac_splq1"> 
+                            <h3 class="panel-title"> <b>Thông tin đơn hàng</b></h3> 
+                        </div> 
+                        <div class="panel-body p-b"> 
+                            <div class="row">
+                                {foreach $details_prduct as $key => $val}
+                                    <div class="col-md-3">
+                                        <img src="{$url}public/images/anhsanpham/{$val.linkanh_sanpham}" width="100%">
+                                    </div>
+                                    <div class="col-md-9">
+                                        <p><b>{$val.ten_sanpham}</b></p>
+                                        <p>
+                                            <span class="discountTag_11Tt">Giá sản phẩm:</span> <span class="product-price">{number_format($val.dongia_sanpham, 0, ",", ",")} vnđ</span>
+                                            <span> x {$val.soluong}</span>
+                                        </p>
+                                      
+                                    </div>
+                                {/foreach}
+                            </div>
+                        </div> 
+                        <br>
+                        <div class="panel-heading" id="tieude_ac_splq1"> 
+                            <h3 class="panel-title"> <b>Ghi chú</b></h3> 
+                        </div> 
+                        <div class="panel-body p-b"> 
+                            <div class="row" id="row">
+                               <textarea name="ghichu" class="form-control" rows="5" id="ghichu"></textarea>
+                            </div>
+                        </div> 
+
+                        <br><br>
+                        <div class="panel-body p-b"> 
+                            <div class="row" id="row">
+                                <div class="col-md-6">
+                                    <h4 class="tongtt"><b>Tổng thanh toán:</b></h4>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <h4 class="tongtt" style="color: #db4444;">{$thongke}đ</h4>
+                                    
+                                </div>
+                               <button class="btn btn-danger" id="dathang" value="{$masp}" style="width: 100%" >
                                 Đặt hàng
                             </button>
-                        </div>
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div id="myModal" class="modal fade" role="dialog" >
+</div>
+<div id="myModal" class="modal fade" role="dialog" >
         <div class="modal-dialog">
             <div class="modal-content">
                     <div class="modal-header">
@@ -108,6 +123,7 @@
                                     <div class="col-md-12 text-center" style="padding: 20px;">
                                         <a class="btn btn-default" id="huy">Hủy</a>
                                         <a class="btn btn-info" id="xacnhan">Xác nhận</a>
+                                        <a class="btn btn-info" id="capnhat">Cập nhật</a>
                                     </div>
                                 </div>
                                 <br>
@@ -135,12 +151,40 @@
                     </div>
             </div>
         </div>
-    </div>
 </div>
 <div class="dangtaidulieu">
     <span class="dangxuly">
         <i class="fa fa-spinner fa-spin"></i> <span class="text-xuly">Đang xử lý đơn hàng của bạn</span>
     </span>
 </div>
+<style>
+    .panel-primary{
+        border:none;
+        /*background: #f5f5f5;*/
+    }
+    .p-b{
+        border: 1px solid #e7e1e1 !important;
+    }
+    #tieude_ac_splq1{
+        border-bottom: none !important;
+    }
+    #ghichu{
+        border: 1px solid #f3f3f3 !important;
+        border-top: none !important;
+    }
+    #row{
+        padding: 8px;
+    }
+    #dathang{
+        height: 46px !important;
+        margin: 4px;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: none;
+        text-transform: uppercase;
+    }
+    .tongtt{
+        font-size: 16px;
+    }
+</style>
 <script type="text/javascript" src="{$url}public/js/thanhtoan.js?time={time()}"></script>
-

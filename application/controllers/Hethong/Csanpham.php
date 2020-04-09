@@ -25,6 +25,14 @@ class Csanpham extends MY_Controller {
 		if($this->input->post('xoaDVT')){
 			$this->xoaDVT();
 		}
+		$trangthai = "";
+		if($this->input->get("hienthi")){
+			$trangthai = "hienthi";
+		}
+
+		if($id = $this->input->post('xoasanpham')){
+			$this->xoasanpham($id);
+		}
 
 		$dmsp = $this->Msanpham->get('tbl_danhmuc_sanpham');
 		foreach ($dmsp as $key => $value) {
@@ -34,6 +42,7 @@ class Csanpham extends MY_Controller {
 		if($this->input->post('themloaisp')){
 			$this->themloaisp();
 		}
+
 		$temp = array(
 			'template' => 'Hethong/Vsanpham',
 			'data' => array(
@@ -42,39 +51,54 @@ class Csanpham extends MY_Controller {
 				'donvitinh' => $this->Msanpham->get('tbl_donvitinh_sanpham'),
 				'nhacc' 	=> $this->Msanpham->get('tbl_nhacungcap'),
 				'sanpham' 	=> $sanpham,
+				'trangthai' => $trangthai,
 			)
 		);
 		$this->load->view('layout/content',$temp);
 	}
 
+	public function xoasanpham($ma){
+		$success  = 'Xóa thành công';
+        $error    = 'Xóa thất bại!';
+        $redirect = base_url().'sanpham?hienthi=danhsachsanpham'; 
+    	$this->Msanpham->delete("tbl_anhsanpham","ma_sanpham",$ma);
+    	$this->delete("tbl_sanpham","ma_sanpham",$ma, $success, $error, $redirect);
+	}
+
 	public function themloaisp(){
 		$session = $this->session->userdata('user');
 		$data = $this->input->post('data');
-		$data['nguoidang_sp'] = $session['ma_taikhoan'];
+		$data['dongia_sanpham'] = str_replace(",","",$data['dongia_sanpham']);
+		$data['ngaydang']  		= date("d/m/Y");
+		$data['ma_sanpham']  	= "SP".preg_replace("/[^a-zA-Z0-9]+/", "", $data['ten_sanpham']).time();
+		$data['nguoidang_sp'] 	= $session['ma_taikhoan'];
 		$data['trangthai_dang_sanpham'] = 1;
 		$data['trangthai_hot_sanpham']  = 1;
-		// $id = $this->Msanpham->add_sanpham($data);
-		if (!empty($_FILES['anhsanpham']['name'])) {
-			$config['upload_path'] = 'public/images/anhsanpham'.$_FILES['anhsanpham']['name'];
-			$config['allowed_types'] = 'jpg|png|jpeg';
-			$config['file_name'] = $_FILES['anhsanpham']['name'];
-			$this->load->library("upload", $config);
-			$this->upload->initialize($config);
-			// if(file_exists($name)){
-			// 	setMessages('error',"Tên File đã tồn tại xin vui lòng chọn file khác!", 'Thông báo');
-			// 	return redirect('sanpham');
-			// }
-			if ($this->upload->do_upload("anhsanpham")) {
-				$uploadData				= $this->upload->data();
-				// $data_image = array(
-				// 	'linkanh_sanpham' 	=> $config['file_name'],
-				// 	'ghichu_anh'		=> "",
-				// 	'douutien'			=> "",
-				// 	'ma_sanpham'		=> $data['ma_sanpham'],
-				// );
-				// $this->Msanpham->insert("tbl_anhsanpham", $data);
-				// pr($data_image);
-			}
+		$row = $this->Msanpham->insert("tbl_sanpham", $data); /*Thêm data vào bảng sản phầm sau đó insert ảnh vào bảng ảnh sản phẩm*/
+		if($row > 0){
+			if (!empty($_FILES['anhsanpham']['name'])) {
+				$config['upload_path'] = 'public/images/anhsanpham/'.$_FILES['anhsanpham']['name'];
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['file_name'] = $_FILES['anhsanpham']['name'];
+				$this->load->library("upload", $config);
+				$this->upload->initialize($config);
+				$row1 = move_uploaded_file($_FILES['anhsanpham']['tmp_name'], $config['upload_path']);
+				if ($row1 > 0) {
+					$data_image = array(
+						'linkanh_sanpham' 	=> $config['file_name'],
+						'ma_sanpham'		=> $data['ma_sanpham'],
+					);
+					$row2 = $this->Msanpham->insert("tbl_anhsanpham", $data_image);
+				}
+				else{
+					setMessages("error", "Thêm ảnh bị lỗi", "Thông báo");
+				}
+		    }
+		}else{
+			setMessages("error", "Thêm thất bại", "Thông báo");
+		}
+	    if($row > 0 && $row1 >0 && $row2 >0 ){
+	    	setMessages("success", "Thêm sản phẩm thành công", "Thông báo");
 	    }
 	    return redirect('sanpham');
 		
@@ -108,12 +132,31 @@ class Csanpham extends MY_Controller {
 	}
 
 	public function capnhatsanpham() {
+		$session  = $this->session->userdata('user');
 		$ma 	  = $this->input->post('capnhatsanpham');
 		$data 	  = $this->input->post('data');
+		$data['nguoidang_sp'] 	= $session['ma_taikhoan'];
 		$success  = 'Cập nhật thành công';
         $error    = 'Cập nhật';
-        $redirect = base_url().'sanpham'; 
-        $this->update("tbl_sanpham", "ma_sanpham", $ma, $data, $success, $error, $redirect);
+        $row = $this->Msanpham->update("tbl_sanpham", "ma_sanpham",$ma, $data);
+        if (!empty($_FILES['anhsanpham']['name'])) {
+				$config['upload_path'] = 'public/images/anhsanpham/'.$_FILES['anhsanpham']['name'];
+				$config['allowed_types'] = 'jpg|png|jpeg';
+				$config['file_name'] = $_FILES['anhsanpham']['name'];
+				$this->load->library("upload", $config);
+				$this->upload->initialize($config);
+				$row1 = move_uploaded_file($_FILES['anhsanpham']['tmp_name'], $config['upload_path']);
+				$data_image = array(
+					'linkanh_sanpham' 	=> $config['file_name'],
+				);
+				$row2 = $this->Msanpham->update("tbl_anhsanpham", "ma_sanpham",$ma, $data_image);
+		}
+		if($row >= 0){
+	    	setMessages("success", $success, "Thông báo");
+	    }else{
+	    	setMessages("error", $error, "Thông báo");
+	    }
+	    return redirect('sanpham?hienthi=danhsachsanpham');
 	}
 
 

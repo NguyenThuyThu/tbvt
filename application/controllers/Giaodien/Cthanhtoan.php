@@ -21,6 +21,9 @@ class Cthanhtoan extends CI_Controller
 		$khachhang = $this->Mthanhtoan->get_where_in("tbl_thanhvien", "ma_thanhvien",array("ma_thanhvien" => $session['ma_thanhvien']));
 		
 		$dulieu = $this->get_Details();
+
+	 	$sanpham = $dulieu['details_prduct'];
+	 	$thongke = $dulieu['thongke']['tongDG'];
 		$masp = "";
 		if($masp = $this->input->get('masp')){
 			$masp = explode("_", $masp)[2];
@@ -28,6 +31,8 @@ class Cthanhtoan extends CI_Controller
 	 		if($check == 0){
 	 			return redirect(base_url("trangsanpham"));
 	 		}
+			$sanpham = $this->Mthanhtoan->getSP($masp);
+			$thongke = number_format($sanpham[0]['soluong']*$sanpham[0]['dongia_sanpham'], 0, ",", ",");
 		}
 		$action = $this->input->post('action');
 		switch ($action) {
@@ -54,8 +59,8 @@ class Cthanhtoan extends CI_Controller
 		$temp = array(
 			'template' => 'Giaodien/Vthanhtoan',
 			'data' => array(
-				'details_prduct'	=> $dulieu['details_prduct'],
-				'thongke'			=> $dulieu['thongke'],
+				'details_prduct'	=> $sanpham,
+				'thongke'			=> $thongke,
 				'khachhang'			=> $khachhang,
 				'diachi' 			=> $this->Mthanhtoan->get_where("tbl_diachi", "ma_thanhvien", $session['ma_thanhvien']),
 				'masp'				=> $masp,
@@ -71,6 +76,7 @@ class Cthanhtoan extends CI_Controller
 		if(!empty($masp)){
 			$check = $this->Mthanhtoan->check_sp1($masp, $session['ma_thanhvien']);
 			if(!empty($check)){
+				
 				/*Update bảng tbl_cart và bảng phiếu nhập hàng 
 				&&Tạo 1 hóa đơn và update trạng thái đơn của khách hàng đang xử lý*/
 				$hoadon = array(
@@ -92,7 +98,9 @@ class Cthanhtoan extends CI_Controller
 					"tongtien" 		=> $check['dongia_sanpham']*$check['soluong'], 
 					"ma_hoadonmua" 	=> $hoadon['ma_hoadonmua'], 
 				);
+				$sl['soluong'] = $check['sl'] - $check['soluong'];
 				$row = $this->Mthanhtoan->insert("tbl_ct_hoadon", $ct_hoadon);
+				$this->Mthanhtoan->update("tbl_sanpham", "ma_sanpham", $check['ma_sanpham'],$sl);
 				$this->Mthanhtoan->delete_cart($session['ma_thanhvien'], $masp); // xóa sản phẩn trong giỏ hàng
 				if($row > 0){
 					echo "thanhcong";
@@ -104,6 +112,7 @@ class Cthanhtoan extends CI_Controller
 				echo "thatbai";
 			}
 		}else{
+
 			$sanpham = $this->Mthanhtoan->getSanPham($session['ma_thanhvien']);
 			$hoadon = array(
 				'ma_hoadonmua'			=> "HD".preg_replace("/[^a-zA-Z0-9]+/", "", $session['ma_taikhoan']).time(),
@@ -125,7 +134,9 @@ class Cthanhtoan extends CI_Controller
 					"tongtien" 		=> $value['dongia_sanpham']*$value['soluong'], 
 					"ma_hoadonmua" 	=> $hoadon['ma_hoadonmua'], 
 				);
+				$sl['soluong'] = $value['sl'] - $value['soluong'];
 				$row = $this->Mthanhtoan->insert("tbl_ct_hoadon", $ct_hoadon);
+				$this->Mthanhtoan->update("tbl_sanpham", "ma_sanpham", $value['ma_sanpham'],$sl);
 			}
 			$this->Mthanhtoan->delete_cart($session['ma_thanhvien'], $masp); // xóa sản phẩn trong giỏ hàng
 			if($row > 0){

@@ -48,9 +48,8 @@
                     <div class="header__search">
                         <div class="header__search-input-wrap">
                             <input type="text" class="header__search-input" placeholder="Nhập để tìm kiếm">
-
                             <!-- Search history -->
-                            <div class="header__search-history">
+                          <!--   <div class="header__search-history">
                                 <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
                                 <ul class="header__search-history-list">
                                     <li class="header__search-history-item">
@@ -61,24 +60,11 @@
                                         <a href="">Cáp mạng cat5e</a>
                                     </li>
                                 </ul>
+                            </div> -->
+                            <div class="tt_search">
+                                   
                             </div>
                         </div>
-
-                        <!-- <div class="header__search-selection">
-                            <span class="header__search-selection-label">Tất cả</span>
-                            <i class="header__search-selection-icon fas fa-angle-down"></i>
-
-                            <ul class="header__search-option">
-                                <li class="header__search-option-item header__search-option-item-active">
-                                    <span>Trong shop</span>
-                                    <i class="fas fa-check"></i>
-                                </li>
-                                <li class="header__search-option-item">
-                                    <span>Ngoài shop</span>
-                                    <i class="fas fa-check"></i>
-                                </li>
-                            </ul>
-                        </div> -->
                         <button class="header__search-btn">
                             <i class="fa fa-search" aria-hidden="true" style="color: aliceblue;"></i>
                         </button>

@@ -21,13 +21,6 @@ class Ctrangchitiet extends CI_Controller
 		$des = [];
 		$trangthai = "";
 		$masp = "";
-		// if($this->input->get('product')){
-		// 	$masp = explode("_", $this->input->get('product'))[1];
-		// 	$check = $this->Mtrangchu->get_many_where("tbl_cart", array("ma_sanpham" => $masp, "ma_thanhvien" => $session['ma_thanhvien']));
-		// 	if(!empty($check)){
-		// 		return redirect("giohang");
-		// 	}
-		// }
 		$content 	= $this->Mtrangchu->getdulieu($ID);
 		$splq = $this->Mtrangchu->getSPLQ($masp);
 		// load function ajax ở đây

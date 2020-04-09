@@ -33,7 +33,7 @@ class Cphieunhap extends MY_Controller
 	public function themphieunhap(){
 		$session = $this->session->userdata("user");
 		$data = $this->input->post('data');
-		$ma_phieunhap= 'PN'.rand(1000,99999);
+		$ma_phieunhap= 'PN'.rand(1000,99999).time();
 		$phieunhaphang = array(
 			'ma_phieunhap' => $ma_phieunhap,
 			'thoigian_nhap' 		=> $data['thoigian_nhap'],
@@ -47,8 +47,11 @@ class Cphieunhap extends MY_Controller
 				'ma_sanpham' 	=> $data['ma_sanpham'][$i],
 				'soluong_nhap' 	=> $data['soluong_nhap'][$i],
 				'dongia_nhap' 	=> $data['dongia_nhap'][$i],
-				'ma_phieunhap' 	=> $id,
+				'ma_phieunhap' 	=> $phieunhaphang['ma_phieunhap'],
 			);
+			$sp = $this->Mphieunhap->get_where_row("tbl_sanpham", "ma_sanpham", $chitiet_phieunhaphang['ma_sanpham']);
+			$sl['soluong'] = $data['soluong_nhap'][$i] + $sp['soluong'];
+			$this->Mphieunhap->update("tbl_sanpham", "ma_sanpham", $chitiet_phieunhaphang['ma_sanpham'], $sl);
 			$this->Mphieunhap->insert("tbl_ct_phieunhap", $chitiet_phieunhaphang);
 		}
 		setMessages("success", "Thêm thành công", "Thông báo");
