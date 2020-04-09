@@ -14,9 +14,9 @@
                 </div>
             </div>
         </div>
-	</section>
-	
-	<section class="content">
+    </section>
+    
+    <section class="content">
         <div class="col-lg-12">
             <div class="card card-info">
                 <form method="post">
@@ -24,22 +24,22 @@
                         <div class="card-header">
                             <h3 class="card-title">Thêm nhân viên</h3>
                         </div>
-						
-						<div class="card-body">
+                        
+                        <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="form-group" style="display: flex;">
                                             <label class="control-label col-3">Tên đăng nhập*</label>
-                                            <div class="col-8"><input type="text" class="form-control" >
+                                            <div class="col-8"><input type="text" class="form-control" id="taikhoan"  name="taikhoan">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group" style="display: flex;">
                                             <label class="control-label col-3">Mật khẩu*</label>
-                                            <div class="col-8"><input type="text" class="form-control" >
+                                            <div class="col-8"><input type="password" class="form-control" id="password" name="password">
                                             </div>
                                         </div>
                                     </div>
@@ -47,32 +47,32 @@
                                     <div class="col-12">
                                         <div class="form-group" style="display: flex;">
                                             <label class="control-label col-3">Họ tên*</label>
-                                            <div class="col-8"><input type="text" class="form-control" required >
+                                            <div class="col-8"><input type="text" class="form-control" id="hoten" name="hoten"required >
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-group" style="display: flex;">
                                             <label class="control-label col-3">Ngày sinh</label>
-                                            <div class="col-8"><input type="date" data-date-format="yyyy/mm/dd" data-inputmask="'alias': 'date'"  class="form-control" required >
+                                            <div class="col-8"><input type="date" data-date-format="yyyy/mm/dd" data-inputmask="'alias': 'date'" id="ngaysinh" name="ngaysinh" class="form-control" required >
                                             </div>
                                         </div>
                                     </div>
 
 
                                     <div class="col-12">
-                                        <button type="submit" name="themloaisp" value="Thêm"
+                                        <button type="submit" name="themtaikhoan" value="Thêm"
                                             class="btn btn-primary btn-flat" style="margin-left: 300px;">Thêm nhân viên</button>
                                     </div>
                                 </div>
-							</div>
-							
-							<div class="col-sm-6">
+                            </div>
+                            
+                            <div class="col-sm-6">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-3">Email</label>
-                                                <div class="col-8"><input type="email" class="form-control" required
+                                                <div class="col-8"><input type="email" class="form-control" id="email" name="email" required
                                                         ></div>
                                             </div>
                                         </div>
@@ -80,7 +80,7 @@
                                         <div class="col-12">
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-3">Địa chỉ</label>
-                                                <div class="col-8"><input type="text" class="form-control" required
+                                                <div class="col-8"><input type="text" class="form-control" id="diachi" name="diachi" 
                                                         ></div>
                                             </div>
                                         </div>
@@ -89,21 +89,21 @@
                                                 <label class="control-label col-3">Địa chỉ</label>
                                                 <div class="col-8">
                                                     <div class="row">
-														<div class="col-md-10">
-															<div class="form-group">
-																<select class="form-control" name="data[ma_diachi]" required>
-																	{foreach $diachi as $key => $val}
-																		<option value="{$val.ma_diachi}">{$val.ten_diachi}</option>
-																	{/foreach}
-																</select>
-															</div>
-														</div>
-														<div class="col-md-2">
-															<button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#modal-default">
-																<i class="fa fa-plus-square" aria-hidden="true"></i>
-															</button>
-														</div>
-													</div>
+                                                        <div class="col-md-10">
+                                                            <div class="form-group">
+                                                                <select class="form-control" name="data[ma_diachi]" required>
+                                                                    {foreach $diachi as $key => $val}
+                                                                        <option value="{$val.ma_diachi}">{$val.ten_diachi}</option>
+                                                                    {/foreach}
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#modal-default">
+                                                                <i class="fa fa-plus-square" aria-hidden="true"></i>
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div> -->
@@ -112,20 +112,20 @@
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-3">Giới tính</label>
                                                 <div class="col-8" style="display: flex;">
-												<div class="col-4">
-													<input type="radio" name="gioitinh" value="Nam" checked> Nam
-												</div>
+                                                <div class="col-4">
+                                                    <input type="radio" name="gioitinh" value="Nam" checked> Nam
+                                                </div>
 
-												<div class="col-4">
-													<input type="radio" name="gioitinh" value="Nữ"> Nữ
-												</div>
-												</div>
+                                                <div class="col-4">
+                                                    <input type="radio" name="gioitinh" value="Nữ"> Nữ
+                                                </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group" style="display: flex;">
                                                 <label class="control-label col-3">Số điện thoại</label>
-                                                <div class="col-8"><input type="text" class="form-control" required
+                                                <div class="col-8"><input type="text" class="form-control" name="sodienthoai" required
                                                         ></div>
                                             </div>
                                         </div>

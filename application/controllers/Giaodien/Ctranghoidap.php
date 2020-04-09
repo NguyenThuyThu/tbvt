@@ -10,7 +10,7 @@ class Ctranghoidap extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		// $this->load->model('admin/Mhome');
+		$this->load->model('Giaodien/Mtrangchu');
 	}
 
 	public function index()

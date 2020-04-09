@@ -41,7 +41,7 @@ class Clogin extends CI_Controller
 		$data_thanhvien = array(
 			'ma_thanhvien' => $ma_thanhvien,
 			'hoten_thanhvien' => $this->input->post('hoten'), 
-			'email_thanhvien'     => $this->input->post('email')
+			'email'     => $this->input->post('email')
 		);
 
 		$data_quyen_tk = array(

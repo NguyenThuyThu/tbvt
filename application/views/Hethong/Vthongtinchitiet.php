@@ -53,7 +53,7 @@
 									</div>
 									<div class="row">
 										<p class="col-sm-4"><b>Địa chỉ :</b></p>
-										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['diachi']}{else}....................................{/if}</b></p>
+										<p class="col-sm-8" style="color: green;"><b>{if !empty($thongtinchitiet)}{$thongtinchitiet[0]['diachi_thanhvien']}{else}....................................{/if}</b></p>
 									</div>
 
 								</div> <!-- end col-sm-6 thứ nhất-->

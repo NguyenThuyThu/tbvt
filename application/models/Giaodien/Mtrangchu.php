@@ -29,7 +29,7 @@ class Mtrangchu extends MY_Model {
 
 		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
 
-		$this->db->order_by('ngaydang desc');
+		$this->db->order_by('ngaydang_sanpham desc');
 
 		$this->db->limit($limit,$offset);
 
@@ -75,9 +75,18 @@ class Mtrangchu extends MY_Model {
 	}
 
 	public function get_SumCart($matv){
+		// $this->db->select("tbl_ct_hoadon.ma_sanpham");
+		// $this->db->where("tbl_hoadonmua.nguoimuahang", $matv);
+		// $this->db->join("tbl_ct_hoadon", "tbl_hoadonmua.ma_hoadonmua = tbl_ct_hoadon.ma_hoadonmua");		
+		// $rl = $this->db->get("tbl_hoadonmua")->result_array();
+		// for ($i = 0; $i< count($rl); $i++) {
+		// 	$ma_sp[] = $rl[$i]['ma_sanpham'];
+		// }
 		$this->db->select('count("ma_sanpham") as tongCart');
 		$this->db->where("ma_thanhvien", $matv);
-		return $this->db->get('tbl_cart')->row_array();
+		// $this->db->where_not_in("ma_sanpham", $ma_sp);
+		$row = $this->db->get('tbl_cart')->row_array();
+		return $row;
 	}
 
 
@@ -85,7 +94,7 @@ class Mtrangchu extends MY_Model {
 		$this->db->select('tbl_sanpham.ten_sanpham, tbl_sanpham.dongia_sanpham, tbl_sanpham.thoigianbaohanh_sanpham, tbl_sanpham.xuatxu_sanpham, tbl_anhsanpham.linkanh_sanpham, tbl_sanpham.ma_sanpham');
 		$this->db->where_not_in('tbl_sanpham.ma_sanpham',$masp);
 		$this->db->join("tbl_anhsanpham", "tbl_sanpham.ma_sanpham = tbl_anhsanpham.ma_sanpham");
-		$this->db->limit(5);
+		$this->db->limit(3);
 		$this->db->order_by('tbl_sanpham.ma_sanpham', 'RANDOM');
 		return $this->db->get("tbl_sanpham")->result_array();
 	}

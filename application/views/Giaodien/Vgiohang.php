@@ -1,118 +1,72 @@
-<div class="container-fluid" style="background: #f3f3f3;">
-<div class="container" style="margin-top: 20px;">
-	<div class="row">
-		<div class="panel panel-primary">
-			<div class="panel-heading">
-				<h3 class="panel-title">Danh sách giỏ hàng</h3>
+<div class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="title-giohang">Danh sách giỏ hàng</h3>
 			</div>
-			<div class="panel-body">
-				<div class="col-md-7">
-					<form class="cart_form" method="post">
-						<div class="cart-wrapper" style="background: #fff;">
-							<table class="table table-bordered">
-								<thead>
-									<th class="product-name text-center" width="5%" ></th>
-									<th class="product-name text-center" width="5%" >STT</th>
-									<th class="product-name" width="20%" >Sản phẩm</th>
-									<th class="product-price text-center" >Giá</th>
-									<th class="product-quantity text-center" width="15%" >Số lượng</th>
-									<th class="product-subtotal text-center" >Tổng</th>
-								</thead>
-								<tbody id="tbody">
-									{foreach $details_prduct as $key => $val}
-									<tr>
-										<td style="vertical-align: middle;"><a class="remove" data-info="{$val.ma_sanpham}">x</a></td>
-										<td class="text-center" style="vertical-align: middle;"><b>{$key+1}</b></td>
-										<td class="text-center" style="vertical-align: middle;">
-											<a href>
-												<img src="{$url}public/images/anhsanpham/{$val.linkanh_sanpham}" width="100%">
-											</a>
-										</td>
-										<td class="text-center" style="vertical-align: middle;">
-											{number_format($val.dongia_sanpham, 0, ",", ",")}
-										</td>
-										<td class="text-center" style="vertical-align: middle;">
-											<input type="number" value="{$val.soluong}" {if !empty($session)} data-masp = "{$val.ma_sanpham}"{else}disabled{/if} class="form-control soluong">
-										</td>
-										<td class="text-center" style="vertical-align: middle;">
-											<b>{number_format($val.dongia_sanpham * $val.soluong, 0, ",", ",")} VNĐ</b>
-										</td>
-									</tr>
-									{/foreach}
-								</tbody>
-							</table>
-						</div>
-					</form>
-				</div>
-				<div class="col-md-5">
-					<div class="checkout"  style="background: #fff;">
-						<table class="table table-bordered table-responsive table-striped">
-							<thead>
-								<tr>
-									<th width="75%">
-									Tổng số lượng  <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i>
-									</th>
-									<th  width="25%">
-										{$thongke['tongSL']}
-									</th>
-								</tr>
-							</thead>
-							<tbody id="tbody1">
-								{foreach $details_prduct as $key => $val}
-								<tr>
-									<td>
-										<a class="tensp">{$val.ten_sanpham}</a>
-									</td>
-									<td>
-										<small class="gia">{$val.soluong} x {$val.dongia_sanpham} VNĐ</small>
-									</td>
-								</tr>
-								{/foreach}
-								<tr>
-									<td colspan ="2" class="text-right" style="color: #fff; background-image: linear-gradient(90deg,#d2dee596,#355c6e);">
-										<p>Tổng tiền: <span class="price"><b>{$thongke['tongDG']} VNĐ</b></span></p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					
-					<a href="{$url}thanhtoan" class="checkout-button">
-						<div class="wc-proceed-to-checkout">Tiến hành thanh toán</div>
-					</a>
-					
-				</div>
+			<br>
+			<div class="col-md-12">
+				<table id="cart" class="table table-hover table-bordered">
+				    <thead>
+				        <tr>
+				            <th style="width:50%">Tên sản phẩm</th>
+				            <th style="width:10%">Giá</th>
+				            <th style="width:8%">Số lượng</th>
+				            <th style="width:22%" class="text-center">Thành tiền</th>
+				            <th style="width:10%"> </th>
+				        </tr>
+				    </thead>
+				    <tbody id="tbody1">
+				    	{foreach $details_prduct as $key => $val}
+				        <tr>
+				            <td data-th="Product">
+				                <div class="row">
+				                    <div class="col-sm-2 hidden-xs">
+				                    	<a href>
+				                    		<img src="{$url}public/images/anhsanpham/{$val.linkanh_sanpham}" width="100%">
+				                    	</a>
+				                    </div>
+				                    <div class="col-sm-10">
+				                        <h4 class="nomargin">{$val.ten_sanpham}</h4>
+				                    </div>
+				                </div>
+				            </td>
+				            <td data-th="Price"><small class="gia">{number_format($val.dongia_sanpham, 0, ",", ",")} đ</small></td>
+				            <td data-th="Quantity">
+				                <input type="number" value="{$val.soluong}" {if !empty($session)} data-masp = "{$val.ma_sanpham}"{else}disabled{/if} class="form-control soluong form-control text-center" step="1" min="1" max="9999" title="SL" size="4" pattern="[0-9]*">
+				            </td>
+				            <td data-th="Subtotal" class="text-center"><b>{number_format($val.dongia_sanpham * $val.soluong, 0, ",", ",")} </b> đ</td>
+				            <td class="actions text-center">
+				            	<button class="btn btn-danger btn-sm remove" data-info="{$val['ma_sanpham']}"><i class="fa fa-times" aria-hidden="true"></i></button>
+				            </td>
+				        </tr>
+				    	{/foreach}
+				    </tbody>
+				    <tfoot>
+				        <tr class="visible-xs">
+				            <td class="text-center"><strong>Tổng 200.000 đ</strong>
+				            </td>
+				        </tr>
+				        <tr>
+				            <td><a href="{$url}trangsanpham" class="btn btn-warning"><i class="fa fa-angle-left"></i> Tiếp tục mua hàng</a>
+				            </td>
+				            <td colspan="2" class="hidden-xs"> </td>
+				            <td class="hidden-xs text-center"><strong>Tổng tiền {$thongke['tongDG']} đ</strong>
+				            </td>
+				            <td><a href="{$url}thanhtoan" class="btn btn-success btn-block">Thanh toán <i class="fa fa-angle-right"></i></a>
+				            </td>
+				        </tr>
+				    </tfoot>
+				</table>
+
 			</div>
 		</div>
 	</div>
-	<style>
-		.tensp, #tbody tr td{
-			font-size: 14px;
-			font-family: cursive;
-		}
-		.app__content{
-			padding: 31px;
-			box-shadow: 0px 0px 10px 0px #6e6e6e;
-			margin-top: 19px;
-		}
-		thead tr th, tbody tr td{
-			vertical-align: middle; 
-			font-size: 12px !important;
-		}
-		.panel-primary>.panel-heading {
-		    color: #fff;
-		    background-color: #1f4e79;
-		    border-color: #1f4e79;
-		}
-		.gia{
-			color: #ce0448;
-		    font-size: 10px;
-		    font-weight: 600;
-		}
-		.remove{
-			cursor: pointer;
-		}
-	</style>
-	<script type="text/javascript" src="{$url}public/js/simple.money.format.js"></script>
-	<script type="text/javascript" src="{$url}public/js/danhmuc.js?time={time()}"></script>
 </div>
+<style type="text/css">
+    .table&amp;amp;gt;tbody&amp;amp;gt;tr&amp;amp;gt;td, .table&amp;amp;gt;tfoot&amp;amp;gt;tr&amp;amp;gt;td{
+        vertical-align: middle;
+    }
+</style>
+<script type="text/javascript" src="{$url}public/js/simple.money.format.js"></script>
+<script type="text/javascript" src="{$url}public/js/danhmuc.js?time={time()}"></script>

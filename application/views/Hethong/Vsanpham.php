@@ -74,7 +74,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Số lượng:</label>
-                                        <input type="text" class="form-control" name="data[soluong]">
+                                        <input type="text" class="form-control" name="data[soluong_sanpham]">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -114,7 +114,7 @@
                         <div class="col-md-12">
                            <div class="form-group">
                                 <label>Chú ý</label>
-                                <textarea class="form-control" rows="4" name="data[ghichu]" ></textarea>
+                                <textarea class="form-control" rows="4" name="data[ghichu_sanpham]" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -153,20 +153,20 @@
                             <tr>
                                 <td class="text-center"><b>{$key+1}</b></td>
                                 <td class="font-w600"><b>{$ds.ten_sanpham}</b></td>
-                                <td class="hidden-xs">{$ds.soluong}</td>
+                                <td class="hidden-xs">{$ds.soluong_sanpham}</td>
                                 <td class="hidden-xs">{$ds.dongia_sanpham}</td>
                                 <td class="hidden-xs">{$ds.xuatxu_sanpham}</td>
                                 <td class="hidden-xs">{$ds.thoigianbaohanh_sanpham}</td>
                                 <td class="hidden-xs">{$ds.ten_loaisanpham}</td>
                                 <td class="hidden-xs">{$ds.ten_donvitinh}</td>
-                                <td class="hidden-xs text-center">{date("d/m/Y", strtotime($ds.ngaydang))}</td>
+                                <td class="hidden-xs text-center">{date("d/m/Y", strtotime($ds.ngaydang_sanpham))}</td>
                                 <td class="hidden-xs text-center">{$ds.ten_taikhoan}</td>
                                 <td class="text-center">
                                     <div class="btn-group">
                                         <button 
                                         type="button" 
                                         class="btn btn-info suasanpham"
-                                        soluong          = "{$ds.soluong}"
+                                        soluong_sanpham          = "{$ds.soluong_sanpham}"
                                         dongia_sanpham           = "{$ds.dongia_sanpham}"
                                         ten_sanpham           = "{$ds.ten_sanpham}"
                                         ma_sanpham               = "{$ds.ma_sanpham}"
@@ -175,7 +175,7 @@
                                         ma_donvitinh            = "{$ds.ma_donvitinh}"
                                         ma_loaisanpham          = "{$ds.ma_loaisanpham}"
                                         ma_nhacungcap          = "{$ds.ma_nhacungcap}"
-                                        ghichu          = "{$ds.ghichu}"
+                                        ghichu_sanpham          = "{$ds.ghichu_sanpham}"
                                         thongsokythuat_sanpham          = "{$ds.thongsokythuat_sanpham}"
                                         ><i class="fas fa-pencil-alt" aria-hidden="true"></i>
                                     </button>

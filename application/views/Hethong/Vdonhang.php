@@ -34,7 +34,8 @@
                                                 <th class="text-left" width="20%">Khách hàng</th>
                                                 <th class="text-left" width="20%">Ngày mua</th>
                                                 <th class="text-left" width="15%">Tổng tiền</th>
-                                                <th class="text-center" width="30%">Tác vụ</th>
+                                                <th class="text-left" width="15%">Trạng thái</th>
+                                                <th class="text-center" width="20%">Tác vụ</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,8 +43,9 @@
                                         <tr role="row" >
                                             <td class="text-left">{$ds.ma_hoadonmua}</td>
                                             <td class="text-left">{$ds.hoten_thanhvien}</td>
-                                            <td class="text-left">{$ds.ngaylap_hoadonmua}</td>
+                                            <td class="text-left">{$ds.ngaylap}</td>
                                             <td class="text-left">{number_format($ds.tongtien, 0, ",", ",")}</td>
+                                            <td class="text-left">{$ds.ten_trangthai_giaohang}</td>
                                             <td class="text-center">
                                                 <button type="button" class="btn btn-warning btn-sm"><i class="fa fa-arrow-right" aria-hidden="true" style="color: #fff"></i></button>
                                             <a class="btn-color" href="{$url}xemdonhang?chitiet={$ds.ma_hoadonmua}"><button class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Xem chi tiết"><i class="fa fa-eye"></i></button></a>

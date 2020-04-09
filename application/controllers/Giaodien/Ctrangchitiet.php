@@ -16,24 +16,19 @@ class Ctrangchitiet extends CI_Controller
 	public function index()
 	{
 		$session = $this->session->userdata('user');
-
-		// if($this->input->post('dathang')){
-		// 	$this->dathang();
-		// }
-
 		$product =  $this->Mtrangchu->get_sanpham();
 		$ID =  explode("_", $this->input->get('product'))[1]; // Lấy mã loại tin
 		$des = [];
+		$trangthai = "";
 		$masp = "";
-		if($this->input->get('product')){
-			$masp = explode("_", $this->input->get('product'))[1];
-			$check = $this->Mtrangchu->get_many_where("tbl_cart", array("ma_sanpham" => $masp, "ma_thanhvien" => $session['ma_thanhvien']));
-			if(!empty($check)){
-				return redirect("giohang");
-			}
-			$content 	= $this->Mtrangchu->getdulieu($ID);
-			$des   		= $content;
-		}
+		// if($this->input->get('product')){
+		// 	$masp = explode("_", $this->input->get('product'))[1];
+		// 	$check = $this->Mtrangchu->get_many_where("tbl_cart", array("ma_sanpham" => $masp, "ma_thanhvien" => $session['ma_thanhvien']));
+		// 	if(!empty($check)){
+		// 		return redirect("giohang");
+		// 	}
+		// }
+		$content 	= $this->Mtrangchu->getdulieu($ID);
 		$splq = $this->Mtrangchu->getSPLQ($masp);
 		// load function ajax ở đây
 		switch ($this->input->post('action')) {
@@ -43,25 +38,41 @@ class Ctrangchitiet extends CI_Controller
 			case 'load_cart':
 				$this->load_cart($session);
 				break;
+			case 'buy_now':
+				$this->buy_now($session);
+				break;	
 			default:
 				break;
 		}
-
+		$soluong = $this->Mtrangchu->get_many_where("tbl_cart", array("ma_thanhvien" => $session['ma_thanhvien'], "ma_sanpham" => $ID));
+		if(!empty($soluong)){
+			$soluong = $soluong[0]['soluong'];
+			$trangthai = "Đã có vào giỏ hàng";
+		}else{
+			$soluong = 1;
+		}
 		$temp = array(
 			'template' => 'Giaodien/Vtrangchitiet',
 			'data' => array(
 				'dssp'  	=> $product,
 				'dmsp'  	=> $this->Mtrangchu->get_dmsanpham(),
-				'dess'  	=> $des,
 				'content'	=> $content,
 				'splq'      => $splq,
+				'trangthai'	=> $trangthai,
 				'thanhvien' => $this->Mtrangchu->get("tbl_thanhvien"),
+				'soluong'	=> $soluong
 
 			),
 		);
 		$this->load->view('layout/main_content', $temp);
 	}
 
+	public function buy_now($session){
+		$masp   = $this->input->post('code_product');
+		$trangthai = count($this->Mtrangchu->get_many_where("tbl_cart", array("ma_sanpham" => $masp, 'ma_thanhvien' => $session['ma_thanhvien'])));
+		echo $trangthai;
+		exit();
+	}
 
 	public function load_cart($session){
 		$masp   = $this->input->post('code_product');
@@ -75,16 +86,16 @@ class Ctrangchitiet extends CI_Controller
 	public function addCart($session){
 		$soluong = $this->input->post('soluong');
 		$masp    = $this->input->post('code_product');
-		$masp    = $this->input->post('code_product');
 		$trangthai = $this->Mtrangchu->get_many_where("tbl_cart", array("ma_sanpham" => $masp, 'ma_thanhvien' => $session['ma_thanhvien']));
-		if(!empty($trangthai)){
-			echo "dacosp";
-		}else{
-			$this->Mtrangchu->delete_many_where("tbl_cart", array("ma_sanpham" => $masp, 'ma_thanhvien' => $session['ma_thanhvien']));
+		// if(!empty($trangthai)){
+		// 	echo "dacosp";
+		// }else{
+			$de = $this->Mtrangchu->delete_many_where("tbl_cart", array("ma_sanpham" => $masp, 'ma_thanhvien' => $session['ma_thanhvien']));
 			$data = array(
 				'ma_sanpham'   	=> $masp,
 				'ma_thanhvien' 	=> $session['ma_thanhvien'],
 				'soluong'   	=> $soluong,
+				'thoigian'		=> time(),
 			);
 			$row = $this->Mtrangchu->insert("tbl_cart", $data);
 			if($row > 0){
@@ -92,7 +103,7 @@ class Ctrangchitiet extends CI_Controller
 			}else{
 				echo "thatbai";
 			}
-		}
+		// }
 		exit();
 	}
 

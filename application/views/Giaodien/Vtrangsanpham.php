@@ -10,7 +10,11 @@
                                 {foreach $dmsp as $ds}
                                 <li class="category-item">
                                     <a href="#" class="category-item__link">{$ds.ten_dmsanpham}</a>
-                                    
+                                    <ul class="sub-menu">
+                                        <li><a href="#">WordPress</a></li>
+                                        <li><a href="#"><a href="https://thachpham.com/category/seo" data-wpel-link="internal">SEO</a></a></li>
+                                        <li><a href="#">Hosting</a></li>
+                                    </ul>
                                 </li>
                                 {/foreach}
 

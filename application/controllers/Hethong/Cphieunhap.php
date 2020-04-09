@@ -33,10 +33,12 @@ class Cphieunhap extends MY_Controller
 	public function themphieunhap(){
 		$session = $this->session->userdata("user");
 		$data = $this->input->post('data');
+		$ma_phieunhap= 'PN'.rand(1000,99999);
 		$phieunhaphang = array(
+			'ma_phieunhap' => $ma_phieunhap,
 			'thoigian_nhap' 		=> $data['thoigian_nhap'],
-			'ghichu_nhap'	 		=> "",
-			'nguoilap_phieunhap' 	=> $session['ma_taikhoan'],
+			'ghichu'	 		=> "",
+			'nguoilap' 	=> $session['ma_taikhoan'],
 			'ma_nhacungcap' 		=> $data['ma_nhacungcap'],
 		);
 		$id = $this->Mphieunhap->add_tbl_phieunhap($phieunhaphang);

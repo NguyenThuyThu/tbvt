@@ -15,6 +15,14 @@ class Ccanbo extends MY_Controller {
 		/* ---------------------- MAIN PROGRAM -----------------------*/
 		
 		$session = $this->session->userdata('user');
+
+		$data['tb'] = "";
+		// Bấm Thêm Tài khoản
+		if($this->input->post('themtaikhoan'))
+		{
+			$data['tb'] = $this->ThemTaiKhoan();
+		}
+
 		if($this->input->post('themdiachi')){
 			$this->themdiachi();
 		}
@@ -37,6 +45,55 @@ class Ccanbo extends MY_Controller {
 		$this->load->view('layout/content',$temp);
 
 	}
+
+	/*Thêm Tài khoản*/
+	public function ThemTaiKhoan(){
+		$ma_thanhvien= 'TV'.rand(1000,99999);
+		$ma_taikhoan = 'TK'.rand(1000,99999);
+		$data_thanhvien = array(
+			'ma_thanhvien' => $ma_thanhvien,
+			'hoten_thanhvien' => $this->input->post('hoten'), 
+			'ngaysinh' => $this->input->post('ngaysinh'), 
+			'gioitinh' => $this->input->post('gioitinh'), 
+			'sodienthoai' => $this->input->post('sodienthoai'), 
+			'email'     => $this->input->post('email')
+		);
+
+		$data_quyen_tk = array(
+			'ma_taikhoan' => $ma_taikhoan,
+			'ten_taikhoan'  => $this->input->post('taikhoan'),
+			'makhau'   => sha1($this->input->post('password')),
+			'ngaydangky'   => date('Y/m/d H:i:s'),
+			'ma_thanhvien' => $ma_thanhvien,
+			'ma_quyen' => 2
+		);
+		$check = $this->Mcanbo->get_where_row("tbl_taikhoan","ten_taikhoan", $data_quyen_tk['ten_taikhoan']);
+		if(!empty($check)){
+			setMessages("error", " Tài khoản của bạn đã tồn tại", " Thông báo");
+			return " Tài khoản của bạn đã tồn tại!";
+		}else{
+			$row = $this->Mcanbo->insert("tbl_thanhvien",$data_thanhvien);
+			$row = $this->Mcanbo->insert("tbl_taikhoan",$data_quyen_tk);	
+			if($row > 0){
+				setMessages("success", " Đăng ký thành công", " Thông báo");
+				$data = array(
+					'ma_thanhvien'  	=> $ma_thanhvien,
+					'ten_taikhoan'  	=> $data_quyen_tk['ten_taikhoan'],
+					'hoten_thanhvien'  	=> $data_thanhvien['hoten_thanhvien'],
+					'ma_quyen' 			=> 2
+				);
+				$this->session->set_userdata("user", $data);
+				return redirect(base_url("trangchu"));
+
+			}else{
+				setMessages("error", " Đăng ký thất bại", " Thông báo");
+				return redirect(base_url());
+			}
+		}
+		
+		
+	}
+
 
 	/*Thêm Địa chỉ*/
 	public function themdiachi(){

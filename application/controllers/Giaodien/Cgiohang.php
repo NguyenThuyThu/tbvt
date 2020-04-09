@@ -28,23 +28,15 @@ class Cgiohang extends CI_Controller
 	 		}else{
 	 			echo "thatbai";
 	 		}
+	 		exit();
 	 	}
 	 	if($this->input->post('action') == "changeSLSP"){
 	 		$soluong = $this->input->post('soluong');
 	 		$masp  = $this->input->post('masp');
-	 		$row = 0;
-	 		if(!empty($session)){
-	 			$row = $this->Mgiohang->update_giohang($masp, $session['ma_thanhvien'], $soluong);
-	 		}
-	 		$data = array(
-	 			'details_prduct'	=>"",
-	 			'thongke'			=> ""
-	 		);
-	 		if($row > 0){
-	 			$data = $this->get_Details();
-		 		echo json_encode($data);
-		 		exit();
-	 		}
+ 			$this->Mgiohang->update_giohang($masp, $session['ma_thanhvien'], $soluong);
+ 			$data = $this->get_Details();
+		 	echo json_encode($data);
+			exit();
 	 	}
 
 
@@ -69,12 +61,16 @@ class Cgiohang extends CI_Controller
 
 		foreach ($details_prduct as $key => $value) {
 			$tongDG += $value['dongia_sanpham']*$value['soluong'];
+			$details_prduct[$key]['thanhtien'] =   number_format($value['dongia_sanpham']*$value['soluong'], 0, ",", ",");
 		}
 		$tongDG = number_format($tongDG, 0, ",", ",");
 		$thongke = array(
 			'tongSL'	=> $tongsoluong,
 			'tongDG'	=> $tongDG,
 		);
+		foreach ($details_prduct as $key => $value) {
+			$details_prduct[$key]['dongiasanpham'] =  number_format($value['dongia_sanpham'] , 0, ",", ",");
+		}
 		$data = array(
 			'details_prduct'	=> $details_prduct,
 			'thongke'			=> $thongke,

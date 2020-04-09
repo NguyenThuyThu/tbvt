@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set('Asia/Bangkok');
 	$data['url'] = base_url();
 	$data['baseURL'] = base_url();
 	$data['message'] = getMessages();

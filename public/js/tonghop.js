@@ -1,17 +1,4 @@
 $(document).ready(function(){
-	// Thông tin cá nhân
-	$(".capnhatcb").click(function(event) {
-    	$('input[name="data[hoten_thanhvien]"]').val($(this).attr("hoten_thanhvien"));
-    	$('select[name="data[ma_dmsanpham]"]').val($(this).attr("ma_dmsanpham")).trigger('change');
-		$(".huyloaisp").show();
-		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Cập nhật loại sản phẩm');
-		$(".themloaisp").val($(this).attr("ma_loaisanpham"));
-		$(".themloaisp").attr("name","capnhatsanpham");
-
-		$('html').animate({scrollTop: $(".breadcrumb-item").offset().top}, 0, "easeInCubic");
-	});
-	
-	// Danh mục sản phẩm
 	$(".huyloaisp").hide();
 	$(".huyloaisp").click(function(event) {
 		$(".themloaisp").html('<i class="fa fa-check-circle-o" aria-hidden="true"></i>&nbsp;Thêm loại sản phẩm');
@@ -118,7 +105,7 @@ $(document).ready(function(){
 		$("button[name='capnhatsanpham']").attr("name","themloaisp");
 	});
 	$(".suasanpham").click(function(event) {
-    	$('input[name="data[soluong]"]').val($(this).attr("soluong"));
+    	$('input[name="data[soluong_sanpham]"]').val($(this).attr("soluong_sanpham"));
     	$('input[name="data[ten_sanpham]"]').val($(this).attr("ten_sanpham"));
     	$('input[name="data[dongia_sanpham]"]').val($(this).attr("dongia_sanpham"));
     	$('input[name="data[thoigianbaohanh_sanpham]"]').val($(this).attr("thoigianbaohanh_sanpham"));
@@ -127,7 +114,7 @@ $(document).ready(function(){
     	$('select[name="data[ma_loaisanpham]"]').val($(this).attr("ma_loaisanpham")).trigger('change');
     	$('select[name="data[ma_nhacungcap]"]').val($(this).attr("ma_nhacungcap")).trigger('change');
     	$('textarea[name="data[thongsokythuat_sanpham]"]').val($(this).attr("thongsokythuat_sanpham"));
-    	$('textarea[name="data[ghichu]"]').val($(this).attr("ghichu"));
+    	$('textarea[name="data[ghichu_sanpham]"]').val($(this).attr("ghichu_sanpham"));
 		$(".huysp").show();
 		$(".themloaisp").val($(this).attr("ma_sanpham"));
 		$(".themloaisp").attr("name","capnhatsanpham");
@@ -138,10 +125,10 @@ $(document).ready(function(){
     // Mua ngay sản phẩm
     // $(".muangay").click(function(event) {
     // 	$('input[name="data[hoten_thanhvien]"]').val($(this).attr("hoten_thanhvien"));
-    // 	$('input[name="data[ngaysinh_thanhvien]"]').val($(this).attr("ngaysinh_thanhvien"));
-    // 	$('input[name="data[gioitinh_thanhvien]"]').val($(this).attr("gioitinh_thanhvien"));
-    // 	$('input[name="data[sodienthoai_thanhvien]"]').val($(this).attr("sodienthoai_thanhvien"));
-    // 	$('input[name="data[email_thanhvien]"]').val($(this).attr("email_thanhvien"));
+    // 	$('input[name="data[ngaysinh]"]').val($(this).attr("ngaysinh"));
+    // 	$('input[name="data[gioitinh]"]').val($(this).attr("gioitinh"));
+    // 	$('input[name="data[sodienthoai]"]').val($(this).attr("sodienthoai"));
+    // 	$('input[name="data[email]"]').val($(this).attr("email"));
     // 	$('input[name="data[diachi_thanhvien]"]').val($(this).attr("diachi_thanhvien"));
     // 	$('button[name="dathang"]').val($(this).attr("ma_thanhvien"));
     // });

@@ -24,7 +24,6 @@ $route['phanquyen'] = 'Hethong/Cphanquyen';
 $route['nhanvien'] = 'Hethong/Ccanbo';
 $route['donhang'] = 'Hethong/Cdonhang';
 $route['nhapdonhang'] = 'Hethong/Cnhapdonhang';
-$route['xemdonhang'] = 'Hethong/Cxemdonhang';
 
 // $route['doimatkhau'] = 'Hethong/Cdoimatkhau ';
 
