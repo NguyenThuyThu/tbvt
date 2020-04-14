@@ -31,7 +31,9 @@ class Cphieunhap extends MY_Controller
 			}
 			exit();
 		}
-		
+		if($this->input->post("capnhatpn"){
+			pr(1);
+		}
 		$phieunhap = $this->Mphieunhap->getPhieuNhap();
 		foreach ($phieunhap as $key => $value) {
 			$phieunhap[$key]['ctphieunhap'] = $this->Mphieunhap->getCTphieuNhap($value['ma_phieunhap']);

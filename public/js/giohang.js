@@ -30,6 +30,8 @@ $(function() {
         $(".soluong").change(function(event) {
             soluong = parseInt($(this).val().trim());
             masp = $(this).attr("data-masp");
+            console.log(soluong);
+            console.log(masp);
             $.ajax({
                 url: window.location.href,
                 type: 'post',
@@ -41,9 +43,10 @@ $(function() {
                 success: function(data) {
                     index = JSON.parse(data);
                     data = JSON.parse(data);
+                    console.log(data);
                     var url = window.location.origin + "/" + window.location.pathname.split("/")[1] + '/';
                     var html = '';
-                    console.log(index['details_prduct']);
+                    var tongtien = 0;
                     for(i = 0; i < index['details_prduct'].length; i++){
                         html +='<tr>';
                         html +='<td >';
@@ -67,8 +70,11 @@ $(function() {
                         html +='<button class="btn btn-danger btn-sm remove" data-info="' +index['details_prduct'][i]['ma_sanpham']+ '"><i class="fa fa-times" aria-hidden="true"></i></button>';
                         html +='</td>';
                         html +='</tr>';
+                        $(this).val(index['details_prduct'][i]['soluong']);
                     }
                     $("#tbody1").html(html);
+                    $(".tongtieen").html("<b>Tổng tiền " + index['thongke']['tongDG'] + " đ</b>");
+                    changeSL();
                 },
             })
         });

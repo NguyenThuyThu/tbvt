@@ -44,38 +44,71 @@
                                             <td class="text-left">{$ds.ma_hoadonmua}</td>
                                             <td class="text-left">{$ds.hoten_thanhvien}</td>
                                             <td class="text-left">{$ds.ngaylap}</td>
-                                            <td class="text-left">{$ds.ten_trangthai_giaohang}</td>
+                                            <td class="text-left">
+                                                {if $ds.ma_trangthai_giaohang == 1}
+                                                    {$class="bg-indigo"}
+                                                {/if}
+                                                {if $ds.ma_trangthai_giaohang == 2}
+                                                    {$class="bg-orange"}
+                                                {/if}
+                                                {if $ds.ma_trangthai_giaohang == 3}
+                                                    {$class="bg-olive"}
+                                                {/if}
+                                                {if $ds.ma_trangthai_giaohang == 4}
+                                                    {$class="bg-pink"}
+                                                {/if}
+                                                <div class="{$class}" style="padding: 4px;">
+                                                    <span>{$ds.ten_trangthai_giaohang}</span>
+                                                </div>
+                                            </td>
                                             <td class="text-center">
-                                               <button type="submit" title="Xử lý đơn hàng" class="btn btn-warning btn-sm capnhatTTXL" 
+                                                {if $ds.ma_trangthai_giaohang == 1}
+                                                    <button type="submit" title="Xử lý đơn hàng" class="btn btn-primary btn-sm capnhatTTXL chungbt" 
+                                                    ma_hoadonmua   = "{$ds.ma_hoadonmua}" 
+                                                    ma_trangthai_giaohang = "{$ds.ma_trangthai_giaohang}"
+                                                    name="capnhatTTXL">
+                                                    Xử lý đơn hàng
+                                                   </button>
+                                                {/if}
+                                                {if $ds.ma_trangthai_giaohang == 2}
+                                                    <button type="submit" title="Đang giao hàng" class="btn btn-success btn-sm capnhatTTGH chungbt"
                                                         ma_hoadonmua   = "{$ds.ma_hoadonmua}" 
                                                         ma_trangthai_giaohang = "{$ds.ma_trangthai_giaohang}"
-                                               name="capnhatTTXL"><i class="fa fa-arrow-right" aria-hidden="true" 
-                                               style="color: #fff"></i></button>
-                                               <button type="submit" title="Đang giao hàng" class="btn btn-info btn-sm capnhatTTGH"
+                                                       name="capnhatTTGH"><i class="fa fa-arrow-right" aria-hidden="true" 
+                                                       style="color: #fff"></i>&nbsp;Giao hàng  </button>
+                                                    
+                                                {/if}
+                                                
+                                               {if $ds.ma_trangthai_giaohang >= 2 }
+                                                   <a class="btn-color" href="{$url}printhd?hoadon={$ds.ma_hoadonmua}">
+                                                        <button type="button" target="_blank" 
+                                                        ma_hoadonmua               = "{$ds.ma_hoadonmua}"
+                                                        data-indh                  = '{$ds.ctdonhang}'
+                                                     class="btn btn-secondary btn-sm inhoadon chungbt" title="In hóa đơn"><i class="fa fa-print" aria-hidden="true"></i>&nbsp;In hóa đơn</button></a>
+                                                {/if}
+                                                {if $ds.ma_trangthai_giaohang == 3 }
+                                                   <button type="submit" title="Đã giao hàng" class="btn btn-warning btn-sm capnhatTTHT chungbt" 
                                                         ma_hoadonmua   = "{$ds.ma_hoadonmua}" 
                                                         ma_trangthai_giaohang = "{$ds.ma_trangthai_giaohang}"
-                                               name="capnhatTTGH"><i class="fa fa-arrow-right" aria-hidden="true" 
-                                               style="color: #fff"></i></button>
-                                               <button type="submit" title="Đã giao hàng" class="btn btn-success btn-sm capnhatTTHT" 
-                                                        ma_hoadonmua   = "{$ds.ma_hoadonmua}" 
-                                                        ma_trangthai_giaohang = "{$ds.ma_trangthai_giaohang}"
-                                               name="capnhatTTHT"><i class="fa fa-arrow-right" aria-hidden="true" 
-                                               style="color: #fff"></i></button>
+                                                        name="capnhatTTHT"><i class="fa fa-arrow-right" aria-hidden="true" 
+                                                        style="color: #fff"></i>&nbsp;Đã giao hàng  </button>
+                                               {/if}
 
-                                                <button type="button" class="btn btn-primary btn-sm xemchitiet" 
+                                               
+                                                <button type="button" class="btn btn-info btn-sm xemchitiet chungbt" 
                                                     ma_hoadonmua               = "{$ds.ma_hoadonmua}"
+                                                    ngaysinh                    = "{$ds.ngaysinh}"
+                                                    sodienthoai                 = "{$ds.sodienthoai}"
                                                     data-ctdh                  = '{$ds.ctdonhang}'
+                                                    data-kh                    = '{$ds.hoten_thanhvien}'
+                                                    data-matt                  = '{$ds.ma_trangthai_giaohang}'
+                                                    data-trangthai             = '{$ds.ten_trangthai_giaohang}'
                                                     data-toggle="modal" data-target="#modal-default1"
-                                                title="Xem chi tiết"><i class="fa fa-eye"></i></button>
-                                              <!--   <button type="button" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button> -->
-                                                <button type="submit" name="xoadh" title="Xóa đơn hàng" class="btn btn-danger btn-sm" value="" onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?');"><i class="far fa-trash-alt" aria-hidden="true"></i></button>
-                                                <a class="btn-color" href="{$url}printhd?hoadon={$ds.ma_hoadonmua}"><button type="button" target="_blank" 
-                                                    ma_hoadonmua               = "{$ds.ma_hoadonmua}"
-                                                    data-indh                  = '{$ds.ctdonhang}'
-                                                 class="btn btn-secondary btn-sm inhoadon" title="In hóa đơn"><i class="fa fa-print" aria-hidden="true"></i></button></a>
+                                                title="Xem chi tiết"><i class="fa fa-eye"></i>&nbsp;Xem chi tiết</button>
+
+                                                 <button type="submit" name="xoadh" title="Xóa đơn hàng" class="btn btn-danger btn-sm chungbt" value="" onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này không?');"><i class="far fa-trash-alt" aria-hidden="true"></i>&nbsp;Xóa đơn hàng</button> 
                                             </td>
                                         </tr>
-                                        
                                         {/foreach}
                                        </tbody>
                                    </table>
@@ -101,31 +134,45 @@
             <div class="modal-body">
                 <form method="post">
                     <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-2">
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label>Khách hàng:</label>
                                                 <input type="text" class="form-control" name="data[hoten_thanhvien]"
-                                                value="{$danhsachdonhang.hoten_thanhvien}" disabled>
+                                                value="" disabled>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm-2">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Ngày sinh:</label>
+                                                <input type="text" class="form-control" name="data[ngaysinh]"
+                                                value="" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Số điện thoại:</label>
+                                                <input type="text" class="form-control" name="data[sodienthoai]"
+                                                value="" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
                                     <div class="form-group">
-                                      <!--   {foreach $danhsachdonhang as $ds}
-                                        <label>Trạng thái đơn hàng:</label>
-                                        <input type="text" class="form-control" name="data[ten_trangthai_giaohang]" 
-                                        value="{$ds.ten_trangthai_giaohang}" disabled>
-                                        {/foreach}
- -->
-                                        <select class="form-control" name="data[ten_trangthai_giaohang]" disabled required>
-                                            {foreach $danhsachdonhang as $key => $val}
-                                            <option value="{$val.ma_trangthai_giaohang}">{$val.ten_trangthai_giaohang}
-                                            </option>
-                                            {/foreach}
-                                        </select>
+                                        <label>Trạng thái:</label>
+                                        <div class="alert alert-warning  trangthai">
+                                            Success alert preview. This alert is dismissable.
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -160,8 +207,20 @@
     </div>
 </div>
 <style>
-    thead tr th {
+    thead tr th, tbody tr td {
         font-size: 14px !important;
-        vertical-align: middle;
+        vertical-align: middle !important;
+    }
+    .trangthai{
+        padding: 5px;
+        font-size: 17px;
+    }
+    .daxuly{
+        background: #00ffb8;
+        color: #3c3c3c;
+    }
+    .chungbt{
+        width: 100%;
+        margin-bottom: 3px;
     }
 </style>

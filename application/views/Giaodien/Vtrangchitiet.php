@@ -39,7 +39,11 @@
                         
                      </p>
                      <p>
-                        <button class="btn btn-warning button alt btn-giohang" type="button" name="add-to-cart" value="{$content.ma_sanpham}">Thêm vào giỏ hàng</button>
+                        {if !empty($session)}
+                            <button class="btn btn-warning button alt btn-giohang" type="button" name="add-to-cart" value="{$content.ma_sanpham}">Thêm vào giỏ hàng</button>
+                        {else}
+                            <a href="{$url}dangnhap"><button class="btn btn-warning">Thêm vào giỏ hàng</button></a>
+                        {/if}
                         {if !empty($session)}
                         <button class="btn btn-danger" id="muangay" value="{$content.ma_sanpham}">Mua ngay</button>
                         {else}

@@ -201,9 +201,11 @@ $(document).ready(function(){
 	
 	// Xử lý đơn hàng
 	$(".xemchitiet").click(function(event) {
-		data_ctdh = JSON.parse($(this).attr("data-ctdh"));
+		data_ctdh 	= JSON.parse($(this).attr("data-ctdh"));
+		tenkh 		= $(this).attr("data-kh");
+		trangthai 	= $(this).attr("data-trangthai");
+		ma_tt 		= $(this).attr("data-matt");
 		var html = '';
-		console.log(data_ctdh);
 		// $("select[name='data[ma_sanpham]']").html("");
        $("#tbody_ctdh").html("");
        var url = window.location.origin + "/" + window.location.pathname.split("/")[1] + '/';
@@ -217,9 +219,21 @@ $(document).ready(function(){
 			html += '</tr>';
        });
        $("#tbody_ctdh").html(html);
+       $("input[name='data[hoten_thanhvien]']").val(tenkh);
+       $("input[name='data[ngaysinh]']").val($(this).attr("ngaysinh"));
+       $("input[name='data[sodienthoai]']").val($(this).attr("sodienthoai"));
+       $(".trangthai").text(trangthai);
+       if(ma_tt == 2){
+       		$(".trangthai").removeClass('alert-warning');
+       		$(".trangthai").addClass('daxuly');
+       }
+       if(ma_tt == 1){
+       		$(".trangthai").addClass('alert-warning');
+       }
 	});
 
 	$(".inhoadon").click(function(event) {
+		data_indh = JSON.parse($(this).attr("data-indh"));
 		data_indh = JSON.parse($(this).attr("data-indh"));
 		var html = '';
 		console.log(data_indh);
@@ -248,20 +262,17 @@ $(document).ready(function(){
 		$(".capnhatTTXL").val($(this).attr("ma_hoadonmua"));
 		// $(".capnhatTTGH").html('<i class="fa fa-arrow-left" aria-hidden="true" style="color: #fff"></i>');
 		$(".capnhatTTXL").attr("name","capnhatTTXL");
-		$('html').animate({scrollTop: $(".breadcrumb-item").offset().top}, 0, "easeInCubic");
 	});
 	$(".capnhatTTGH").click(function(event) {
 		$(".capnhatTTGH").val($(this).attr("ma_hoadonmua"));
 		// $(".capnhatTTGH").html('<i class="fa fa-arrow-left" aria-hidden="true" style="color: #fff"></i>');
 		$(".capnhatTTGH").attr("name","capnhatTTGH");
-		$('html').animate({scrollTop: $(".breadcrumb-item").offset().top}, 0, "easeInCubic");
 	});
 
 	$(".capnhatTTHT").click(function(event) {
 		$(".capnhatTTHT").val($(this).attr("ma_hoadonmua"));
 		// $(".capnhatTTHT").html('<i class="fa fa-arrow-left" aria-hidden="true" style="color: #fff"></i>');
 		$(".capnhatTTHT").attr("name","capnhatTTHT");
-		$('html').animate({scrollTop: $(".breadcrumb-item").offset().top}, 0, "easeInCubic");
 	});
 	
 	$(".xoaDH").click(function(event) {

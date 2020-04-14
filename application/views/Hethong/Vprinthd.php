@@ -130,6 +130,7 @@ th, td {
 <script type="text/javascript">
     window.print();
     window.onafterprint = function() {
-        // window.close();
+        var url = window.location.origin + "/" + window.location.pathname.split("/")[1] + '/';
+        location.href=url+"/donhang";
     }
 </script>
