@@ -131,6 +131,6 @@ th, td {
     window.print();
     window.onafterprint = function() {
         var url = window.location.origin + "/" + window.location.pathname.split("/")[1] + '/';
-        location.href=url+"/donhang";
+        location.href = url + "/donhang";
     }
 </script>
