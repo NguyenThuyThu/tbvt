@@ -54,8 +54,8 @@ class Clogin extends CI_Controller
 		);
 		$check = $this->Mdangky->get_where_row("tbl_taikhoan","ten_taikhoan", $data_quyen_tk['ten_taikhoan']);
 		if(!empty($check)){
-			setMessages("error", " Tài khoản của bạn đã tồn tại", " Thông báo");
-			return " Tài khoản của bạn đã tồn tại!";
+			setMessages("error", " Tài khoản đã tồn tại", " Thông báo");
+			return " Tài khoản đã tồn tại!";
 		}else{
 			$row = $this->Mdangky->insert("tbl_thanhvien",$data_thanhvien);
 			$row = $this->Mdangky->insert("tbl_taikhoan",$data_quyen_tk);	

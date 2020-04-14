@@ -3,22 +3,23 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="col-xs-12 col-md-5 imgproduct">
-                    <a href="{$baseURL}public/images/anhsanpham/{$content.linkanh_sanpham}" class="img_sp thumbnail"  rel="motnhom">
-                        <img src="{$baseURL}public/images/anhsanpham/{$content.linkanh_sanpham}" class="anhSP">
+                    <a href="{$baseURL}public/images/anhsanpham/{$content.ma_sanpham}.jpg" class="img_sp thumbnail"  rel="motnhom">
+                        <img src="{$baseURL}public/images/anhsanpham/{$content.ma_sanpham}.jpg" class="anhSP">
                         <div class="moanh"></div>
                      </a>
                 </div>
                 <div class="col-xs-12 col-md-7 imgproduct">
                     <div class="tensp"><p><span><i class="fa fa-hand-o-right" aria-hidden="true"></i></span><b>&nbsp;{$content.ten_sanpham}</b></p></div>
-                    <p>
-                      <span class="color-mo"><i class="fa fa-map-marker" aria-hidden="true"></i> Xuất xứ:</span> <i><b class="color-tt">{$content.xuatxu_sanpham}</b></i> </span>
-                      {if $content['soluong'] == 0}
-                            <span style="padding: 10px; color:#fff;" class="lable label-danger">Hết hàng</span>
-                       {/if}
-                    </p>
+                    <p><span class="color-mo"><i class="fa fa-map-marker" aria-hidden="true"></i> Xuất xứ:</span> <i><b class="color-tt">{$content.xuatxu_sanpham}</b></i> </span></p>
                     <p><span class="color-mo"><i class="fa fa-snowflake-o" aria-hidden="true"></i> Bảo hành:</span> <i><b class="color-tt">{$content.thoigianbaohanh_sanpham}</b></i> </span></p>
+                    <p><span class="color-mo"><i class="fa fa-copyright" aria-hidden="true"></i> Đơn vị tính:</span> <i><b class="color-tt">{$content.ten_donvitinh}</b></i> </span></p>
+                    {if $content.phantram_khuyenmai != ''}
+                     <p><span class="discountTag_11Tt">Giá sản phẩm:</span> <span class="product-price">{number_format($content.dongia_sanpham, 0, ",", ",")} vnđ</span><span class="home-product-item__price-old">{number_format(($content.dongia_sanpham + ($content.phantram_khuyenmai * $content.dongia_sanpham)/100), 0, ",", ",")}vnđ</span></p>
+                     <p>
+                     {else}
                      <p><span class="discountTag_11Tt">Giá sản phẩm:</span> <span class="product-price">{number_format($content.dongia_sanpham, 0, ",", ",")} vnđ</span></p>
                      <p>
+                      {/if}
                          <span>Số lượng:</span><span>
                             <button class="btn_1IRK tru">-</button>
                               <input class="input_3cYn soluong_{$content.ma_sanpham}" type="number" value="{$soluong}" step="1" min="0" max="9999"  value="1" title="SL" size="4" pattern="[0-9]*" inputmode="numeric">
@@ -37,12 +38,14 @@
                      <p>
                         
                      </p>
-                    {if $content['soluong'] > 0 && $session != ""}
                      <p>
                         <button class="btn btn-warning button alt btn-giohang" type="button" name="add-to-cart" value="{$content.ma_sanpham}">Thêm vào giỏ hàng</button>
+                        {if !empty($session)}
                         <button class="btn btn-danger" id="muangay" value="{$content.ma_sanpham}">Mua ngay</button>
+                        {else}
+                        <a href="{$url}dangnhap"><button class="btn btn-danger" id="muangay">Mua ngay</button></a>
+                        {/if}
                      </p>
-                     {/if}
                 </div>
                 <div class="col-md-12">
                     <ul class="nav nav-pills">

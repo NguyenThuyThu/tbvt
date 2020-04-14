@@ -12,14 +12,24 @@ class Mphieunhap extends MY_Model{
 		return $query;	
 	}
 
-	function getCTphieuNhap(){
-		$this->db->from("tbl_phieunhap");
-		$this->db->join("tbl_ct_phieunhap", "tbl_ct_phieunhap.ma_phieunhap = tbl_phieunhap.ma_phieunhap");
-		$this->db->join("tbl_nhacungcap", "tbl_phieunhap.ma_nhacungcap = tbl_nhacungcap.ma_nhacungcap");
+	function getCTphieuNhap($mapn){
+		$this->db->select("tbl_sanpham.ma_sanpham, tbl_sanpham.dongia_sanpham, tbl_ct_phieunhap.dongia_nhap, tbl_ct_phieunhap.soluong_nhap, tbl_ct_phieunhap.tongtien, tbl_anhsanpham.linkanh_sanpham, tbl_sanpham.ten_sanpham");
+		$this->db->from("tbl_ct_phieunhap");
+		$this->db->where("tbl_ct_phieunhap.ma_phieunhap", $mapn);
 		$this->db->join("tbl_sanpham", "tbl_sanpham.ma_sanpham = tbl_ct_phieunhap.ma_sanpham");
+		$this->db->join("tbl_anhsanpham", "tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham");
 		$query = $this->db->get()->result_array();
+		// pr($this->db->last_query());
 		return $query;	
 	}
+
+	public function getPhieuNhap(){
+		$this->db->from("tbl_phieunhap");
+		$this->db->join("tbl_nhacungcap", "tbl_phieunhap.ma_nhacungcap = tbl_nhacungcap.ma_nhacungcap");
+		$query = $this->db->get()->result_array();
+		return $query;
+	}
+
 	function add_tbl_phieunhap($post_data){
 	    $this->db->insert('tbl_phieunhap',$post_data);
 	    $questionid =$this->db->insert_id();

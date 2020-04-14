@@ -157,7 +157,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="phieunhap" class="nav-link">
+                            <a href="nhaphang" class="nav-link">
                                 <i class="fa fa-circle-o" aria-hidden="true"></i>
                                 <p>Phiếu nhập</p>
                             </a>
@@ -188,7 +188,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="nhapdonhang" class="nav-link">
+                            <a href="themdonhang" class="nav-link">
                                 <i class="fa fa-circle-o" aria-hidden="true"></i>
                                 <p> Thêm Đơn hàng</p>
                             </a>

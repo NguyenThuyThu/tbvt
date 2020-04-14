@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
-*	Controller phiếu nhập
+*	Controller
 *
 **/
-class Cphieunhap extends MY_Controller
+class Cnhaphang extends MY_Controller
 {
 	public function __construct()
 	{
@@ -31,18 +31,24 @@ class Cphieunhap extends MY_Controller
 			}
 			exit();
 		}
+
+		if($this->input->post('capnhatpn')) {
+			$this->capnhatpn();
+		}
 		
 		$phieunhap = $this->Mphieunhap->getPhieuNhap();
 		foreach ($phieunhap as $key => $value) {
-			$phieunhap[$key]['ctphieunhap'] = $this->Mphieunhap->getCTphieuNhap($value['ma_phieunhap']);
+			$phieunhap[$key]['ctphieunhap'] = json_encode($this->Mphieunhap->getCTphieuNhap($value['ma_phieunhap']));
 		}
+		$sanpham =  $this->Mphieunhap->get_tenSP();
 		// pr($phieunhap);
+
 		$temp = array(
-			'template' => 'Hethong/Vphieunhap',
+			'template' => 'Hethong/Vnhaphang',
 			'data' => array(
 				'nhacc' => $this->Mphieunhap->get("tbl_nhacungcap"),
 				'phieunhap' => $phieunhap,
-				'sanpham' => $this->Mphieunhap->get_tenSP(),
+				'sanpham' => $sanpham,
 			)
 		);
 		$this->load->view('layout/content',$temp);
@@ -51,6 +57,7 @@ class Cphieunhap extends MY_Controller
 	public function themphieunhap(){
 		$session = $this->session->userdata("user");
 		$data = $this->input->post('data');
+		// pr($data);
 		$ma_phieunhap= 'PN'.rand(1000,99999).time();
 		$phieunhaphang = array(
 			'ma_phieunhap' 		=> $ma_phieunhap,
@@ -66,6 +73,7 @@ class Cphieunhap extends MY_Controller
 				'ma_sanpham' 	=> $data['ma_sanpham'][$i],
 				'soluong_nhap' 	=> $data['soluong_nhap'][$i],
 				'dongia_nhap' 	=> $data['dongia_nhap'][$i],
+				'tongtien'  	=> $data['soluong_nhap'][$i] * $data['dongia_nhap'][$i],
 				'ma_phieunhap' 	=> $phieunhaphang['ma_phieunhap'],
 			);
 			$dongia['dongia_sanpham'] = $dongia_ban[$i];
@@ -79,15 +87,39 @@ class Cphieunhap extends MY_Controller
 			$this->Mphieunhap->insert("tbl_ct_phieunhap", $chitiet_phieunhaphang);
 		}
 		setMessages("success", "Thêm thành công", "Thông báo");
-		return redirect("phieunhap");
+		return redirect("nhaphang");
 	}
 
-	public function suaPN() {
-		$ma 	  = $this->input->post('capnhatphieunhap');
+	public function capnhatpn() {
+		$ma 	  = $this->input->post('capnhatpn');
 		$data 	  = $this->input->post('data');
-		$success  = 'Cập nhật thành công';
-        $error    = 'Cập nhật';
-        $redirect = base_url().'phieunhap'; 
-        $this->update("tbl_loaisanpham", "ma_loaisanpham", $ma, $data, $success, $error, $redirect);
+		// pr($ma);
+		// $success  = 'Cập nhật thành công';
+  //       $error    = 'Cập nhật thất bại';
+  //       $redirect = base_url().'nhaphang'; 
+        $dongia_ban = $this->input->post("dongiaban");
+		for($i=0; $i< count($data['ma_sanpham']); $i++){
+			$chitiet_phieunhaphang = array(
+				'ma_sanpham' 	=> $data['ma_sanpham'][$i],
+				'soluong_nhap' 	=> $data['soluong_nhap'][$i],
+				'dongia_nhap' 	=> $data['dongia_nhap'][$i],
+				'tongtien'  	=> $data['soluong_nhap'][$i] * $data['dongia_nhap'][$i],
+				'ma_phieunhap' 	=> $ma,
+			);
+			$dongia['dongia_sanpham'] = $dongia_ban[$i];
+		// pr($chitiet_phieunhaphang);
+			if($dongia['dongia_sanpham'] != ""){
+				$this->Mphieunhap->update("tbl_sanpham","ma_sanpham", $chitiet_phieunhaphang['ma_sanpham'], $dongia);
+			}
+			$sp = $this->Mphieunhap->get_where_row("tbl_sanpham", "ma_sanpham", $chitiet_phieunhaphang['ma_sanpham']);
+			$sl['soluong'] = $data['soluong_nhap'][$i] + $sp['soluong'];
+			$this->Mphieunhap->update("tbl_sanpham", "ma_sanpham", $chitiet_phieunhaphang['ma_sanpham'], $sl);
+			$this->Mphieunhap->update("tbl_ct_phieunhap", "ma_phieunhap", $chitiet_phieunhaphang['ma_phieunhap'],
+			 $chitiet_phieunhaphang);
+			// $this->Mphieunhap->insert("tbl_ct_phieunhap", $chitiet_phieunhaphang);
+		}
+		setMessages("success", "Sửa thành công", "Thông báo");
+		return redirect("nhaphang");
+        // $this->update("tbl_ct_phieunhap", "ma_phieunhap", $ma, $data_sp, $success, $error, $redirect);
 	}
 }

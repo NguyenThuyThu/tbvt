@@ -72,7 +72,7 @@
                                                                 <!-- <button type="button" class="btn btn-info suaPN"
                                                                     title="Sửa phiếu nhập"><i class="fas fa-pencil-alt"
                                                                         aria-hidden="true"></i></button> -->
-                                                                <button 
+                                                                <!-- <button 
                                                                         type="button" 
                                                                         class="btn btn-info suasanpham"
                                                                         ma_phieunhap              = "{$val.ma_phieunhap}"
@@ -80,7 +80,15 @@
                                                                         ma_nhacungcap              = "{$val.ma_nhacungcap}"
                                                                         data-toggle="modal" data-target="#modal-default1"
                                                                         ><i class="fas fa-pencil-alt" aria-hidden="true"></i>
-                                                                    </button>
+                                                                    </button> -->
+                                                                <button 
+                                                                    type="button" 
+                                                                    class="btn btn-info suaPN"
+                                                                    ma_phieunhap               = "{$val.ma_phieunhap}"
+                                                                    data-sanpham               = '{$val.ctphieunhap}'
+                                                                    data-toggle="modal" data-target="#modal-default1"
+                                                                    ><i class="fas fa-pencil-alt" aria-hidden="true"></i>
+                                                                </button>
                                                                 <button name="xoaPN" class="btn btn-danger xoaPN"
                                                                     data-ma="{$val.ma_phieunhap}"
                                                                     value="{$val.ma_phieunhap}"
@@ -218,13 +226,13 @@
             </div>
             <div class="modal-body">
                 <form method="post">
-                    <div class="row">
+                    <!-- <div class="row">
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label>Ngày nhập:</label>
-                                        <input type="date" class="form-control" name="data[thoigian_nhap]"
+                                        <input type="date" class="form-control" disabled name="data[thoigian_nhap]"
                                             value="{date('Y-m-d')}" required>
                                     </div>
                                 </div>
@@ -233,75 +241,42 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Nhà cung cấp:</label>
-                                <select class="form-control" name="data[ma_nhacungcap]" required>
+                                <select class="form-control" name="data[ma_nhacungcap]" disabled required>
                                     {foreach $nhacc as $key => $val}
                                     <option value="{$val.ma_nhacungcap}">{$val.ten_nhacungcap}</option>
                                     {/foreach}
                                 </select>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row">
                         <div class="table-repsonsive" style="margin-top: 10px;">
                             <span id="error"></span>
                             <table class="table table-bordered" id="item_table">
                                 <thead>
                                     <tr>
+                                        <th class="text-center">STT</th>
                                         <th class="text-center">Ảnh sản phẩm</th>
                                         <th class="text-center">Tên sản phẩm</th>
                                         <th class="text-center">Số lượng</th>
                                         <th class="text-center">Đơn giá nhập</th>
                                         <th class="text-center">Đơn giá bán</th>
                                         <th class="text-center">Thành tiền</th>
-                                        <th style="width: 10%">Tác vụ&nbsp;&nbsp;<button type="button" name="add"
-                                                class="btn btn-success btn-sm add"><i class="fa fa-plus-square"
-                                                    aria-hidden="true"></i></span></button></th>
+                                        <!-- <th style="width: 10%">Tác vụ&nbsp;&nbsp;<button type="button" name="add_insert"
+                                                class="btn btn-success btn-sm add_insert"><i class="fa fa-plus-square"
+                                                    aria-hidden="true"></i></span></button></th> -->
                                     </tr>
                                 </thead>
-                                <tbody id="tbody">
-                                    <tr class="hidden" id="row_product">
-                                        <td>
-                                            <img src="{$url}public/images/image_upload.png" id="anh" width="100%"/>
-                                            <input type="file" class="form-control" value="1" name="anhsanpham" id="anhsanpham" onchange="readURL(this);" data-toggle="tooltip" data-ariginal-title="Chọn file ảnh" accept=".jpg,.png, .jpeg" >
-                                        </td>
-                                        <td>
-                                            <select name="data[ma_sanpham][]" class="form-control item_unit " required>
-                                                <option value="">Chọn sản phẩm</option>
-                                                {foreach $sanpham as $val}
-                                                {if $val.trangthai_dang_sanpham==1}
-                                                <option value="{$val.ma_sanpham}">{$val.ten_sanpham}</option>
-                                                {/if}
-                                                {/foreach}
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <input type="number" name="data[soluong_nhap][]"
-                                                class="form-control soluong" required />
-                                        </td>
-                                        <td>
-                                            <input type="text" name="data[dongia_nhap][]"
-                                                class="form-control item_quantity dongia" required />
-                                        </td>
-                                        <td>
-                                            <input type="text" name="dongiaban[]"
-                                                class="form-control item_quantity dongiaban" />
-                                        </td>
-                                        <td>
-                                            <input type="text" disabled class="form-control item_total thanhtien" />
-                                        </td>
-                                        <td class="text-center">
-                                            <button type="button" name="remove" class="btn btn-danger btn-sm remove"><i
-                                                    class="fa fa-minus-square" aria-hidden="true"></i></button>
-                                        </td>
-                                    </tr>
+                                <tbody id="tbody_pn">
+                                    
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="col-12 text-center">
                         <hr>
-                        <button type="submit" name="capnhatphieunhap" value="Thêm"
-                            class="btn btn-success btn-flat capnhatphieunhap">Cập nhật phiếu nhập</button>
+                        <button type="submit" name="capnhatpn" value="Thêm"
+                            class="btn btn-success btn-flat capnhatpn">Cập nhật phiếu nhập</button>
                         <button type="reset" class="btn btn-default huyphieunhap"><i class="fa fa-window-close"
                                 aria-hidden="true"></i>&nbsp; Hủy</button>
                     </div>
@@ -316,6 +291,7 @@
     </div>
 </div>
 <script type="text/javascript" src="{$url}public/js/simple.money.format.js"></script>
+<script type="text/javascript" src="{$url}public/js/suaphieunhap.js"></script>
 <script type="text/javascript">
     // $('.dongia').simpleMoneyFormat();
     // $('.dongiaban').simpleMoneyFormat();

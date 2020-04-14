@@ -74,18 +74,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Số lượng:</label>
-                                        <input type="text" class="form-control" name="data[soluong]" placeholder="Số lượng" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Đơn giá:</label>
-                                        <input type="text" class="form-control money" name="data[dongia_sanpham]" placeholder="Đơn giá" required>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Xuất xứ:</label>
@@ -122,7 +111,7 @@
                     </div>
                     <div class="col-12 text-center">
                         <hr>
-                        <button type="submit" name="themloaisp" value="Thêm" class="btn btn-info btn-flat themloaisp">Thêm sản phẩm</button>
+                        <button type="submit" name="themsp" value="Thêm" class="btn btn-info btn-flat themsp">Thêm sản phẩm</button>
                         <button type="reset" class="btn btn-default huysp"><i class="fa fa-window-close" aria-hidden="true"></i>&nbsp; Hủy</button>
                     </div>
                 </form>
@@ -171,6 +160,7 @@
                                             class="btn btn-info suasanpham"
                                             soluong                     = "{$ds.soluong}"
                                             dongia_sanpham              = "{$ds.dongia_sanpham}"
+                                            phantram_khuyenmai              = "{$ds.phantram_khuyenmai}"
                                             ten_sanpham                 = "{$ds.ten_sanpham}"
                                             ma_sanpham                  = "{$ds.ma_sanpham}"
                                             xuatxu_sanpham              = "{$ds.xuatxu_sanpham}"
@@ -215,7 +205,7 @@
                         <label>Tên đơn vị tính</label>
                         <input type="text" class="form-control" name="data[ten_donvitinh]" >
                         <hr>
-                        <button type="submit" class="btn btn-primary themDVT" name="themDVT" value="1">Cập nhật</button>
+                        <button type="submit" class="btn btn-primary themDVT" name="themDVT" value="1">Thêm</button>
                     </div>
                 </div>
                 <div class="col-12">
@@ -233,7 +223,7 @@
                                 <td class="text-center"><b>{$key+1}</b></td>
                                 <td>{$val.ten_donvitinh}</td>
                                 <td class="text-center">
-                                    <button type="submit" class="btn btn-info btn-sm" name="suadonvitinh" value="1" title="Sửa"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-info btn-sm capnhatDVT" ma_donvitinh = "{$val.ma_donvitinh}" ten_donvitinh = "{$val.ten_donvitinh}" name="capnhatDVT" title="Sửa"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>
                                     <button type="submit" name="xoaDVT" class="btn btn-danger btn-sm" value="{$val.ma_donvitinh}" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục sản phẩm này không?');"><i class="far fa-trash-alt" aria-hidden="true"></i></button>
                                 </td>
                             </tr>
@@ -330,16 +320,17 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Xuất xứ:</label>
-                                        <input type="text" class="form-control" name="data[xuatxu_sanpham]" placeholder="Xuất xứ" required>
+                                        <label>Phần trăm khuyến mại:</label>
+                                        <input type="text" class="form-control" name="data[phantram_khuyenmai]" placeholder="Phần trăm khuyến mại" >
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Thời gian bảo hành:</label>
-                                        <input type="text" class="form-control" name="data[thoigianbaohanh_sanpham]" placeholder="Thời gian bảo hành theo tháng" >
+                                        <label>Xuất xứ:</label>
+                                        <input type="text" class="form-control" name="data[xuatxu_sanpham]" placeholder="Xuất xứ" required>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -347,6 +338,11 @@
                                 <label>Ảnh sản phẩm</label>
                                 <img src="{$url}public/images/image_upload.png" id="anh" width="100%"/>
                                 <input type="file" class="form-control" value="1" name="anhsanpham" id="anhsanpham" onchange="readURL(this);" data-toggle="tooltip" data-ariginal-title="Chọn file ảnh" accept=".jpg,.png, .jpeg" >
+                            </div>
+
+                            <div class="form-group">
+                                <label>Thời gian bảo hành:</label>
+                                <input type="text" class="form-control" name="data[thoigianbaohanh_sanpham]" placeholder="Thời gian bảo hành theo tháng" >
                             </div>
                         </div>
                         <div class="col-12">

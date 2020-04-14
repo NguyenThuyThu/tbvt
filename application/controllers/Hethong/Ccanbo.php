@@ -75,18 +75,17 @@ class Ccanbo extends MY_Controller {
 			$row = $this->Mcanbo->insert("tbl_thanhvien",$data_thanhvien);
 			$row = $this->Mcanbo->insert("tbl_taikhoan",$data_quyen_tk);	
 			if($row > 0){
-				setMessages("success", " Đăng ký thành công", " Thông báo");
+				setMessages("success", " Thêm thành công", " Thông báo");
 				$data = array(
 					'ma_thanhvien'  	=> $ma_thanhvien,
 					'ten_taikhoan'  	=> $data_quyen_tk['ten_taikhoan'],
 					'hoten_thanhvien'  	=> $data_thanhvien['hoten_thanhvien'],
 					'ma_quyen' 			=> 2
 				);
-				$this->session->set_userdata("user", $data);
-				return redirect(base_url("trangchu"));
+				return redirect(base_url("nhanvien"));
 
 			}else{
-				setMessages("error", " Đăng ký thất bại", " Thông báo");
+				setMessages("error", " Thêm thất bại", " Thông báo");
 				return redirect(base_url());
 			}
 		}

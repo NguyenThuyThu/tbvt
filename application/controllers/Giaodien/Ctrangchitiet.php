@@ -16,6 +16,11 @@ class Ctrangchitiet extends CI_Controller
 	public function index()
 	{
 		$session = $this->session->userdata('user');
+
+		if($this->input->post('suaPN')) {
+			$this->suaPN();
+		}
+		
 		$product =  $this->Mtrangchu->get_sanpham();
 		$ID =  explode("_", $this->input->get('product'))[1]; // Lấy mã loại tin
 		$des = [];

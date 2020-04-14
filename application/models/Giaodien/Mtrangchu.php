@@ -59,6 +59,7 @@ class Mtrangchu extends MY_Model {
 		$this->db->where('trangthai_dang_sanpham', 1);
 		$this->db->where('trangthai_hot_sanpham', 1);
 		$this->db->join('tbl_anhsanpham', 'tbl_anhsanpham.ma_sanpham = tbl_sanpham.ma_sanpham', 'inner');
+		$this->db->join('tbl_donvitinh_sanpham', 'tbl_donvitinh_sanpham.ma_donvitinh = tbl_sanpham.ma_donvitinh', 'inner');
 		return $this->db->get('tbl_sanpham')->row_array();
 	}
 

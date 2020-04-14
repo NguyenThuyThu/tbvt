@@ -34,7 +34,7 @@ class Cnhapdonhang extends MY_Controller
 		$data = $this->input->post('data');
 		$donhan = array(
 			'thoigian_mua' 		=> $data['thoigian_nhap'],
-			'nguoilap_donhang' 	=> $session['ma_taikhoan'],
+			'nguoilap_donhang' 	=> $this->input->post('data'),
 			'ma_nhacungcap' 		=> $data['ma_nhacungcap'],
 		);
 		$id = $this->Mdonhang->add_tbl_donhanghang($donhanghang);

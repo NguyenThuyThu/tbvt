@@ -837,6 +837,7 @@ a:hover, a:focus {
 }
 .home-product-item__price{
     display: flex;
+    justify-content: space-between;
     /* Căn cho chân dòng về 1 base */
     align-items: baseline;
     /* Thuộc tính xuống dòng nếu bị tràn dữ liệu */
@@ -852,7 +853,7 @@ a:hover, a:focus {
 .home-product-item__price-current{
     font-size: 1.6rem;
     color: red;
-    margin-left: 10px;
+    margin-right: 10px;
     
 }
 .home-product-item__action{
@@ -974,14 +975,14 @@ i.home-product-item__like-icon-fill {
     font-size: 1.2rem;
     line-height: 1.2rem;
     position: relative;
-    top: -1px;
+    top: -10px;
 }
 .home-product-item__sale-off-label{
     color: var(--white-color);
     font-size: 1.3rem;
     line-height: 1.3rem;
     position: relative;
-    top: -6px;
+    top: -1px;
     font-weight: 600;
 }
 

@@ -32,13 +32,13 @@
                                     <div class="col-12">
                                         <div class="form-group" style="display: flex;">
                                             <label class="control-label col-3">Tên quyền*</label>
-                                            <div class="col-8"><input type="text" class="form-control" >
+                                            <div class="col-8"><input type="text" class="form-control" name="data[ten_quyen]">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <button type="submit" name="themquyen" value="1"
-                                            class="btn btn-primary btn-flat" style="margin-left: 300px;">Thêm</button>
+                                            class="btn btn-primary btn-flat themquyen" style="margin-left: 300px;">Thêm</button>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                                                     <td class="text-center">{$i++}</td>
                                                     <td>{$ds.ten_quyen}</td>
                                                     <td class="text-center">
-                                                        <button type="submit" class="btn btn-info btn-sm" name="capnhatquyen" value="{$ds.ma_quyen}" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
+                                                        <button type="button" class="btn btn-info btn-sm capnhatquyen" name="capnhatquyen" ma_quyen = "{$ds.ma_quyen}" ten_quyen = "{$ds.ten_quyen}" title="Sửa"><i class="fas fa-pencil-alt"></i></button>
                                                         <button type="submit" class="btn btn-danger btn-sm" name="xoaquyen" value="{$ds.ma_quyen}" title="Xóa" onclick="return confirm('Xóa quyền {$ds.ten_quyen}?');"><i class="far fa-trash-alt"></i></button>
                                                     </td>
                                                 </tr>

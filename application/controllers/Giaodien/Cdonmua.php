@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * 
  */
-class Cdonmua extends CI_Controller
+class Cdonmua extends MY_Controller
 {
 	
 	function __construct()
@@ -16,9 +16,9 @@ class Cdonmua extends CI_Controller
 	public function index()
 	{
 		$session = $this->session->userdata('user');
-		$donmua = $this->Mdonmua->donmua($session['ma_taikhoan']);
+		$donmua = $this->Mdonmua->donmua($session['ma_thanhvien']);
 
-		$HD = $this->Mdonmua->getDonHang($session['ma_taikhoan']);
+		$HD = $this->Mdonmua->getDonHang($session['ma_thanhvien']);
 		foreach ($HD as $key => $value) {
 			$HD[$key]['thongtinHD'] = json_encode($this->Mdonmua->donmua($value['ma_hoadonmua']));
 		}

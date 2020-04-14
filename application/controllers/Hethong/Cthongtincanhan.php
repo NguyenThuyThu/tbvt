@@ -12,52 +12,62 @@ class Cthongtincanhan extends MY_Controller {
 
 	public function index() {
 		$session = $this->session->userdata('user');
-		// pr($session);
-		if($this->input->post('luucanbo')){
-            $this->_tinnhan=$this->updateStaff();
-		}
-		if($this->input->get('ma_canbo')){
-            $idStaff=$this->input->get('ma_canbo');
-            $this->_canbo=$this->Mcanbo->retrieveStaff($idStaff,NULL);
-        }else{
-        	$idStaff=$this->input->get('ma_thanhvien');
-			$this->_canbo=$this->Mcanbo->retrieveStaff($idStaff,NULL);
-        }
 
-		$data['canbo']    = $this->_canbo;
-		// pr($data['canbo']);
-		$data['tinnhan']    = $this->_tinnhan;
-		$data['title']    = $this->_title;
-		$temp['data']     = $data ;
-		$temp['template'] = 'Hethong/vthongtincanhan';
+		$ma_thanhvien=$this->input->get('ma_thanhvien');
+		$content 	= $this->Mcanbo->getdulieu($ma_thanhvien);
+		// pr($content);
+		
+		if($this->input->post('themdiachi')){
+			$this->themdiachi();
+		}
+		if($this->input->post('capnhatdiachi')){
+			$this->capnhatdiachi();
+		}
+
+		if($this->input->post('xoadiachi')){
+			$this->xoadiachi();
+		}
+
+		
+		$dmsp = $this->Mdmsanpham->get('tbl_danhmuc_sanpham');
+		foreach ($dmsp as $key => $value) {
+			$tendm[$value['ma_dmsanpham']] = $value['ten_dmsanpham'];
+		}
+		$temp = array(
+			'template' => 'Hethong/Vthongtincanhan',
+			'data' => array(
+				'diachi' 		=> $this->Mcanbo->get_where("tbl_diachi", "ma_thanhvien", $session['ma_thanhvien']),
+				'content'	    => $content,
+			)
+		);
 		$this->load->view('layout/content',$temp);
 	}
-	public function updateStaff(){
-		if($this->input->get('ma_canbo')){
-			$idStaff = $this->input->get('ma_canbo');
-			$this->_canbo=$this->Mcanbo->retrieveStaff($idStaff,NULL);
-			$data_Staff =array(
-				'hoten_thanhvien' => $this->input->post('hoten'), 
-				'ngaysinh' => $this->input->post('ngaysinh'),
-				'gioitinh' => $this->input->post('gioitinh'),
-				'diachi_thanhvien' => $this->input->post('diachi'),
-				'email' => $this->input->post('email'),
-				'sodienthoai' => $this->input->post('sdt')
-				);
-			return $this->_tinnhan = $this->Mcanbo->updateSaff($idStaff,$data_Staff);
-		}else{
-			$idStaff = $this->input->get('ma_thanhvien');
-			$this->_canbo=$this->Mcanbo->retrieveStaff($idStaff,NULL);
-			$data_Staff =array(
-				'hoten_thanhvien' => $this->input->post('hoten'), 
-				'ngaysinh' => $this->input->post('ngaysinh'),
-				'gioitinh' => $this->input->post('gioitinh'),
-				'diachi_thanhvien' => $this->input->post('diachi'),
-				'email' => $this->input->post('email'),
-				'sodienthoai' => $this->input->post('sdt')
-				);
-			return $this->_tinnhan = $this->Mcanbo->updateSaff($idStaff,$data_Staff);
-		}
+
+	/*Thêm Địa chỉ*/
+	public function themdiachi(){
+		$data 	  = $this->input->post('data');
+		$success  = 'Thêm thành công';
+        $error    = 'Thêm thất bại';
+        $redirect = base_url().'sanpham'; 
+        $this->insert("tbl_diachi", $data, $success, $error, $redirect);
+	}
+
+	/*Lấy dữ liệu*/
+	public function capnhatdiachi() {
+		$ma 	  = $this->input->post('capnhatdiachi');
+		$data 	  = $this->input->post('data');
+		$success  = 'Cập nhật thành công';
+        $error    = 'Cập nhật';
+        $redirect = base_url().'sanpham'; 
+        $this->update("tbl_diachi", "ma_donvitinh", $ma, $data, $success, $error, $redirect);
+	}
+
+	public function xoadiachi() {
+		$ma 	  = $this->input->post('xoadiachi');
+		$success  = 'Xóa thành công';
+        $error    = 'Xóa thất bại!';
+        $redirect = base_url().'sanpham'; 
+    	$this->delete("tbl_diachi","ma_donvitinh",$ma, $success, $error, $redirect);
 	}
 
 } // End class

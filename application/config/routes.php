@@ -24,7 +24,8 @@ $route['thongtinchitiet'] = 'Hethong/Cthongtinchitiet';
 $route['phanquyen'] = 'Hethong/Cphanquyen';
 $route['nhanvien'] = 'Hethong/Ccanbo';
 $route['donhang'] = 'Hethong/Cdonhang';
-$route['nhapdonhang'] = 'Hethong/Cnhapdonhang';
+$route['themdonhang'] = 'Hethong/Cnhapdonhang';
+$route['printhd'] = 'Hethong/Cprinthd';
 
 // $route['doimatkhau'] = 'Hethong/Cdoimatkhau ';
 
@@ -36,8 +37,12 @@ $route['donvitinh'] = 'Hethong/Cdonvitinh';
 
 // NHẬP HÀNG
 $route['phieunhap'] = 'Hethong/Cphieunhap';
+$route['nhaphang'] = 'Hethong/Cnhaphang';
+// $route['suanhaphang'] = 'Hethong/Csuanhaphang';
 $route['nhacungcap'] = 'Hethong/Cnhacungcap';
 
+// BCTK
+$route['bcdoanhthu'] = 'Hethong/Cbctkdoanhthu';
 
 $route['default_controller'] = 'Cwebsite';
 $route['404_override'] = '';

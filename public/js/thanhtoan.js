@@ -4,7 +4,7 @@ $(document).ready(function() {
 		console.log(2);
 		diachi = $("input[name='tendiachi']").val();
 		if(diachi == ""){
-			alert("Địa chỉ không được để giỗng");
+			alert("Địa chỉ không được để rỗng");
 			return false;
 		}
 	   	$.ajax({
@@ -77,7 +77,7 @@ $(document).ready(function() {
 		    $("#capnhat").click(function(event) {
 				diachi = $("input[name='tendiachi']").val();
 				if(diachi == ""){
-					alert("Địa chỉ không được để giỗng");
+					alert("Địa chỉ không được để rỗng");
 					return false;
 				}
 				$.ajax({

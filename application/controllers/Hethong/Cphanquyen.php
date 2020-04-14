@@ -37,7 +37,7 @@ class Cphanquyen extends MY_Controller {
 		$data 	  = $this->input->post('data');
 		$success  = 'Thêm thành công';
         $error    = 'Thêm thất bại';
-        $redirect = base_url().'phanquyen'; 
+		$redirect = base_url().'phanquyen'; 
         $this->insert("tbl_quyen", $data, $success, $error, $redirect);
 	}
 
@@ -47,7 +47,7 @@ class Cphanquyen extends MY_Controller {
 		$data 	  = $this->input->post('data');
 		$success  = 'Cập nhật thành công';
         $error    = 'Cập nhật';
-        $redirect = base_url().'phanquyen'; 
+		$redirect = base_url().'phanquyen'; 
         $this->update("tbl_quyen", "ma_quyen", $ma, $data, $success, $error, $redirect);
 	}
 

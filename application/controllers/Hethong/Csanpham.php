@@ -39,8 +39,8 @@ class Csanpham extends MY_Controller {
 			$tendm[$value['ma_dmsanpham']] = $value['ten_dmsanpham'];
 		}
 		$sanpham  = $this->Msanpham->getSanPham();
-		if($this->input->post('themloaisp')){
-			$this->themloaisp();
+		if($this->input->post('themsp')){
+			$this->themsp();
 		}
 
 		$temp = array(
@@ -65,43 +65,49 @@ class Csanpham extends MY_Controller {
     	$this->delete("tbl_sanpham","ma_sanpham",$ma, $success, $error, $redirect);
 	}
 
-	public function themloaisp(){
+	public function themsp(){
 		$session = $this->session->userdata('user');
 		$data = $this->input->post('data');
-		$data['dongia_sanpham'] = str_replace(",","",$data['dongia_sanpham']);
+		// $data['dongia_sanpham'] = str_replace(",","",$data['dongia_sanpham']);
 		$data['ngaydang']  		= date("d/m/Y");
 		$data['ma_sanpham']  	= "SP".preg_replace("/[^a-zA-Z0-9]+/", "", $data['ten_sanpham']).time();
 		$data['nguoidang_sp'] 	= $session['ma_taikhoan'];
 		$data['trangthai_dang_sanpham'] = 1;
 		$data['trangthai_hot_sanpham']  = 1;
-		$row = $this->Msanpham->insert("tbl_sanpham", $data); /*Thêm data vào bảng sản phầm sau đó insert ảnh vào bảng ảnh sản phẩm*/
-		if($row > 0){
-			if (!empty($_FILES['anhsanpham']['name'])) {
-				$config['upload_path'] = 'public/images/anhsanpham/'.$_FILES['anhsanpham']['name'];
-				$config['allowed_types'] = 'jpg|png|jpeg';
-				$config['file_name'] = $_FILES['anhsanpham']['name'];
-				$this->load->library("upload", $config);
-				$this->upload->initialize($config);
-				$row1 = move_uploaded_file($_FILES['anhsanpham']['tmp_name'], $config['upload_path']);
-				if ($row1 > 0) {
-					$data_image = array(
-						'linkanh_sanpham' 	=> $config['file_name'],
-						'ma_sanpham'		=> $data['ma_sanpham'],
-					);
-					$row2 = $this->Msanpham->insert("tbl_anhsanpham", $data_image);
-				}
-				else{
-					setMessages("error", "Thêm ảnh bị lỗi", "Thông báo");
-				}
-		    }
-		}else{
-			setMessages("error", "Thêm thất bại", "Thông báo");
+		$check = $this->Msanpham->get_where_row("tbl_sanpham","ten_sanpham", $data['ten_sanpham']);
+		if(!empty($check)){
+			setMessages("error", " Sản phẩm đã tồn tại", " Thông báo");
+			return " Sản phẩm đã tồn tại!";
 		}
-	    if($row > 0 && $row1 >0 && $row2 >0 ){
-	    	setMessages("success", "Thêm sản phẩm thành công", "Thông báo");
-	    }
-	    return redirect('sanpham');
-		
+		else {
+			$row = $this->Msanpham->insert("tbl_sanpham", $data); /*Thêm data vào bảng sản phầm sau đó insert ảnh vào bảng ảnh sản phẩm*/
+			if($row > 0){
+				if (!empty($_FILES['anhsanpham']['name'])) {
+					$config['upload_path'] = 'public/images/anhsanpham/'.$_FILES['anhsanpham']['name'];
+					$config['allowed_types'] = 'jpg|png|jpeg';
+					$config['file_name'] = $_FILES['anhsanpham']['name'];
+					$this->load->library("upload", $config);
+					$this->upload->initialize($config);
+					$row1 = move_uploaded_file($_FILES['anhsanpham']['tmp_name'], $config['upload_path']);
+					if ($row1 > 0) {
+						$data_image = array(
+							'linkanh_sanpham' 	=> $config['file_name'],
+							'ma_sanpham'		=> $data['ma_sanpham'],
+						);
+						$row2 = $this->Msanpham->insert("tbl_anhsanpham", $data_image);
+					}
+					else{
+						setMessages("error", "Thêm ảnh bị lỗi", "Thông báo");
+					}
+			    }
+			}else{
+				setMessages("error", "Thêm thất bại", "Thông báo");
+			}
+		    if($row > 0 && $row1 >0 && $row2 >0 ){
+		    	setMessages("success", "Thêm sản phẩm thành công", "Thông báo");
+		    }
+		    return redirect('sanpham');
+		}
 	}
 
 	/*Thêm Đơn vị tính*/
@@ -134,8 +140,10 @@ class Csanpham extends MY_Controller {
 	public function capnhatsanpham() {
 		$session  = $this->session->userdata('user');
 		$ma 	  = $this->input->post('capnhatsanpham');
+		// pr($ma);
 		$data 	  = $this->input->post('data');
 		$data['nguoidang_sp'] 	= $session['ma_taikhoan'];
+		$data['dongia_sanpham'] = str_replace(",","",$data['dongia_sanpham']);
 		$success  = 'Cập nhật thành công';
         $error    = 'Cập nhật';
         $row = $this->Msanpham->update("tbl_sanpham", "ma_sanpham",$ma, $data);

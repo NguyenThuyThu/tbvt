@@ -47,6 +47,28 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Số điện thoại:</label>
+                                                <input type="text" class="form-control" name="data[]"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label>Email:</label>
+                                                <input type="text" class="form-control" name="data[]"
+                                                    value="" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="table-repsonsive" style="margin-top: 10px;">

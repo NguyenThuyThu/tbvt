@@ -72,26 +72,42 @@
                         <a class="home-product-item" href="{$baseURL}trangchitiet?product={$dulieu.ten_sanpham}_{$dulieu.ma_sanpham}">
                             <div class="home-product-item__img" style="background-image: url({$baseURL}public/images/anhsanpham/{$dulieu.linkanh_sanpham});"></div>
                             <h4 class="home-product-item__name">{$dulieu.ten_sanpham}</h4>
+                            {if $dulieu.phantram_khuyenmai != 0}
                             <div class="home-product-item__price">
-                                <span class="home-product-item__price-old">1.200.000đ</span>
+                                <span class="home-product-item__price-old">{number_format(($dulieu.dongia_sanpham + ($dulieu.phantram_khuyenmai * $dulieu.dongia_sanpham)/100), 0, ",", ",")}đ</span>
                                 <span class="home-product-item__price-current">{number_format($dulieu.dongia_sanpham, 0, ",", ",")}đ</span>
                             </div>
+                            {else}
+                            <div class="home-product-item__price" style="">
+                                <span class="home-product-item__price-old"></span>
+                                <span class="home-product-item__price-current">{number_format($dulieu.dongia_sanpham, 0, ",", ",")}đ</span>
+                            </div>
+                            {/if}
+
                             {if $dulieu['soluong'] == 0}
                             <p style="padding-left: 10px; color:#fff;" class="lable label-danger">Hết hàng</p>
+                            {else}
+                            <p style="padding-left: 10px; color:#fff;">Còn hàng</p>
                             {/if}
+
                             <div class="home-product-item__origin">
                                 <span class="home-product-item__brand">{$dulieu.thoigianbaohanh_sanpham}</span>
                                 <span class="home-product-item__origin-name">{$dulieu.xuatxu_sanpham}</span>
                             </div>
+
+
+
                             <div class="home-product-item__favourite">
-                               <i class="fa fa-heart" aria-hidden="true"></i>
+                                <i class="fa fa-heart"></i>
                                 <span>Yêu thích</span>
                             </div>
 
+                            {if $dulieu.phantram_khuyenmai != 0}
                             <div class="home-product-item__sale-off">
-                                <span class="home-product-item__sale-off-percent">10%</span>
                                 <span class="home-product-item__sale-off-label">Giảm</span>
+                                <span class="home-product-item__sale-off-percent">{$dulieu.phantram_khuyenmai}%</span>
                             </div>
+                            {/if}
                         </a>
                     </div>
                      {/foreach}

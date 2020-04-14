@@ -80,13 +80,13 @@ class Cthanhtoan extends CI_Controller
 				/*Update bảng tbl_cart và bảng phiếu nhập hàng 
 				&&Tạo 1 hóa đơn và update trạng thái đơn của khách hàng đang xử lý*/
 				$hoadon = array(
-					'ma_hoadonmua'			=> "HD".preg_replace("/[^a-zA-Z0-9]+/", "", $session['ma_taikhoan']).time(),
+					'ma_hoadonmua'			=> "HD".preg_replace("/[^a-zA-Z0-9]+/", "", $session['ma_thanhvien']).time(),
 					'ngaylap' 				=> date("d/m/Y H:i:s"),
 					'chiphi_giao'   		=> NULL,
 					'chiphi_lapdat'   		=> NULL,
 					'ghichu'   				=> $ghichu,
 					'ma_hinhthucthanhtoan'  => 1,
-					'nguoimuahang'   		=> $session['ma_taikhoan'],
+					'nguoimuahang'   		=> $session['ma_thanhvien'],
 					'nguoilap'   			=> NULL,
 					'ma_trangthai_giaohang' => 1, // trạng thái đang xử lý đơn hàng
 				);
@@ -115,13 +115,13 @@ class Cthanhtoan extends CI_Controller
 
 			$sanpham = $this->Mthanhtoan->getSanPham($session['ma_thanhvien']);
 			$hoadon = array(
-				'ma_hoadonmua'			=> "HD".preg_replace("/[^a-zA-Z0-9]+/", "", $session['ma_taikhoan']).time(),
+				'ma_hoadonmua'			=> "HD".preg_replace("/[^a-zA-Z0-9]+/", "", $session['ma_thanhvien']).time(),
 				'ngaylap' 				=> date("d/m/Y H:i:s"),
 				'chiphi_giao'   		=> NULL,
 				'chiphi_lapdat'   		=> NULL,
 				'ghichu'   				=> $ghichu,
 				'ma_hinhthucthanhtoan'  => 1,
-				'nguoimuahang'   		=> $session['ma_taikhoan'],
+				'nguoimuahang'   		=> $session['ma_thanhvien'],
 				'nguoilap'   			=> NULL,
 				'ma_trangthai_giaohang' => 1, // trạng thái đang xử lý đơn hàng
 			);

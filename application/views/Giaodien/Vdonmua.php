@@ -11,9 +11,9 @@
                                             data-toggle="tab" href="#activity"><b>Đơn hàng của bạn</b></a>
                                     </li>
 
-                                    <li class="nav-item" tieude=""><a class="nav-link"
+                                    <!-- <li class="nav-item" tieude=""><a class="nav-link"
                                             data-toggle="tab" href="#timeline1"><b>Đơn hàng đã hủy</b></a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div><!-- /.card-header -->
                             <div class="card-body">

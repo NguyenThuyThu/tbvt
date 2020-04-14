@@ -31,7 +31,7 @@
 
                             <div class="select-input">
                                 <span class="select-input__label">Giá</span>
-                             <i class="fa fa-sort" aria-hidden="true"></i>
+                                <i class="select-input__icon fas fa-angle-down"></i>
 
                                 <!-- List option -->
                                 <ul class="select-input__list">
@@ -51,11 +51,11 @@
 
                                 <div class="home-filter__page-control">
                                     <a href="" class="home-filter__page-btn home-filter__page-btn--disabled">
-                                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                        <i class="home-filter__page-icon fas fa-angle-left"></i>
                                     </a>
 
                                     <a href="" class="home-filter__page-btn">
-                                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                        <i class="home-filter__page-icon fas fa-angle-right"></i>
                                     </a>
                                 </div>
                             </div>
@@ -64,16 +64,24 @@
                         <div class="home-product">
                             <!-- Grid-> Row -> Column -->
                             <div class="grid__row">
+                                
                                 <!-- Product item -->
                                 {foreach $dssp as $dulieu}
                                 <div class="grid__column-2-4">
                                     <a class="home-product-item" href="{$baseURL}trangchitiet?product={$dulieu.ten_sanpham}_{$dulieu.ma_sanpham}">
                                         <div class="home-product-item__img" style="background-image: url({$baseURL}public/images/anhsanpham/{$dulieu.linkanh_sanpham});"></div>
                                         <h4 class="home-product-item__name">{$dulieu.ten_sanpham}</h4>
-                                        <div class="home-product-item__price">
-                                            <span class="home-product-item__price-old">1.200.000đ</span>
-                                            <span class="home-product-item__price-current">{$dulieu.dongia_sanpham}đ</span>
-                                        </div>
+                                        {if $dulieu.phantram_khuyenmai != 0}
+                                            <div class="home-product-item__price">
+                                                <span class="home-product-item__price-old">{number_format(($dulieu.dongia_sanpham + ($dulieu.phantram_khuyenmai * $dulieu.dongia_sanpham)/100), 0, ",", ",")}đ</span>
+                                                <span class="home-product-item__price-current">{number_format($dulieu.dongia_sanpham, 0, ",", ",")}đ</span>
+                                            </div>
+                                            {else}
+                                            <div class="home-product-item__price" style="">
+                                                <span class="home-product-item__price-old"></span>
+                                                <span class="home-product-item__price-current">{number_format($dulieu.dongia_sanpham, 0, ",", ",")}đ</span>
+                                            </div>
+                                            {/if}
 
                             <!-- <div class="home-product-item__action">
                                 <span class="home-product-item__like home-product-item__like--liked">
@@ -100,14 +108,16 @@
 
 
                             <div class="home-product-item__favourite">
-                                <i class="fa fa-heart" aria-hidden="true"></i>
+                                <i class="fa fa-heart"></i>
                                 <span>Yêu thích</span>
                             </div>
 
+                            {if $dulieu.phantram_khuyenmai != 0}
                             <div class="home-product-item__sale-off">
-                                <span class="home-product-item__sale-off-percent">10%</span>
                                 <span class="home-product-item__sale-off-label">Giảm</span>
+                                <span class="home-product-item__sale-off-percent">{$dulieu.phantram_khuyenmai}%</span>
                             </div>
+                            {/if}
                         </a>
                     </div> {/foreach}
                 </div>
@@ -143,10 +153,3 @@
 </div>
 </div>
         <!-- End container -->
-<style>
-    .fa-chevron-left,.fa-chevron-right{
-        color: #000000;
-        line-height: 34px;
-        margin-left: 10px;
-    }
-</style>
