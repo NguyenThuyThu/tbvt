@@ -35,5 +35,20 @@ class Mphieunhap extends MY_Model{
 	    $questionid =$this->db->insert_id();
     	return $questionid;
 	}
+
+	public function sumSL($masp){
+		$this->db->select_sum("soluong_nhap");
+		$this->db->where("ma_sanpham", $masp);
+		$query = $this->db->get("tbl_ct_phieunhap")->row_array();
+		// pr($this->db->last_query());
+		return $query;
+	}
+
+	public function update_ctPhieuNhap($mapn, $masp, $data){
+		$this->db->where("ma_sanpham", $masp);
+		$this->db->where("ma_phieunhap ", $mapn);
+		$this->db->update("tbl_ct_phieunhap", $data);
+		return $this->db->affected_rows();
+	}
 }
 ?>

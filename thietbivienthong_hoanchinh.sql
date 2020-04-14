@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 5.0.2
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 08, 2020 at 07:24 PM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 5.6.28
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 14, 2020 lúc 04:02 AM
+-- Phiên bản máy phục vụ: 10.4.11-MariaDB
+-- Phiên bản PHP: 7.3.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `thietbivienthong`
+-- Cơ sở dữ liệu: `tbvt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_anhsanpham`
+-- Cấu trúc bảng cho bảng `tbl_anhsanpham`
 --
 
 CREATE TABLE `tbl_anhsanpham` (
@@ -33,7 +34,7 @@ CREATE TABLE `tbl_anhsanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_anhsanpham`
+-- Đang đổ dữ liệu cho bảng `tbl_anhsanpham`
 --
 
 INSERT INTO `tbl_anhsanpham` (`ma_anh`, `linkanh_sanpham`, `ma_sanpham`) VALUES
@@ -51,12 +52,13 @@ INSERT INTO `tbl_anhsanpham` (`ma_anh`, `linkanh_sanpham`, `ma_sanpham`) VALUES
 (12, 'SP012.jpg', 'SP012'),
 (13, 'SP013.jpg', 'SP013'),
 (14, 'SP014.jpg', 'SP014'),
-(15, 'SP015.jpg', 'SP015');
+(15, 'SP015.jpg', 'SP015'),
+(16, 'SP016.jpg', 'SPCpngtrcSino5CFBRG6');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_baohanh`
+-- Cấu trúc bảng cho bảng `tbl_baohanh`
 --
 
 CREATE TABLE `tbl_baohanh` (
@@ -73,7 +75,7 @@ CREATE TABLE `tbl_baohanh` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_binhluan`
+-- Cấu trúc bảng cho bảng `tbl_binhluan`
 --
 
 CREATE TABLE `tbl_binhluan` (
@@ -89,7 +91,7 @@ CREATE TABLE `tbl_binhluan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_cart`
+-- Cấu trúc bảng cho bảng `tbl_cart`
 --
 
 CREATE TABLE `tbl_cart` (
@@ -102,7 +104,7 @@ CREATE TABLE `tbl_cart` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_ct_hoadon`
+-- Cấu trúc bảng cho bảng `tbl_ct_hoadon`
 --
 
 CREATE TABLE `tbl_ct_hoadon` (
@@ -114,16 +116,19 @@ CREATE TABLE `tbl_ct_hoadon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_ct_hoadon`
+-- Đang đổ dữ liệu cho bảng `tbl_ct_hoadon`
 --
 
 INSERT INTO `tbl_ct_hoadon` (`ma_sanpham`, `ma_hoadonmua`, `soluong_mua`, `giaban`, `tongtien`) VALUES
-('SP003', 'HDTK0031586324803', 1, '2850000', '2850000');
+('SP002', 'HDTV0041586793882', 1, '18800000', '18800000'),
+('SP002', 'HDTV0041586794277', 1, '18800000', '18800000'),
+('SP003', 'HDTV0041586793882', 1, '2850000', '2850000'),
+('SP008', 'HDTV0041586794277', 2, '35000', '70000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_ct_phieunhap`
+-- Cấu trúc bảng cho bảng `tbl_ct_phieunhap`
 --
 
 CREATE TABLE `tbl_ct_phieunhap` (
@@ -135,17 +140,18 @@ CREATE TABLE `tbl_ct_phieunhap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_ct_phieunhap`
+-- Đang đổ dữ liệu cho bảng `tbl_ct_phieunhap`
 --
 
 INSERT INTO `tbl_ct_phieunhap` (`ma_sanpham`, `ma_phieunhap`, `soluong_nhap`, `dongia_nhap`, `tongtien`) VALUES
-('SP001', 'PN001', 200, '5490000', '1098000000'),
-('SP003', 'PN002', 120, '2850000', '342000000');
+('SP004', 'PN827781586799385', 300, '230000', '69000000'),
+('SP007', 'PN827781586799385', 200, '3000000', '600000000'),
+('SP009', 'PN827781586799385', 20, '200000', '4000000');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_danhgia`
+-- Cấu trúc bảng cho bảng `tbl_danhgia`
 --
 
 CREATE TABLE `tbl_danhgia` (
@@ -158,7 +164,7 @@ CREATE TABLE `tbl_danhgia` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_danhmuc_sanpham`
+-- Cấu trúc bảng cho bảng `tbl_danhmuc_sanpham`
 --
 
 CREATE TABLE `tbl_danhmuc_sanpham` (
@@ -167,7 +173,7 @@ CREATE TABLE `tbl_danhmuc_sanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_danhmuc_sanpham`
+-- Đang đổ dữ liệu cho bảng `tbl_danhmuc_sanpham`
 --
 
 INSERT INTO `tbl_danhmuc_sanpham` (`ma_dmsanpham`, `ten_dmsanpham`) VALUES
@@ -186,7 +192,7 @@ INSERT INTO `tbl_danhmuc_sanpham` (`ma_dmsanpham`, `ten_dmsanpham`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_diachi`
+-- Cấu trúc bảng cho bảng `tbl_diachi`
 --
 
 CREATE TABLE `tbl_diachi` (
@@ -196,7 +202,7 @@ CREATE TABLE `tbl_diachi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_diachi`
+-- Đang đổ dữ liệu cho bảng `tbl_diachi`
 --
 
 INSERT INTO `tbl_diachi` (`ma_diachi`, `ten_diachi`, `ma_thanhvien`) VALUES
@@ -208,7 +214,7 @@ INSERT INTO `tbl_diachi` (`ma_diachi`, `ten_diachi`, `ma_thanhvien`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_donvitinh_sanpham`
+-- Cấu trúc bảng cho bảng `tbl_donvitinh_sanpham`
 --
 
 CREATE TABLE `tbl_donvitinh_sanpham` (
@@ -217,17 +223,20 @@ CREATE TABLE `tbl_donvitinh_sanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_donvitinh_sanpham`
+-- Đang đổ dữ liệu cho bảng `tbl_donvitinh_sanpham`
 --
 
 INSERT INTO `tbl_donvitinh_sanpham` (`ma_donvitinh`, `ten_donvitinh`) VALUES
 (1, 'Mét'),
-(2, 'Gói');
+(2, 'Gói'),
+(3, 'Cuộn'),
+(4, 'a'),
+(5, 'b');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_hinhthucthanhtoan`
+-- Cấu trúc bảng cho bảng `tbl_hinhthucthanhtoan`
 --
 
 CREATE TABLE `tbl_hinhthucthanhtoan` (
@@ -236,7 +245,7 @@ CREATE TABLE `tbl_hinhthucthanhtoan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_hinhthucthanhtoan`
+-- Đang đổ dữ liệu cho bảng `tbl_hinhthucthanhtoan`
 --
 
 INSERT INTO `tbl_hinhthucthanhtoan` (`ma_hinhthucthanhtoan`, `ten_hinhthucthanhtoan`) VALUES
@@ -245,7 +254,7 @@ INSERT INTO `tbl_hinhthucthanhtoan` (`ma_hinhthucthanhtoan`, `ten_hinhthucthanht
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_hoadonmua`
+-- Cấu trúc bảng cho bảng `tbl_hoadonmua`
 --
 
 CREATE TABLE `tbl_hoadonmua` (
@@ -253,7 +262,7 @@ CREATE TABLE `tbl_hoadonmua` (
   `ngaylap` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `chiphi_giao` decimal(10,0) DEFAULT NULL,
   `chiphi_lapdat` decimal(10,0) DEFAULT NULL,
-  `ghichu` text COLLATE utf8_unicode_ci,
+  `ghichu` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `ma_hinhthucthanhtoan` int(11) DEFAULT NULL,
   `nguoimuahang` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `nguoilap` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -261,16 +270,17 @@ CREATE TABLE `tbl_hoadonmua` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_hoadonmua`
+-- Đang đổ dữ liệu cho bảng `tbl_hoadonmua`
 --
 
 INSERT INTO `tbl_hoadonmua` (`ma_hoadonmua`, `ngaylap`, `chiphi_giao`, `chiphi_lapdat`, `ghichu`, `ma_hinhthucthanhtoan`, `nguoimuahang`, `nguoilap`, `ma_trangthai_giaohang`) VALUES
-('HDTK0031586324803', '08/04/2020 12:46:43', NULL, NULL, '1 Sản phẩm', 1, 'TK003', NULL, 1);
+('HDTV0041586793882', '13/04/2020 23:04:42', NULL, NULL, '', 1, 'TV004', NULL, 1),
+('HDTV0041586794277', '13/04/2020 23:11:17', NULL, NULL, '', 1, 'TV004', NULL, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_loaisanpham`
+-- Cấu trúc bảng cho bảng `tbl_loaisanpham`
 --
 
 CREATE TABLE `tbl_loaisanpham` (
@@ -280,7 +290,7 @@ CREATE TABLE `tbl_loaisanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_loaisanpham`
+-- Đang đổ dữ liệu cho bảng `tbl_loaisanpham`
 --
 
 INSERT INTO `tbl_loaisanpham` (`ma_loaisanpham`, `ten_loaisanpham`, `ma_dmsanpham`) VALUES
@@ -303,7 +313,7 @@ INSERT INTO `tbl_loaisanpham` (`ma_loaisanpham`, `ten_loaisanpham`, `ma_dmsanpha
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_nhacungcap`
+-- Cấu trúc bảng cho bảng `tbl_nhacungcap`
 --
 
 CREATE TABLE `tbl_nhacungcap` (
@@ -317,7 +327,7 @@ CREATE TABLE `tbl_nhacungcap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_nhacungcap`
+-- Đang đổ dữ liệu cho bảng `tbl_nhacungcap`
 --
 
 INSERT INTO `tbl_nhacungcap` (`ma_nhacungcap`, `ten_nhacungcap`, `diachi`, `sodienthoai`, `email`, `website`, `ghichu`) VALUES
@@ -326,7 +336,7 @@ INSERT INTO `tbl_nhacungcap` (`ma_nhacungcap`, `ten_nhacungcap`, `diachi`, `sodi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_phieunhap`
+-- Cấu trúc bảng cho bảng `tbl_phieunhap`
 --
 
 CREATE TABLE `tbl_phieunhap` (
@@ -338,17 +348,16 @@ CREATE TABLE `tbl_phieunhap` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_phieunhap`
+-- Đang đổ dữ liệu cho bảng `tbl_phieunhap`
 --
 
 INSERT INTO `tbl_phieunhap` (`ma_phieunhap`, `thoigian_nhap`, `ghichu`, `nguoilap`, `ma_nhacungcap`) VALUES
-('PN001', '12/03/2020', '', 'TK001', 1),
-('PN002', '15/03/2020', '', 'TK001', 1);
+('PN827781586799385', '2020-03-31', '', 'TK001', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_quyen`
+-- Cấu trúc bảng cho bảng `tbl_quyen`
 --
 
 CREATE TABLE `tbl_quyen` (
@@ -357,7 +366,7 @@ CREATE TABLE `tbl_quyen` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_quyen`
+-- Đang đổ dữ liệu cho bảng `tbl_quyen`
 --
 
 INSERT INTO `tbl_quyen` (`ma_quyen`, `ten_quyen`) VALUES
@@ -368,7 +377,7 @@ INSERT INTO `tbl_quyen` (`ma_quyen`, `ten_quyen`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_sanpham`
+-- Cấu trúc bảng cho bảng `tbl_sanpham`
 --
 
 CREATE TABLE `tbl_sanpham` (
@@ -376,6 +385,7 @@ CREATE TABLE `tbl_sanpham` (
   `ten_sanpham` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `soluong` int(11) NOT NULL,
   `dongia_sanpham` decimal(10,0) NOT NULL,
+  `phantram_khuyenmai` int(11) NOT NULL,
   `xuatxu_sanpham` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `thoigianbaohanh_sanpham` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   `thongsokythuat_sanpham` text COLLATE utf8_unicode_ci NOT NULL,
@@ -390,30 +400,31 @@ CREATE TABLE `tbl_sanpham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_sanpham`
+-- Đang đổ dữ liệu cho bảng `tbl_sanpham`
 --
 
-INSERT INTO `tbl_sanpham` (`ma_sanpham`, `ten_sanpham`, `soluong`, `dongia_sanpham`, `xuatxu_sanpham`, `thoigianbaohanh_sanpham`, `thongsokythuat_sanpham`, `ngaydang`, `trangthai_dang_sanpham`, `trangthai_hot_sanpham`, `nguoidang_sp`, `ghichu`, `ma_loaisanpham`, `ma_nhacungcap`, `ma_donvitinh`) VALUES
-('SP001', 'Cáp mạng Cat5e Commscope SFTP | PN : 219484-2', 120, '6490000', 'Việt Nam', '12 tháng', 'Cáp mạng Cat5e Commscope SFTP là sản phẩm rất cao cấp với khả năng chống nhiễu tuyệt đối cùng lõi đồng chuẩn 24AWG giúp tín hiệu truyền không bị ảnh hưởng', '23/03/2020', '1', '1', 'TK001', '', 1, 1, 1),
-('SP002', 'Cáp mạng Cat5e UTP COMMSCOPE PN: 1499418-1 – 25 Pa', 120, '18800000', 'Việt Nam', 'COMMSCOPE', 'Cáp mạng Cat5e Commscope SFTP là sản phẩm rất cao cấp với khả năng chống nhiễu tuyệt đối cùng lõi đồng chuẩn 24AWG giúp tín hiệu truyền không bị ảnh hưởng', '23/03/2020', '1', '1', 'TK001', '', 1, 1, 1),
-('SP003', 'Cáp mạng Cat6 UTP 4 pair Legrand chính hãng', 100, '2850000', 'Legrand', '', '', '23/03/2020', '1', '1', 'TK001', '', 2, 1, 1),
-('SP004', 'Cáp đồng trục HDPRO RG11 Đồng nguyên chất', 100, '3150000', 'HDPRO', '', '', '23/03/2020', '1', '1', 'TK001', '', 2, 1, 1),
-('SP005', 'Bộ kick sóng wifi Linksys RE3000W N300', 120, '899000', 'Linksys', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP006', 'Cáp VGA 30m Ugreen 11636', 120, '530000', 'Dtech', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP007', 'Cáp quang chống sét OPGW loại 48-50-57-70-81-90-12', 120, '55000', 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP008', 'Cáp quang Single mode 4fo Commscope ngoài trời – P', 120, '35000', 'Commscope', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP009', 'Tủ Mạng 27U-D800, Tủ Rack 27U-D800', 120, '3450000', 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP010', 'Dao cắt sợi quang Sumitomo FC-6S', 120, '8250000', 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP011', 'Hộp phối quang ODF 72FO ngoài trời', 120, '2520000', 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP012', 'Dây nhảy quang Singlemode LC-LC', 120, '60000', 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP013', 'Máy đo quang OTDR FTE-7000A 36/35dB Made in USA', 120, '95000000', 'OTDR', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP014', 'Máy đo công suất quang RY-M3207B dùng pin sạc', 120, '2500000', 'RuiYan', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
-('SP015', 'Cáp đồng trục Golden Link RG59 đúc sẵn dây nguồn v', 120, '240000', 'Golden Link', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2);
+INSERT INTO `tbl_sanpham` (`ma_sanpham`, `ten_sanpham`, `soluong`, `dongia_sanpham`, `phantram_khuyenmai`, `xuatxu_sanpham`, `thoigianbaohanh_sanpham`, `thongsokythuat_sanpham`, `ngaydang`, `trangthai_dang_sanpham`, `trangthai_hot_sanpham`, `nguoidang_sp`, `ghichu`, `ma_loaisanpham`, `ma_nhacungcap`, `ma_donvitinh`) VALUES
+('SP001', 'Cáp mạng Cat5e Commscope SFTP | PN : 219484-2', 120, '6490000', 2, 'Việt Nam', '12 tháng', 'Cáp mạng Cat5e Commscope SFTP là sản phẩm rất cao cấp với khả năng chống nhiễu tuyệt đối cùng lõi đồng chuẩn 24AWG giúp tín hiệu truyền không bị ảnh hưởng', '23/03/2020', '1', '1', 'TK001', '', 1, 1, 1),
+('SP002', 'Cáp mạng Cat5e UTP COMMSCOPE PN: 1499418-1 – 25 Pa', 126, '253000', 3, 'Việt Nam', 'COMMSCOPE', 'Cáp mạng Cat5e Commscope SFTP là sản phẩm rất cao cấp với khả năng chống nhiễu tuyệt đối cùng lõi đồng chuẩn 24AWG giúp tín hiệu truyền không bị ảnh hưởng', '23/03/2020', '1', '1', 'TK001', '', 1, 1, 1),
+('SP003', 'Cáp mạng Cat6 UTP 4 pair Legrand chính hãng', 99, '2850000', 5, 'Legrand', '', '', '23/03/2020', '1', '1', 'TK001', '', 2, 1, 1),
+('SP004', 'Cáp đồng trục HDPRO RG11 Đồng nguyên chất', 400, '253000', 0, 'HDPRO', '', '', '23/03/2020', '1', '1', 'TK001', '', 2, 1, 1),
+('SP005', 'Bộ kick sóng wifi Linksys RE3000W N300', 120, '899000', 2, 'Linksys', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP006', 'Cáp VGA 30m Ugreen 11636', 120, '530000', 3, 'Dtech', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP007', 'Cáp quang chống sét OPGW loại 48-50-57-70-81-90-12', 353, '3300000', 2, 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP008', 'Cáp quang Single mode 4fo Commscope ngoài trời – P', 118, '35000', 0, 'Commscope', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP009', 'Tủ Mạng 27U-D800, Tủ Rack 27U-D800', 140, '220000', 0, 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP010', 'Dao cắt sợi quang Sumitomo FC-6S', 120, '8250000', 0, 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP011', 'Hộp phối quang ODF 72FO ngoài trời', 120, '2520000', 0, 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP012', 'Dây nhảy quang Singlemode LC-LC', 124, '3300000', 0, 'Việt Nam', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP013', 'Máy đo quang OTDR FTE-7000A 36/35dB Made in USA', 131, '253000', 0, 'OTDR', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP014', 'Máy đo công suất quang RY-M3207B dùng pin sạc', 120, '2500000', 0, 'RuiYan', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SP015', 'Cáp đồng trục Golden Link RG59 đúc sẵn dây nguồn v', 120, '240000', 0, 'Golden Link', '15 tháng', '', '', '1', '1', 'TK001', '', 4, 1, 2),
+('SPCpngtrcSino5CFBRG6', 'Cáp đồng trục Sino 5C-FB, RG6 không dầu', 5, '3300000', 0, 'Việt Nam', '12 tháng', 'Cáp đồng trục Sino 5C-FB, RG6 không dầu là loại cáp được ưa chuộng và tin dùng rộng rãi trên thị trường. Dây cáp đồng trục 5C FB có lõi bằng hợp kim,có lớp cách điện, lớp chống nhiễu đảm bảo cho việc truyền tín hiệu tốt, dùng cho hệ thống truyền hình CATV, MATV, Video, Camera giám sát và các thiết bị điều khiển, truyền dẫn…\r\nCáp đồng trục SINO 5C-FB\r\n– Cáp đồng trục RG6 lõi CCS Sino sợi đen (200m/cuộn),\r\n– Mã hiệu : RG6, 5C-FB/CCS\r\n– Hãng sản xuất : SINO\r\n– Đơn vị tính : Cuộn (200m)\r\n– Xuất xứ : Việt Nam\r\nThông tin sản phẩm cáp đồng trục sino 5c-fb\r\n– Vỏ bảo vệ bằng PVC\r\n– Ruột dẫn bằng hợp kim, sợi đơn\r\n– Cách điện LDPE, băng nhôm chống nhiễu\r\n– Lưới đan bảo vệ bằng đồng trần hoặc đồng tráng thiếc\r\nỨng dụng\r\n– Cáp đồng trục SINO 5C-FB/CCS truyền tín hiệu chuẩn cao dùng cho TV, CATV,MATV, Video, Camera và các thiết bị điều khiển, truyền dẫn…\r\n\r\n ', '13/04/2020', '1', '1', 'TK001', '', 3, 1, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_taikhoan`
+-- Cấu trúc bảng cho bảng `tbl_taikhoan`
 --
 
 CREATE TABLE `tbl_taikhoan` (
@@ -426,7 +437,7 @@ CREATE TABLE `tbl_taikhoan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_taikhoan`
+-- Đang đổ dữ liệu cho bảng `tbl_taikhoan`
 --
 
 INSERT INTO `tbl_taikhoan` (`ma_taikhoan`, `ten_taikhoan`, `makhau`, `ngaydangky`, `ma_thanhvien`, `ma_quyen`) VALUES
@@ -438,7 +449,7 @@ INSERT INTO `tbl_taikhoan` (`ma_taikhoan`, `ten_taikhoan`, `makhau`, `ngaydangky
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_thanhvien`
+-- Cấu trúc bảng cho bảng `tbl_thanhvien`
 --
 
 CREATE TABLE `tbl_thanhvien` (
@@ -451,7 +462,7 @@ CREATE TABLE `tbl_thanhvien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_thanhvien`
+-- Đang đổ dữ liệu cho bảng `tbl_thanhvien`
 --
 
 INSERT INTO `tbl_thanhvien` (`ma_thanhvien`, `hoten_thanhvien`, `ngaysinh`, `gioitinh`, `sodienthoai`, `email`) VALUES
@@ -463,7 +474,7 @@ INSERT INTO `tbl_thanhvien` (`ma_thanhvien`, `hoten_thanhvien`, `ngaysinh`, `gio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_trangthaigiaohang`
+-- Cấu trúc bảng cho bảng `tbl_trangthaigiaohang`
 --
 
 CREATE TABLE `tbl_trangthaigiaohang` (
@@ -472,7 +483,7 @@ CREATE TABLE `tbl_trangthaigiaohang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `tbl_trangthaigiaohang`
+-- Đang đổ dữ liệu cho bảng `tbl_trangthaigiaohang`
 --
 
 INSERT INTO `tbl_trangthaigiaohang` (`ma_trangthai_giaohang`, `ten_trangthai_giaohang`) VALUES
@@ -483,18 +494,18 @@ INSERT INTO `tbl_trangthaigiaohang` (`ma_trangthai_giaohang`, `ten_trangthai_gia
 (5, 'Hủy đơn hàng');
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tbl_anhsanpham`
+-- Chỉ mục cho bảng `tbl_anhsanpham`
 --
 ALTER TABLE `tbl_anhsanpham`
   ADD PRIMARY KEY (`ma_anh`),
   ADD KEY `fk_anhsp_sp` (`ma_sanpham`);
 
 --
--- Indexes for table `tbl_baohanh`
+-- Chỉ mục cho bảng `tbl_baohanh`
 --
 ALTER TABLE `tbl_baohanh`
   ADD PRIMARY KEY (`ma_baohanh`),
@@ -503,7 +514,7 @@ ALTER TABLE `tbl_baohanh`
   ADD KEY `fk_sanpham_bh` (`ma_sanpham`);
 
 --
--- Indexes for table `tbl_binhluan`
+-- Chỉ mục cho bảng `tbl_binhluan`
 --
 ALTER TABLE `tbl_binhluan`
   ADD PRIMARY KEY (`ma_binhluan`),
@@ -511,27 +522,27 @@ ALTER TABLE `tbl_binhluan`
   ADD KEY `fk_binhluan_sp` (`ma_sanpham`);
 
 --
--- Indexes for table `tbl_cart`
+-- Chỉ mục cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
   ADD PRIMARY KEY (`ma_thanhvien`,`ma_sanpham`);
 
 --
--- Indexes for table `tbl_ct_hoadon`
+-- Chỉ mục cho bảng `tbl_ct_hoadon`
 --
 ALTER TABLE `tbl_ct_hoadon`
   ADD PRIMARY KEY (`ma_sanpham`,`ma_hoadonmua`),
   ADD KEY `fk_cthd_hdm` (`ma_hoadonmua`);
 
 --
--- Indexes for table `tbl_ct_phieunhap`
+-- Chỉ mục cho bảng `tbl_ct_phieunhap`
 --
 ALTER TABLE `tbl_ct_phieunhap`
   ADD PRIMARY KEY (`ma_sanpham`,`ma_phieunhap`),
   ADD KEY `fk_ctpn_pn` (`ma_phieunhap`);
 
 --
--- Indexes for table `tbl_danhgia`
+-- Chỉ mục cho bảng `tbl_danhgia`
 --
 ALTER TABLE `tbl_danhgia`
   ADD PRIMARY KEY (`ma_danhgia`),
@@ -539,32 +550,32 @@ ALTER TABLE `tbl_danhgia`
   ADD KEY `fk_sp_danhgia` (`ma_sanpham`);
 
 --
--- Indexes for table `tbl_danhmuc_sanpham`
+-- Chỉ mục cho bảng `tbl_danhmuc_sanpham`
 --
 ALTER TABLE `tbl_danhmuc_sanpham`
   ADD PRIMARY KEY (`ma_dmsanpham`);
 
 --
--- Indexes for table `tbl_diachi`
+-- Chỉ mục cho bảng `tbl_diachi`
 --
 ALTER TABLE `tbl_diachi`
   ADD PRIMARY KEY (`ma_diachi`),
   ADD KEY `fk_thanhvien` (`ma_thanhvien`);
 
 --
--- Indexes for table `tbl_donvitinh_sanpham`
+-- Chỉ mục cho bảng `tbl_donvitinh_sanpham`
 --
 ALTER TABLE `tbl_donvitinh_sanpham`
   ADD PRIMARY KEY (`ma_donvitinh`);
 
 --
--- Indexes for table `tbl_hinhthucthanhtoan`
+-- Chỉ mục cho bảng `tbl_hinhthucthanhtoan`
 --
 ALTER TABLE `tbl_hinhthucthanhtoan`
   ADD PRIMARY KEY (`ma_hinhthucthanhtoan`);
 
 --
--- Indexes for table `tbl_hoadonmua`
+-- Chỉ mục cho bảng `tbl_hoadonmua`
 --
 ALTER TABLE `tbl_hoadonmua`
   ADD PRIMARY KEY (`ma_hoadonmua`),
@@ -574,20 +585,20 @@ ALTER TABLE `tbl_hoadonmua`
   ADD KEY `fk_nguoilap` (`nguoilap`);
 
 --
--- Indexes for table `tbl_loaisanpham`
+-- Chỉ mục cho bảng `tbl_loaisanpham`
 --
 ALTER TABLE `tbl_loaisanpham`
   ADD PRIMARY KEY (`ma_loaisanpham`),
   ADD KEY `fk_dmsp_loaisp` (`ma_dmsanpham`);
 
 --
--- Indexes for table `tbl_nhacungcap`
+-- Chỉ mục cho bảng `tbl_nhacungcap`
 --
 ALTER TABLE `tbl_nhacungcap`
   ADD PRIMARY KEY (`ma_nhacungcap`);
 
 --
--- Indexes for table `tbl_phieunhap`
+-- Chỉ mục cho bảng `tbl_phieunhap`
 --
 ALTER TABLE `tbl_phieunhap`
   ADD PRIMARY KEY (`ma_phieunhap`),
@@ -595,13 +606,13 @@ ALTER TABLE `tbl_phieunhap`
   ADD KEY `fk_nguoilapphieu` (`nguoilap`);
 
 --
--- Indexes for table `tbl_quyen`
+-- Chỉ mục cho bảng `tbl_quyen`
 --
 ALTER TABLE `tbl_quyen`
   ADD PRIMARY KEY (`ma_quyen`);
 
 --
--- Indexes for table `tbl_sanpham`
+-- Chỉ mục cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
   ADD PRIMARY KEY (`ma_sanpham`),
@@ -611,7 +622,7 @@ ALTER TABLE `tbl_sanpham`
   ADD KEY `fk_nguoidangsp` (`nguoidang_sp`);
 
 --
--- Indexes for table `tbl_taikhoan`
+-- Chỉ mục cho bảng `tbl_taikhoan`
 --
 ALTER TABLE `tbl_taikhoan`
   ADD PRIMARY KEY (`ma_taikhoan`),
@@ -619,170 +630,183 @@ ALTER TABLE `tbl_taikhoan`
   ADD KEY `fk_tk_thanhvien` (`ma_thanhvien`);
 
 --
--- Indexes for table `tbl_thanhvien`
+-- Chỉ mục cho bảng `tbl_thanhvien`
 --
 ALTER TABLE `tbl_thanhvien`
   ADD PRIMARY KEY (`ma_thanhvien`);
 
 --
--- Indexes for table `tbl_trangthaigiaohang`
+-- Chỉ mục cho bảng `tbl_trangthaigiaohang`
 --
 ALTER TABLE `tbl_trangthaigiaohang`
   ADD PRIMARY KEY (`ma_trangthai_giaohang`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tbl_anhsanpham`
+-- AUTO_INCREMENT cho bảng `tbl_anhsanpham`
 --
 ALTER TABLE `tbl_anhsanpham`
-  MODIFY `ma_anh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `ma_anh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
 --
--- AUTO_INCREMENT for table `tbl_baohanh`
+-- AUTO_INCREMENT cho bảng `tbl_baohanh`
 --
 ALTER TABLE `tbl_baohanh`
   MODIFY `ma_baohanh` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tbl_binhluan`
+-- AUTO_INCREMENT cho bảng `tbl_binhluan`
 --
 ALTER TABLE `tbl_binhluan`
   MODIFY `ma_binhluan` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tbl_danhgia`
+-- AUTO_INCREMENT cho bảng `tbl_danhgia`
 --
 ALTER TABLE `tbl_danhgia`
   MODIFY `ma_danhgia` int(11) NOT NULL AUTO_INCREMENT;
+
 --
--- AUTO_INCREMENT for table `tbl_danhmuc_sanpham`
+-- AUTO_INCREMENT cho bảng `tbl_danhmuc_sanpham`
 --
 ALTER TABLE `tbl_danhmuc_sanpham`
   MODIFY `ma_dmsanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
--- AUTO_INCREMENT for table `tbl_diachi`
+-- AUTO_INCREMENT cho bảng `tbl_diachi`
 --
 ALTER TABLE `tbl_diachi`
   MODIFY `ma_diachi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
--- AUTO_INCREMENT for table `tbl_donvitinh_sanpham`
+-- AUTO_INCREMENT cho bảng `tbl_donvitinh_sanpham`
 --
 ALTER TABLE `tbl_donvitinh_sanpham`
-  MODIFY `ma_donvitinh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ma_donvitinh` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- AUTO_INCREMENT for table `tbl_hinhthucthanhtoan`
+-- AUTO_INCREMENT cho bảng `tbl_hinhthucthanhtoan`
 --
 ALTER TABLE `tbl_hinhthucthanhtoan`
   MODIFY `ma_hinhthucthanhtoan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `tbl_loaisanpham`
+-- AUTO_INCREMENT cho bảng `tbl_loaisanpham`
 --
 ALTER TABLE `tbl_loaisanpham`
   MODIFY `ma_loaisanpham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
--- AUTO_INCREMENT for table `tbl_nhacungcap`
+-- AUTO_INCREMENT cho bảng `tbl_nhacungcap`
 --
 ALTER TABLE `tbl_nhacungcap`
   MODIFY `ma_nhacungcap` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
--- AUTO_INCREMENT for table `tbl_quyen`
+-- AUTO_INCREMENT cho bảng `tbl_quyen`
 --
 ALTER TABLE `tbl_quyen`
   MODIFY `ma_quyen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
--- AUTO_INCREMENT for table `tbl_trangthaigiaohang`
+-- AUTO_INCREMENT cho bảng `tbl_trangthaigiaohang`
 --
 ALTER TABLE `tbl_trangthaigiaohang`
   MODIFY `ma_trangthai_giaohang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `tbl_anhsanpham`
+-- Các ràng buộc cho bảng `tbl_anhsanpham`
 --
 ALTER TABLE `tbl_anhsanpham`
-  ADD CONSTRAINT `fk_sanpham_image` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`);
+  ADD CONSTRAINT `fk_sanpham_image` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_baohanh`
+-- Các ràng buộc cho bảng `tbl_baohanh`
 --
 ALTER TABLE `tbl_baohanh`
-  ADD CONSTRAINT `fk_khachhang_baohanh` FOREIGN KEY (`nguoibaohanh`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`),
-  ADD CONSTRAINT `fk_nhanvien_baohanh` FOREIGN KEY (`nguoithuchien`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`),
-  ADD CONSTRAINT `fk_sanpham_baohanh` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`);
+  ADD CONSTRAINT `fk_khachhang_baohanh` FOREIGN KEY (`nguoibaohanh`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nhanvien_baohanh` FOREIGN KEY (`nguoithuchien`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sanpham_baohanh` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_binhluan`
+-- Các ràng buộc cho bảng `tbl_binhluan`
 --
 ALTER TABLE `tbl_binhluan`
-  ADD CONSTRAINT `fk_binhluan_sp` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`),
-  ADD CONSTRAINT `fk_nguoibinhluan` FOREIGN KEY (`ma_taikhoan`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`);
+  ADD CONSTRAINT `fk_binhluan_sp` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nguoibinhluan` FOREIGN KEY (`ma_taikhoan`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_ct_hoadon`
+-- Các ràng buộc cho bảng `tbl_ct_hoadon`
 --
 ALTER TABLE `tbl_ct_hoadon`
-  ADD CONSTRAINT `fk_cthd_hdm` FOREIGN KEY (`ma_hoadonmua`) REFERENCES `tbl_hoadonmua` (`ma_hoadonmua`),
-  ADD CONSTRAINT `fk_cthd_sp` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`);
+  ADD CONSTRAINT `fk_cthd_hdm` FOREIGN KEY (`ma_hoadonmua`) REFERENCES `tbl_hoadonmua` (`ma_hoadonmua`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_cthd_sp` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_ct_phieunhap`
+-- Các ràng buộc cho bảng `tbl_ct_phieunhap`
 --
 ALTER TABLE `tbl_ct_phieunhap`
-  ADD CONSTRAINT `fk_ctpn_pn` FOREIGN KEY (`ma_phieunhap`) REFERENCES `tbl_phieunhap` (`ma_phieunhap`),
-  ADD CONSTRAINT `fk_ctpn_sp` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`);
+  ADD CONSTRAINT `fk_ctpn_pn` FOREIGN KEY (`ma_phieunhap`) REFERENCES `tbl_phieunhap` (`ma_phieunhap`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_ctpn_sp` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_danhgia`
+-- Các ràng buộc cho bảng `tbl_danhgia`
 --
 ALTER TABLE `tbl_danhgia`
-  ADD CONSTRAINT `fk_nguoidanhgia` FOREIGN KEY (`ma_taikhoan`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`),
-  ADD CONSTRAINT `fk_sp_danhgia` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`);
+  ADD CONSTRAINT `fk_nguoidanhgia` FOREIGN KEY (`ma_taikhoan`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sp_danhgia` FOREIGN KEY (`ma_sanpham`) REFERENCES `tbl_sanpham` (`ma_sanpham`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_diachi`
+-- Các ràng buộc cho bảng `tbl_diachi`
 --
 ALTER TABLE `tbl_diachi`
-  ADD CONSTRAINT `fk_thanhvien_diachi` FOREIGN KEY (`ma_thanhvien`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`);
+  ADD CONSTRAINT `fk_thanhvien_diachi` FOREIGN KEY (`ma_thanhvien`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_hoadonmua`
+-- Các ràng buộc cho bảng `tbl_hoadonmua`
 --
 ALTER TABLE `tbl_hoadonmua`
-  ADD CONSTRAINT `fk_htthanhtoan_hdmua` FOREIGN KEY (`ma_hinhthucthanhtoan`) REFERENCES `tbl_hinhthucthanhtoan` (`ma_hinhthucthanhtoan`),
-  ADD CONSTRAINT `fk_nguoilap` FOREIGN KEY (`nguoilap`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`),
-  ADD CONSTRAINT `fk_nguoimua` FOREIGN KEY (`nguoimuahang`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`),
-  ADD CONSTRAINT `fk_trangthaigiao_hdmua` FOREIGN KEY (`ma_trangthai_giaohang`) REFERENCES `tbl_trangthaigiaohang` (`ma_trangthai_giaohang`);
+  ADD CONSTRAINT `fk_htthanhtoan_hdmua` FOREIGN KEY (`ma_hinhthucthanhtoan`) REFERENCES `tbl_hinhthucthanhtoan` (`ma_hinhthucthanhtoan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nguoilap` FOREIGN KEY (`nguoilap`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_nguoimua` FOREIGN KEY (`nguoimuahang`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_trangthaigiao_hdmua` FOREIGN KEY (`ma_trangthai_giaohang`) REFERENCES `tbl_trangthaigiaohang` (`ma_trangthai_giaohang`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_loaisanpham`
+-- Các ràng buộc cho bảng `tbl_loaisanpham`
 --
 ALTER TABLE `tbl_loaisanpham`
-  ADD CONSTRAINT `fk_dmsp_loaisp` FOREIGN KEY (`ma_dmsanpham`) REFERENCES `tbl_danhmuc_sanpham` (`ma_dmsanpham`);
+  ADD CONSTRAINT `fk_dmsp_loaisp` FOREIGN KEY (`ma_dmsanpham`) REFERENCES `tbl_danhmuc_sanpham` (`ma_dmsanpham`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_phieunhap`
+-- Các ràng buộc cho bảng `tbl_phieunhap`
 --
 ALTER TABLE `tbl_phieunhap`
-  ADD CONSTRAINT `fk_nguoilapphieu` FOREIGN KEY (`nguoilap`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`),
-  ADD CONSTRAINT `fk_phieunhap_ncc` FOREIGN KEY (`ma_nhacungcap`) REFERENCES `tbl_nhacungcap` (`ma_nhacungcap`);
+  ADD CONSTRAINT `fk_nguoilapphieu` FOREIGN KEY (`nguoilap`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_phieunhap_ncc` FOREIGN KEY (`ma_nhacungcap`) REFERENCES `tbl_nhacungcap` (`ma_nhacungcap`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_sanpham`
+-- Các ràng buộc cho bảng `tbl_sanpham`
 --
 ALTER TABLE `tbl_sanpham`
-  ADD CONSTRAINT `fk_nguoidangsp` FOREIGN KEY (`nguoidang_sp`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`),
-  ADD CONSTRAINT `fk_sp_donvitinh` FOREIGN KEY (`ma_donvitinh`) REFERENCES `tbl_donvitinh_sanpham` (`ma_donvitinh`),
-  ADD CONSTRAINT `fk_sp_loaisp` FOREIGN KEY (`ma_loaisanpham`) REFERENCES `tbl_loaisanpham` (`ma_loaisanpham`),
-  ADD CONSTRAINT `fk_sp_nhacungcap` FOREIGN KEY (`ma_nhacungcap`) REFERENCES `tbl_nhacungcap` (`ma_nhacungcap`);
+  ADD CONSTRAINT `fk_nguoidangsp` FOREIGN KEY (`nguoidang_sp`) REFERENCES `tbl_taikhoan` (`ma_taikhoan`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sp_donvitinh` FOREIGN KEY (`ma_donvitinh`) REFERENCES `tbl_donvitinh_sanpham` (`ma_donvitinh`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sp_loaisp` FOREIGN KEY (`ma_loaisanpham`) REFERENCES `tbl_loaisanpham` (`ma_loaisanpham`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_sp_nhacungcap` FOREIGN KEY (`ma_nhacungcap`) REFERENCES `tbl_nhacungcap` (`ma_nhacungcap`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `tbl_taikhoan`
+-- Các ràng buộc cho bảng `tbl_taikhoan`
 --
 ALTER TABLE `tbl_taikhoan`
-  ADD CONSTRAINT `fk_tk_quyen` FOREIGN KEY (`ma_quyen`) REFERENCES `tbl_quyen` (`ma_quyen`),
-  ADD CONSTRAINT `fk_tk_thanhvien` FOREIGN KEY (`ma_thanhvien`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`);
+  ADD CONSTRAINT `fk_tk_quyen` FOREIGN KEY (`ma_quyen`) REFERENCES `tbl_quyen` (`ma_quyen`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_tk_thanhvien` FOREIGN KEY (`ma_thanhvien`) REFERENCES `tbl_thanhvien` (`ma_thanhvien`) ON UPDATE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

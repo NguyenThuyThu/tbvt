@@ -25,8 +25,10 @@ class Cdonmua extends MY_Controller
 
 		if($this->input->post('action') == "removeHD"){
 			$maHD = $this->input->post('maHD');
-			$row = $this->Mdonmua->delete("tbl_ct_hoadon", "ma_hoadonmua", $maHD);
-			$row = $this->Mdonmua->delete("tbl_hoadonmua", "ma_hoadonmua", $maHD);
+			// $row = $this->Mdonmua->delete("tbl_ct_hoadon", "ma_hoadonmua", $maHD);
+			// $row = $this->Mdonmua->delete("tbl_hoadonmua", "ma_hoadonmua", $maHD);
+			$data['ma_trangthai_giaohang'] = 5;
+			$row = $this->Mdonmua->update("tbl_hoadonmua", "ma_hoadonmua", $maHD, $data);
 			if($row > 0){
 				echo "thanhcong";
 			}else{

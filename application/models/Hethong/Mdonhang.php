@@ -5,12 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Mdonhang extends MY_Model{
 	public function getDonhang(){
         $this->db->select('hd.ma_hoadonmua, hd.ngaylap, ttgh.ma_trangthai_giaohang, 
-        	ttgh.ten_trangthai_giaohang, tv.hoten_thanhvien');
+        	ttgh.ten_trangthai_giaohang,ttgh.ma_trangthai_giaohang, tv.hoten_thanhvien, tv.sodienthoai, tv.ngaysinh');
 		$this->db->from("tbl_hoadonmua as hd");
-        $this->db->join('tbl_taikhoan as tk', 'tk.ma_taikhoan = hd.nguoimuahang', 'INNER');
-		$this->db->join("tbl_thanhvien as tv", "tv.ma_thanhvien = tk.ma_thanhvien","INNER");
+		$this->db->join("tbl_thanhvien as tv", "tv.ma_thanhvien = hd.nguoimuahang","INNER");
 		$this->db->join("tbl_trangthaigiaohang as ttgh", "ttgh.ma_trangthai_giaohang = hd.ma_trangthai_giaohang","INNER");
-        // echo $this->db->last_query();exit();
+		$this->db->order_by("ttgh.ma_trangthai_giaohang", "ASC");
 		return $this->db->get()->result_array();
 	}
 

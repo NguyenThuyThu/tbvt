@@ -145,13 +145,13 @@
                             </a>
                         </div>
                         {else}
-                        <div class="header__bottom-cart-wrap" id="cart_button" onclick="show_cart();">
+                       <!--  <div class="header__bottom-cart-wrap" id="cart_button" onclick="show_cart();">
                             <a href="{$url}dangnhap">
                                 <i class="header__bottom-cart-icon fa fa-cart-plus" aria-hidden="true"></i>
                                 <input type="button" id="total_items" value="0">
                                 <span class="header__bottom-cart-heading">Giỏ hàng</span>
                             </a>
-                        </div>
+                        </div> -->
                         {/if}
                     </div>
                 </div>

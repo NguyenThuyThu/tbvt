@@ -93,10 +93,6 @@ class Cnhaphang extends MY_Controller
 	public function capnhatpn() {
 		$ma 	  = $this->input->post('capnhatpn');
 		$data 	  = $this->input->post('data');
-		// pr($ma);
-		// $success  = 'Cập nhật thành công';
-  //       $error    = 'Cập nhật thất bại';
-  //       $redirect = base_url().'nhaphang'; 
         $dongia_ban = $this->input->post("dongiaban");
 		for($i=0; $i< count($data['ma_sanpham']); $i++){
 			$chitiet_phieunhaphang = array(
@@ -106,20 +102,20 @@ class Cnhaphang extends MY_Controller
 				'tongtien'  	=> $data['soluong_nhap'][$i] * $data['dongia_nhap'][$i],
 				'ma_phieunhap' 	=> $ma,
 			);
-			$dongia['dongia_sanpham'] = $dongia_ban[$i];
-		// pr($chitiet_phieunhaphang);
-			if($dongia['dongia_sanpham'] != ""){
-				$this->Mphieunhap->update("tbl_sanpham","ma_sanpham", $chitiet_phieunhaphang['ma_sanpham'], $dongia);
+			$this->Mphieunhap->update_ctPhieuNhap($ma, $chitiet_phieunhaphang['ma_sanpham'], $chitiet_phieunhaphang);
+			//lây số lượng hiện tại kiểm tra sau khi sửa là tăng số lượng hay giảm số lượng để update và bảng sản phẩm
+			$check_soluong_kho = $this->Mphieunhap->sumSL($chitiet_phieunhaphang['ma_sanpham'])['soluong_nhap'];
+			
+			$sanpham = array(
+				'dongia_sanpham' => $dongia_ban[$i],
+				'soluong'		 => $check_soluong_kho
+			);
+			
+			if($sanpham['dongia_sanpham'] != ""){
+				$this->Mphieunhap->update("tbl_sanpham","ma_sanpham", $chitiet_phieunhaphang['ma_sanpham'], $sanpham);
 			}
-			$sp = $this->Mphieunhap->get_where_row("tbl_sanpham", "ma_sanpham", $chitiet_phieunhaphang['ma_sanpham']);
-			$sl['soluong'] = $data['soluong_nhap'][$i] + $sp['soluong'];
-			$this->Mphieunhap->update("tbl_sanpham", "ma_sanpham", $chitiet_phieunhaphang['ma_sanpham'], $sl);
-			$this->Mphieunhap->update("tbl_ct_phieunhap", "ma_phieunhap", $chitiet_phieunhaphang['ma_phieunhap'],
-			 $chitiet_phieunhaphang);
-			// $this->Mphieunhap->insert("tbl_ct_phieunhap", $chitiet_phieunhaphang);
 		}
 		setMessages("success", "Sửa thành công", "Thông báo");
 		return redirect("nhaphang");
-        // $this->update("tbl_ct_phieunhap", "ma_phieunhap", $ma, $data_sp, $success, $error, $redirect);
 	}
 }

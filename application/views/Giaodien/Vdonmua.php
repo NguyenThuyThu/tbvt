@@ -64,10 +64,27 @@
                                                                             <i>{$val.ghichu}</i>
                                                                         </td>
                                                                         <td class="text-center">
-                                                                            <span class="label label-success">{$val.ten_trangthai_giaohang}</span></td>
+                                                                            {if $val.ma_trangthai_giaohang == 1}
+                                                                                {$class="label-success"}
+                                                                            {/if}
+                                                                            {if $val.ma_trangthai_giaohang == 2}
+                                                                                {$class="label-primary"}
+                                                                            {/if}
+                                                                            {if $val.ma_trangthai_giaohang == 3}
+                                                                                {$class="label-warming"}
+                                                                            {/if}
+                                                                            {if $val.ma_trangthai_giaohang == 4}
+                                                                                {$class="label-info"}
+                                                                            {/if}
+                                                                            {if $val.ma_trangthai_giaohang == 5}
+                                                                                {$class="label-danger"}
+                                                                            {/if}
+                                                                            <span class="label {$class}">{$val.ten_trangthai_giaohang}</span></td>
                                                                         
                                                                         <td class="text-center">
+                                                                            {if $val.ten_trangthai_giaohang >=2}
                                                                             <span class="label label-danger huyDH" data-ma = "{$val.ma_hoadonmua}"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                                                                            {/if}
                                                                         </td>
                                                                     </tr>
                                                                 {/foreach}
